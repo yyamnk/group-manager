@@ -40,7 +40,14 @@ export EMAIL_USERNAME=ユーザ@gmail.com
 export EMAIL_BCC=sample@example.com'
 export EMAIL_PASSWORD=パスワード
 export EMAIL_SENDER='送信者名 <ユーザ@gmail.com>'
+
+# local環境で動作させる例
+export DEFAULT_URL='localhost:3000'
 ```
+
+# Setup方法
+
+`docs/setup.md`を参照
 
 # 作業記録
 
