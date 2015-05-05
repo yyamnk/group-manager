@@ -1,8 +1,12 @@
-#Sample Admin Roles
+# Group Maneger
 
-ユーザ登録 + アクセス制限 + 管理画面 の実装を目指した試行錯誤の記録
+ユーザ登録 + 参加団体登録
 
-#実装した機能
+`git@github.com:NUTFes/sample_admin_roles.git`
+`210465e4f714148b3a8f91ed6c908407517654a7`
+よりアプリ名を変更
+
+# 実装した機能
 
 * 1ユーザ, 1権限
     - UserモデルとRoleモデルを紐付け
@@ -12,7 +16,7 @@
 * 管理画面 -> `ActiveAdmin`
 * アクセス, 機能制限 -> `cancancan`
 
-#主なgem
+# 主なgem
 
 ```
 gem 'rails', '4.2.1'
@@ -23,7 +27,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'cancancan', '~> 1.10'
 ```
 
-#必要な環境変数
+# 必要な環境変数
 
 ```
 #Gmailの例
@@ -38,6 +42,6 @@ export EMAIL_PASSWORD=パスワード
 export EMAIL_SENDER='送信者名 <ユーザ@gmail.com>'
 ```
 
-#作業記録
+# 作業記録
 
 `docs/log.md`
