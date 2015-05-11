@@ -29,6 +29,9 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
+
+        GroupMailer.update(@group).deliver_now # メール送信
+
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
@@ -43,6 +46,9 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
+
+        GroupMailer.update(@group).deliver_now # メール送信
+
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
         format.json { render :show, status: :ok, location: @group }
       else

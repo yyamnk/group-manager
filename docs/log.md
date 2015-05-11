@@ -77,3 +77,23 @@ index bc99d74..f79e16a 100644
          format.json { render :show, status: :ok, location: @user_detail }% git diff app/controllers/                  [/Volumes/Data/Dropbox/nfes15/group_manager]
 ```
 
+
+# Group更新をメールする
+
+基本的に前と同じ作業
+
+```
+bundle exec rails g mailer GroupMailer
+      create  app/mailers/group_mailer.rb
+    conflict  app/mailers/application_mailer.rb
+Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/mailers/application_mailer.rb? (enter "h" for help) [Ynaqdh] n
+        skip  app/mailers/application_mailer.rb
+      invoke  erb
+      create    app/views/group_mailer
+   identical    app/views/layouts/mailer.text.erb
+   identical    app/views/layouts/mailer.html.erb
+```
+
+* `app/mailers/group_mailer.rb`編集 # GroupMailer#updateを書く
+* `app/views/group_mailer/update.html.erb`作成
+* `app/controllers/groups_controller.rb`で#create, #update時に`GroupMailer.update().deliver_now`

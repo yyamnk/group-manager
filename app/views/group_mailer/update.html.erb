@@ -1,0 +1,19 @@
+<%- model_class = Group -%>
+<p><%= @user_detail.name_ja %>さま</p>
+
+<p>技大祭実行委員会です。</p>
+<p>参加団体「<%= @group.name %>」の更新を承りましたのでお知らせします。</p>
+
+
+<dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+<dd><%= @group.name %></dd>
+<dt><strong><%= model_class.human_attribute_name(:group_category) %>:</strong></dt>
+<dd><%= @group.group_category.name_ja %></dd>
+<dt><strong><%= model_class.human_attribute_name(:activity) %>:</strong></dt>
+<dd><%= @group.activity %></dd>
+<dt><strong><%= model_class.human_attribute_name(:first_question) %>:</strong></dt>
+<dd><%= @group.first_question %></dd>
+
+</br>
+------</br>
+技大祭実行委員会
