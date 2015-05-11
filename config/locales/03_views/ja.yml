@@ -7,5 +7,6 @@ ja:
   groups:
     form:
       hint_name: 店名とは異なります 例) 技大祭実行委員会
+      hint_group_category: 1参加団体につき1つの形式を選択してください. 複数の形式を希望する場合はそれぞれ異なる参加団体でご登録下さい.
       hint_activity: 例) 〇〇の販売, 展示
       hint_questions: ご不明点がありましたらご記入ください.
