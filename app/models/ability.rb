@@ -34,9 +34,15 @@ class Ability
     cannot :manage, :all
 
     if user.role_id == 1 then # for developer
+      # 全てOK
       can :manage, :all
     end
-    if user.role_id == 3 then # for user
+    if user.role_id == 2 then # for manager
+      can :manage, :all # 下記以外の全てOK
+      cannot [:create, :update, :destroy], Role # roleの作成と編集, 編集, 削除は不可
+      cannot [:create, :update, :destroy], User # roleを含むため, Userの作成, 編集, 削除は不可
+    end
+    if user.role_id == 3 then # for user (デフォルトのrole)
       can :manage, :welcome
       # emailのconfirmが終わっていれば
       #
