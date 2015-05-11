@@ -29,6 +29,9 @@ class UserDetailsController < ApplicationController
 
     respond_to do |format|
       if @user_detail.save
+
+        UserDetailMailer.update(@user_detail).deliver_now # メール送信
+
         format.html { redirect_to @user_detail, notice: 'User detail was successfully created.' }
         format.json { render :show, status: :created, location: @user_detail }
       else
@@ -43,6 +46,9 @@ class UserDetailsController < ApplicationController
   def update
     respond_to do |format|
       if @user_detail.update(user_detail_params)
+
+        UserDetailMailer.update(@user_detail).deliver_now # メール送信
+
         format.html { redirect_to @user_detail, notice: 'User detail was successfully updated.' }
         format.json { render :show, status: :ok, location: @user_detail }
       else

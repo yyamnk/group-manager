@@ -1,0 +1,21 @@
+<%- model_class = UserDetail -%>
+<p><%= @user_detail.name_ja %>さま</p>
+
+<p>技大祭実行委員会です。</p>
+<p>下記の通りユーザ情報の更新を承りましたのでお知らせします。</p>
+
+
+<dt><strong><%= model_class.human_attribute_name(:name_ja) %>:</strong></dt>
+<dd><%= @user_detail.name_ja %></dd>
+<dt><strong><%= model_class.human_attribute_name(:name_en) %>:</strong></dt>
+<dd><%= @user_detail.name_en %></dd>
+<dt><strong><%= model_class.human_attribute_name(:department_name_ja) %>:</strong></dt>
+<dd><%= @user_detail.department.name_ja %></dd>
+<dt><strong><%= model_class.human_attribute_name(:grade_name) %>:</strong></dt>
+<dd><%= @user_detail.grade.name %></dd>
+<dt><strong><%= model_class.human_attribute_name(:tel) %>:</strong></dt>
+<dd><%= @user_detail.tel %></dd>
+
+</br>
+------</br>
+技大祭実行委員会
