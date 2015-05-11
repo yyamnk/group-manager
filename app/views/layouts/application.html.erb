@@ -58,7 +58,7 @@
               </li>
               <% if current_user.role.id < 3 %>
                 <li>
-                <%= link_to "管理者用", admin_dashboard_path, class: 'btn' %>
+                <%= link_to "管理者用", admin_dashboard_path, method: :get, class: 'btn' %>
                 </li>
               <% end %>
               <li>
