@@ -244,4 +244,8 @@ ActiveAdmin.setup do |config|
   # You can enable or disable them for all resources here.
   #
   # config.filters = true
+
+  # csv出力のエンコーディングを変更, excelで文字化けしないように
+  config.csv_options = { encoding: 'CP932' }
+
 end
