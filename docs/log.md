@@ -97,3 +97,14 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/mailers/application_mai
 * `app/mailers/group_mailer.rb`編集 # GroupMailer#updateを書く
 * `app/views/group_mailer/update.html.erb`作成
 * `app/controllers/groups_controller.rb`で#create, #update時に`GroupMailer.update().deliver_now`
+
+
+# herokuアプリのスリープを抑制する
+
+アプリが30minとかで休眠する -> 定期的にping打つ 
+
+```
+# Gemfileに`newrelic_rpm`追加
+bundle 
+heroku config:set NEW_RELIC_APP_NAME="nutfes-group-manager"
+```

@@ -59,3 +59,6 @@ gem 'simple_form'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+
+# heroku監視
+gem 'newrelic_rpm'
