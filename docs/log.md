@@ -182,3 +182,15 @@ irb(main):004:0> UserDetailMailer.default[:bcc]
 ```
 
 なして...
+
+```
+# config/environments/production.rb
+
+  # config.action_mailer.default_url_options = { :host => Rails.application.secrets.default_url }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+```
+
+でbcc入った. またconfigの環境変数まわりか
+一度直打ちでlocalhost:3000をいれたら以後動いた. なして...
+
+herokuも動作がおかしかったが, 再起動かけたら直った.
