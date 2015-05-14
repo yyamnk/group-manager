@@ -4,7 +4,57 @@
 
 # development環境
 
+```
+git clone
+cd group_manager
+bundle install --path vendor/bundle --jobs=4
+rake db:create  # postgresqlのDB作成
+rake db:migrate # マイグレーション実行, モデルが生成されてDBに反映される
+rake db:seed_fu # 初期値投入
+```
+
+環境変数を設定する.
+`~/.***rc`に書いとくとよい.
+
+```
+export SMTP_ADRESS=smtp.gmail.com
+export SMTP_PORT=587
+export EMAIL_DOMAIN=gmail.com
+export SMTP_AUTH=plain
+export SMTP_TLS=false
+export EMAIL_USERNAME=<ユーザ名>@gmail.com
+export EMAIL_BCC='<BCC送信先>@gmail.com'
+export EMAIL_PASSWORD=<パスワード> # gmailの場合は2段階認証を設定後, アプリ固有のパスワードを設定する
+export EMAIL_SENDER='送信者名 <ユーザ名@gmail.com>'
+export DEFAULT_URL=https://<アプリ名>.herokuapp.com
+```
+
+あとは`bundle exec rails s`でサーバ起動, `localholt:3000`でアクセス
+
 # production環境
+
+production環境の設定を全てやる.
+追加して
+
+```
+# これも`~/.***rc`に書いとくとよい. 自分しか使わないので適当でOK.
+export GROUP_MANAGER_DATABASE_PASSWORD=<パスワード>
+
+# postgresqlのユーザ作成( production環境のDBで必要 )
+createuser -P -d group_manager 
+# ここでパスワードを聞かれるので, $GROUP_MANAGER_DATABASE_PASSWORDと同じものを打つ.
+
+# production環境でDB作成, マイグレーション, 初期値投入
+rake db:create RAILS_ENV=production
+rake db:migrate RAILS_ENV=production
+rake db:seed_fu RAILS_ENV=production
+```
+
+サーバ起動
+
+```
+bundle exec rails s -e production
+```
 
 # Heroku
 
