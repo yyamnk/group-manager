@@ -153,3 +153,8 @@ rake db:migrate
 ## ActiveAdminでget_noticeを制御可能に
 
 `app/admin/user.rb`を編集
+
+## ApplicationMailerでdefault bccを追加
+
+pluck便利. 該当のカラムで配列にしてくれる.
+ActionMailer::Base.defaultには配列で複数アドレスをわたせる.
