@@ -107,4 +107,49 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/mailers/application_mai
 # Gemfileに`newrelic_rpm`追加
 bundle 
 heroku config:set NEW_RELIC_APP_NAME="nutfes-group-manager"
+heroku config:set NEW_RELIC_LICENSE_KEY="new-relicライセンスキー"
 ```
+
+# 管理者にメールを転送する
+
+## 背景
+
+現在,
+GroupController#create , GroupController#update
+UserDetail#create, UserDetail#update
+で該当Userにメールを送っている.
+
+このメールを管理者にも転送したい.
+roleで判定ではなく, User.get_noticeで制御することにする.
+
+## Userに`get_notice`コラムを追加
+
+```
+bundle exec rails g migration AddColumnToUser get_notice:boolean
+      invoke  active_record
+      create    db/migrate/20150514100412_add_column_to_user.rb
+```
+
+デフォルトとnull: falseを設定
+
+```
+# db/migrate/20150514100412_add_column_to_user.rb
+
+class AddColumnToUser < ActiveRecord::Migration
+  def change
+    add_column :users, :get_notice, :boolean, null: false, default: false
+  end
+end
+```
+
+```
+rake db:migrate
+== 20150514100412 AddColumnToUser: migrating ==================================
+-- add_column(:users, :get_notice, :boolean, {:null=>false, :default=>false})
+   -> 0.0454s
+== 20150514100412 AddColumnToUser: migrated (0.0455s) =========================
+```
+
+## ActiveAdminでget_noticeを制御可能に
+
+`app/admin/user.rb`を編集

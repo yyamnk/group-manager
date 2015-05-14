@@ -1,15 +1,15 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation, :role_id
+  permit_params :email, :password, :password_confirmation, :role_id, :get_notice
 
   index do
     selectable_column
     id_column
     column :email
     column :role
+    column :get_notice
     column :user_detail
     column :current_sign_in_at
     column :sign_in_count
-    column :created_at
     actions
   end
 
@@ -27,6 +27,7 @@ ActiveAdmin.register User do
       # f.input :password
       # f.input :password_confirmation
       f.input :role
+      f.input :get_notice
     end
     f.actions
   end
