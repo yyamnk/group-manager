@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514100412) do
+ActiveRecord::Schema.define(version: 20150605081918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,34 @@ ActiveRecord::Schema.define(version: 20150514100412) do
   add_index "groups", ["group_category_id"], name: "index_groups_on_group_category_id", using: :btree
   add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
 
+  create_table "rental_item_allow_lists", force: :cascade do |t|
+    t.integer  "rental_item_id"
+    t.integer  "group_category_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "rental_item_allow_lists", ["group_category_id"], name: "index_rental_item_allow_lists_on_group_category_id", using: :btree
+  add_index "rental_item_allow_lists", ["rental_item_id"], name: "index_rental_item_allow_lists_on_rental_item_id", using: :btree
+
+  create_table "rental_items", force: :cascade do |t|
+    t.string   "name_ja",    null: false
+    t.string   "name_en"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rental_orders", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "rental_item_id"
+    t.integer  "num"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "rental_orders", ["group_id"], name: "index_rental_orders_on_group_id", using: :btree
+  add_index "rental_orders", ["rental_item_id"], name: "index_rental_orders_on_rental_item_id", using: :btree
+
   create_table "roles", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
@@ -115,6 +143,10 @@ ActiveRecord::Schema.define(version: 20150514100412) do
 
   add_foreign_key "groups", "group_categories"
   add_foreign_key "groups", "users"
+  add_foreign_key "rental_item_allow_lists", "group_categories"
+  add_foreign_key "rental_item_allow_lists", "rental_items"
+  add_foreign_key "rental_orders", "groups"
+  add_foreign_key "rental_orders", "rental_items"
   add_foreign_key "user_details", "departments"
   add_foreign_key "user_details", "grades"
   add_foreign_key "user_details", "users"
