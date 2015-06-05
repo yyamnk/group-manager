@@ -194,3 +194,17 @@ irb(main):004:0> UserDetailMailer.default[:bcc]
 一度直打ちでlocalhost:3000をいれたら以後動いた. なして...
 
 herokuも動作がおかしかったが, 再起動かけたら直った.
+
+
+# データベースのバックアップを自動化
+
+`heroku pg:backups schedule DATABASE_URL --app nutfes-group-manager`
+毎日自動バックアップで1週間保持してくれるらしい.
+
+[解説](http://www.mori-soft.com/2008-08-15-01-36-37/os/214-heroku-pgbackups-postgresql)
+
+```
+heroku pg:backups public-url
+```
+
+で表示されたURLからデータをダウンロードした．

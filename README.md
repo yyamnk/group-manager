@@ -52,3 +52,14 @@ export DEFAULT_URL='localhost:3000'
 # 作業記録
 
 `docs/log.md`
+
+# データバックアップ方法
+
+[参考 Heroku PGBackups](https://devcenter.heroku.com/articles/heroku-postgres-backups#scheduling-backups)
+
+```
+# 一覧
+heroku pg:backups
+# 必要なバックアップをダウンロード
+heroku pg:backups public-url a022
+```
