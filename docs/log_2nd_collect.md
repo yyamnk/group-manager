@@ -119,3 +119,14 @@ RentalItemクラスにinit_rental_ordersメソッドを追加する
 参加団体作成時にGroup.init_rental_ordersメソッドを実行
 
 rental_order/indexを修正．
+
+"今回は既に参加団体が作成されているので，Group.init_rental_ordersを手動で実行する．"を実行するタスクを作成する
+
+```
+bundle exec rails g task rental_orders
+      create  lib/tasks/rental_orders.rake
+```
+
+実行は`rake rental_orders:generate_for_preexist`で．
+既存のレコードは上書きされない(ユニークでバリデートされるので)
+
