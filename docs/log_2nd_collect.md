@@ -93,3 +93,5 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/rental_orders/new
     conflict  app/views/rental_orders/show.html.erb
        force  app/views/rental_orders/show.html.erb
 ```
+
+rental_orders/indexを修正

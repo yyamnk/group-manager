@@ -6,10 +6,9 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:group_id) %></th>
-      <th><%= model_class.human_attribute_name(:rental_item_id) %></th>
+      <th><%= model_class.human_attribute_name(:group_name) %></th>
+      <th><%= model_class.human_attribute_name(:rental_item_name_ja) %></th>
       <th><%= model_class.human_attribute_name(:num) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -17,18 +16,12 @@
     <% @rental_orders.each do |rental_order| %>
       <tr>
         <td><%= link_to rental_order.id, rental_order_path(rental_order) %></td>
-        <td><%= rental_order.group_id %></td>
-        <td><%= rental_order.rental_item_id %></td>
+        <td><%= rental_order.group.name%></td>
+        <td><%= rental_order.rental_item.name_ja %></td>
         <td><%= rental_order.num %></td>
-        <td><%=l rental_order.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_rental_order_path(rental_order), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      rental_order_path(rental_order),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
