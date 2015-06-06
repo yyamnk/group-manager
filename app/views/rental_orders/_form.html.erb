@@ -1,8 +1,6 @@
-<%= simple_form_for @rental_order, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :group_id %>
-  <%= error_span(@rental_order[:group_id]) %>
-  <%= f.input :rental_item_id %>
-  <%= error_span(@rental_order[:rental_item_id]) %>
+<%= simple_form_for @rental_order, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.hidden_field :group_id %>
+  <%= f.hidden_field :rental_item_id %>
   <%= f.input :num %>
   <%= error_span(@rental_order[:num]) %>
 

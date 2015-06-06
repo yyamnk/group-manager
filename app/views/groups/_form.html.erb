@@ -1,4 +1,4 @@
-<%= simple_form_for @group, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for @group, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.hidden_field :user_id, value: @group[:user_id] %>
   <%= f.input :name,
     hint: t(".hint_name")

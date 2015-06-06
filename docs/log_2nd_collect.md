@@ -131,7 +131,7 @@ bundle exec rails g task rental_orders
 既存のレコードは上書きされない(ユニークでバリデートされるので)
 
 
-# 貸出物品に関連するモデルをRailsAdminの管理対象に追加する
+## 貸出物品に関連するモデルをRailsAdminの管理対象に追加する
 
 ```
 bundle exec rails generate active_admin:resource RentalItem
@@ -141,4 +141,18 @@ bundle exec rails generate active_admin:resource RentalOrder
 bundle exec rails generate active_admin:resource RentalItemAllowList
       create  app/admin/rental_item_allow_list.rb
 ```
+
+## herokuへupdate
+
+```
+git push heroku master
+heroku run:detached rake db:migrate
+heroku run:detached rake db:seed_fu
+heroku run:detached rake rental_orders:generate_for_preexist
+```
+
+## フォーム，詳細表示を修正
+
+`app/views/rental_orders/_form.html.erb' -> group_id, rental_item_idをhiddenへ
+`app/views/rental_orders/show.html.erb' -> destroyのボタン削除
 
