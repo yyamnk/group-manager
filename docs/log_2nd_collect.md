@@ -95,3 +95,6 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/rental_orders/new
 ```
 
 rental_orders/indexを修正
+
+各モデルにバリデーションを追加する
+
