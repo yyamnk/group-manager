@@ -4,6 +4,8 @@ class RentalOrder < ActiveRecord::Base
 
   validates :group_id, :rental_item_id, :num, presence: true
   validates :num, numericality: {
-    only_integer: true, greater_than: 0
+    only_integer: true, greater_than_or_equal_to: 0
   }
+  validates :group_id, :uniqueness => {:scope => :rental_item_id }
+
 end

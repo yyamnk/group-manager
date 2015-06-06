@@ -98,3 +98,21 @@ rental_orders/indexを修正
 
 各モデルにバリデーションを追加する
 
+
+実装の方針:
+
+ユーザは貸出物品の更新のみとする．
+システムは予め各団体に関連した全ての貸出物品を数量0でレコードをつくる．
+
+RentalOrderの初期レコードはGroupの作成，及びRentalItemの作成時に自動的に追加する必要がある．
+
+Groupクラスにinit_rental_ordersメソッドを追加する
+    メソッドの中身: 全てのRentalItemを数量0とするRentalOrderのレコードを作成．
+    参加団体が作成されたら，Group.find(id).init_rental_ordersを実行．
+
+RentalItemクラスにinit_rental_ordersメソッドを追加する
+    メソッドの中身: 全ての参加団体に対応する数量0のRentalOrderレコードを作成．
+    RentalItemが作成されたら，RentalItem.find(id).init_rental_ordersを実行．
+
+今回は既に参加団体が作成されているので，Group.init_rental_ordersを手動で実行する．
+
