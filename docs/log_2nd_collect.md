@@ -156,3 +156,15 @@ heroku run:detached rake rental_orders:generate_for_preexist
 `app/views/rental_orders/_form.html.erb' -> group_id, rental_item_idをhiddenへ
 `app/views/rental_orders/show.html.erb' -> destroyのボタン削除
 
+## RentalOrderに権限を追加
+
+```
+# app/controllers/rental_orders_controller.rb に追加
+load_and_authorize_resource # for cancancan
+
+# app/models/ability.rb に追加
+    ...
+      # 貸出物品は自分の団体のみ読み，更新を許可
+      groups = Group.where( user_id: user.id ).pluck('id')
+      can [:read, :update], RentalOrder, :group_id => groups
+```

@@ -4,10 +4,10 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:group_id) %>:</strong></dt>
-  <dd><%= @rental_order.group_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:rental_item_id) %>:</strong></dt>
-  <dd><%= @rental_order.rental_item_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:group_name) %>:</strong></dt>
+  <dd><%= @rental_order.group.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:rental_item_name) %>:</strong></dt>
+  <dd><%= @rental_order.rental_item.name_ja %></dd>
   <dt><strong><%= model_class.human_attribute_name(:num) %>:</strong></dt>
   <dd><%= @rental_order.num %></dd>
 </dl>

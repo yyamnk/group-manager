@@ -41,6 +41,7 @@ class Ability
       can :manage, :all # 下記以外の全てOK
       cannot [:create, :update, :destroy], Role # roleの作成と編集, 編集, 削除は不可
       cannot [:create, :update, :destroy], User # roleを含むため, Userの作成, 編集, 削除は不可
+      cannot [:create, :update, :destroy], RentalOrder # 数量0で対応する．
     end
     if user.role_id == 3 then # for user (デフォルトのrole)
       can :manage, :welcome
@@ -50,6 +51,9 @@ class Ability
       can [:read, :create, :update], UserDetail, :user_id => user.id
       # 所有するGroupのレコードは自由に触れる
       can :manage, Group, :user_id => user.id
+      # 貸出物品は自分の団体のみ読み，更新を許可
+      groups = Group.where( user_id: user.id ).pluck('id')
+      can [:read, :update], RentalOrder, :group_id => groups
     end
 
   end
