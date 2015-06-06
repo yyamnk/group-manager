@@ -31,6 +31,7 @@ class GroupsController < ApplicationController
       if @group.save
 
         GroupMailer.update(@group).deliver_now # メール送信
+        Group.init_rental_order(@group.id) # 数量0で貸出物品のレコードを生成
 
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }

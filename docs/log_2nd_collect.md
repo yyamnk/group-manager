@@ -116,3 +116,4 @@ RentalItemクラスにinit_rental_ordersメソッドを追加する
 
 今回は既に参加団体が作成されているので，Group.init_rental_ordersを手動で実行する．
 
+参加団体作成時にGroup.init_rental_ordersメソッドを実行
