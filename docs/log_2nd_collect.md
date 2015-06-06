@@ -73,3 +73,5 @@ bundle exec rails g scaffold rentalOrder group:references rental_item:references
 rake db:migrate
 ```
 
+物品貸出用のリンクをDashboardに追加．
+app/views/welcome_inedxを修正．
