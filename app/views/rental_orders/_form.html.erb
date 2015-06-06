@@ -1,13 +1,12 @@
-<%= simple_form_for(@rental_order) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @rental_order, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :group_id %>
+  <%= error_span(@rental_order[:group_id]) %>
+  <%= f.input :rental_item_id %>
+  <%= error_span(@rental_order[:rental_item_id]) %>
+  <%= f.input :num %>
+  <%= error_span(@rental_order[:num]) %>
 
-  <div class="form-inputs">
-    <%= f.association :group %>
-    <%= f.association :rental_item %>
-    <%= f.input :num %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                rental_orders_path, :class => 'btn btn-default' %>
 <% end %>

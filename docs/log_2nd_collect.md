@@ -75,3 +75,21 @@ rake db:migrate
 
 物品貸出用のリンクをDashboardに追加．
 app/views/welcome_inedxを修正．
+
+RentalOrderにbootstrapを適用
+
+```
+bundle exec rails g bootstrap:themed RentalOrders
+    conflict  app/views/rental_orders/index.html.erb
+Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/rental_orders/index.html.erb? (enter "h" for help) [Ynaqdh] Y
+       force  app/views/rental_orders/index.html.erb
+    conflict  app/views/rental_orders/new.html.erb
+Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/rental_orders/new.html.erb? (enter "h" for help) [Ynaqdh] a
+       force  app/views/rental_orders/new.html.erb
+    conflict  app/views/rental_orders/edit.html.erb
+       force  app/views/rental_orders/edit.html.erb
+    conflict  app/views/rental_orders/_form.html.erb
+       force  app/views/rental_orders/_form.html.erb
+    conflict  app/views/rental_orders/show.html.erb
+       force  app/views/rental_orders/show.html.erb
+```
