@@ -1,10 +1,16 @@
 class RentalOrdersController < ApplicationController
   before_action :set_rental_order, only: [:show, :edit, :update, :destroy]
+  before_action :get_groups # カレントユーザの所有する団体を@groupsとする
 
   # GET /rental_orders
   # GET /rental_orders.json
   def index
-    @rental_orders = RentalOrder.all
+    @rental_orders = []
+    @groups.each { |group|
+      item_ids = RentalItem.permitted( group.id ).pluck('id')
+      get_orders = RentalOrder.where( group_id: group ).where( rental_item_id: item_ids ).order('id')
+      @rental_orders = @rental_orders + get_orders
+    }
   end
 
   # GET /rental_orders/1
@@ -70,5 +76,9 @@ class RentalOrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def rental_order_params
       params.require(:rental_order).permit(:group_id, :rental_item_id, :num)
+    end
+
+    def get_groups
+      @groups = Group.where( user_id: current_user.id )
     end
 end

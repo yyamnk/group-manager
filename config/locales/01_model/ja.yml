@@ -18,3 +18,7 @@ ja:
           grade: 学年
           grade_name: 学年
           tel: 電話番号
+        rental_order:
+          group_name: 運営団体の名称
+          rental_item_name: 貸出物品
+          num: 数量
