@@ -65,4 +65,11 @@ rake db:seed_fu
  - RentalItemAllowList {:id=>32, :rental_item_id=>8, :group_category_id=>3}
 ```
 
+Scoffoldで貸出物品のCURDを生成
+
+```
+# 貸出物品の希望調査
+bundle exec rails g scaffold rentalOrder group:references rental_item:references num:integer
+rake db:migrate
+```
 

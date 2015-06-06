@@ -1,0 +1,13 @@
+<%= simple_form_for(@rental_order) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :group %>
+    <%= f.association :rental_item %>
+    <%= f.input :num %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

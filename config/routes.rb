@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rental_orders
   resources :groups
   resources :user_details
   get 'welcome/index'

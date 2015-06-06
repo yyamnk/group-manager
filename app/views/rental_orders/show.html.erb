@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @rental_order.group %>
+</p>
+
+<p>
+  <strong>Rental item:</strong>
+  <%= @rental_order.rental_item %>
+</p>
+
+<p>
+  <strong>Num:</strong>
+  <%= @rental_order.num %>
+</p>
+
+<%= link_to 'Edit', edit_rental_order_path(@rental_order) %> |
+<%= link_to 'Back', rental_orders_path %>
