@@ -130,3 +130,15 @@ bundle exec rails g task rental_orders
 実行は`rake rental_orders:generate_for_preexist`で．
 既存のレコードは上書きされない(ユニークでバリデートされるので)
 
+
+# 貸出物品に関連するモデルをRailsAdminの管理対象に追加する
+
+```
+bundle exec rails generate active_admin:resource RentalItem
+      create  app/admin/rental_item.rb
+bundle exec rails generate active_admin:resource RentalOrder
+      create  app/admin/rental_order.rb
+bundle exec rails generate active_admin:resource RentalItemAllowList
+      create  app/admin/rental_item_allow_list.rb
+```
+
