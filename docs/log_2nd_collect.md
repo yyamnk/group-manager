@@ -290,4 +290,17 @@ rake db:migrate
 == 20150607101623 CreateStages: migrated (0.0141s) ============================
 ```
 
+初期データ投入
 
+```
+rake db:seed_fu
+
+== Seed from /Volumes/Data/Dropbox/nfes15/group_manager/db/fixtures/stage.rb
+ - Stage {:id=>1, :name_ja=>"メインステージ", :is_sunny=>true}
+ - Stage {:id=>2, :name_ja=>"サブステージ", :is_sunny=>true}
+ - Stage {:id=>3, :name_ja=>"体育館", :is_sunny=>true}
+ - Stage {:id=>4, :name_ja=>"マルチメディアセンター", :is_sunny=>true}
+ - Stage {:id=>5, :name_ja=>"体育館", :is_sunny=>false}
+ - Stage {:id=>6, :name_ja=>"マルチメディアセンター", :is_sunny=>false}
+ - Stage {:id=>7, :name_ja=>"武道館", :is_sunny=>false}
+```
