@@ -1,15 +1,23 @@
-<%= simple_form_for @stage_order, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :group_id %>
-  <%= error_span(@stage_order[:group_id]) %>
-  <%= f.input :is_sunny %>
-  <%= error_span(@stage_order[:is_sunny]) %>
-  <%= f.input :fes_date_id %>
-  <%= error_span(@stage_order[:fes_date_id]) %>
-  <%= f.input :stage_first %>
+<%= "#{@stage_order.date}, #{@stage_order.tenki}の申請" %>
+
+<%= simple_form_for @stage_order, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.hidden_field :group_id %>
+  <%= f.hidden_field :is_sunny %>
+  <%= f.hidden_field :fes_date_id %>
+
+  <%= f.input :stage_first,
+    collection: Stage.by_weather(@stage_order.is_sunny),
+    selected: @stage_order.stage_first %>
   <%= error_span(@stage_order[:stage_first]) %>
-  <%= f.input :stage_second %>
+
+  <%= f.input :stage_second,
+    collection: Stage.by_weather(@stage_order.is_sunny),
+    selected: @stage_order.stage_second %>
   <%= error_span(@stage_order[:stage_second]) %>
-  <%= f.input :time %>
+
+  <%= f.input :time,
+    hint: t(".hint_time")
+  %>
   <%= error_span(@stage_order[:time]) %>
   <%= f.input :own_equipment %>
   <%= error_span(@stage_order[:own_equipment]) %>

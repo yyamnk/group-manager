@@ -373,3 +373,7 @@ bundle exec rails g task stage_orders
 # 実行
 rake stage_orders:generate_for_preexist
 ```
+
+## formを修正
+
+辞書を追加，いくつかのパラメータをhiddenに

@@ -30,3 +30,12 @@ ja:
           group_name: 運営団体の名称
           item: 電力を使う機器の名称
           power: 電力[W]
+        stage_order:
+          group_name: 運営団体の名称
+          stage_first: 場所(第一希望)
+          stage_second: 場所(第二希望)
+          time: 開催時間
+          own_equipment: 自前の音響機材を使用する
+          bgm: 実行委員にBGMをかけるのを依頼する(BGMは団体でご準備下さい)
+          camera_permittion: 実行委員による撮影を許可する
+          loud_sound: 大きな音を出す

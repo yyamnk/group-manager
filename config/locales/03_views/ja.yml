@@ -22,3 +22,6 @@ ja:
       confirm: この操作は取り消せません. 本当に削除しますか?
     index:
       confirm: この操作は取り消せません. 本当に削除しますか?
+  stage_orders:
+    form:
+      hint_time: 例）13時から14時まで，1時間程度
