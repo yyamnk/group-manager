@@ -241,3 +241,6 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/power_orders/new.
 idカラムを削除
 group_idからgroup_nameに修正
 
+## モデルにバリデーション追加
+
+条件，合計1000W以下，ついては後ほど追加する
