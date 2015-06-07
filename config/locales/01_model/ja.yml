@@ -25,3 +25,7 @@ ja:
           group_name: 運営団体の名称
           rental_item_name: 貸出物品
           num: 数量
+        power_order:
+          group_name: 運営団体の名称
+          item: 電力を使う機器の名称
+          power: 電力[W]

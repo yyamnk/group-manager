@@ -234,3 +234,10 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/power_orders/new.
     conflict  app/views/power_orders/show.html.erb
        force  app/views/power_orders/show.html.erb
 ```
+
+## power_orders/index 修正
+
+カラム名用の辞書ファイルを追加
+idカラムを削除
+group_idからgroup_nameに修正
+
