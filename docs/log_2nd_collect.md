@@ -489,3 +489,5 @@ bundle exec rails g task place_order
 # 中身を書いて実行
 rake place_order:generate_for_preexist
 ```
+
+## Group作成時にPlaceOrderの初期データを投入させる
