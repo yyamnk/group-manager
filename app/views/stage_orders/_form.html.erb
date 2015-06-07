@@ -1,20 +1,26 @@
-<%= simple_form_for(@stage_order) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @stage_order, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :group_id %>
+  <%= error_span(@stage_order[:group_id]) %>
+  <%= f.input :is_sunny %>
+  <%= error_span(@stage_order[:is_sunny]) %>
+  <%= f.input :fes_date_id %>
+  <%= error_span(@stage_order[:fes_date_id]) %>
+  <%= f.input :stage_first %>
+  <%= error_span(@stage_order[:stage_first]) %>
+  <%= f.input :stage_second %>
+  <%= error_span(@stage_order[:stage_second]) %>
+  <%= f.input :time %>
+  <%= error_span(@stage_order[:time]) %>
+  <%= f.input :own_equipment %>
+  <%= error_span(@stage_order[:own_equipment]) %>
+  <%= f.input :bgm %>
+  <%= error_span(@stage_order[:bgm]) %>
+  <%= f.input :camera_permittion %>
+  <%= error_span(@stage_order[:camera_permittion]) %>
+  <%= f.input :loud_sound %>
+  <%= error_span(@stage_order[:loud_sound]) %>
 
-  <div class="form-inputs">
-    <%= f.association :group %>
-    <%= f.input :is_sunny %>
-    <%= f.association :fes_date %>
-    <%= f.input :stage_first %>
-    <%= f.input :stage_second %>
-    <%= f.input :time %>
-    <%= f.input :own_equipment %>
-    <%= f.input :bgm %>
-    <%= f.input :camera_permittion %>
-    <%= f.input :loud_sound %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                stage_orders_path, :class => 'btn btn-default' %>
 <% end %>

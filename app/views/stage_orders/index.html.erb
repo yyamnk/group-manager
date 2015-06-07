@@ -1,45 +1,38 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Stage Orders</h1>
-
-<table>
+<%- model_class = StageOrder -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Group</th>
-      <th>Is sunny</th>
-      <th>Fes date</th>
-      <th>Stage first</th>
-      <th>Stage second</th>
-      <th>Time</th>
-      <th>Own equipment</th>
-      <th>Bgm</th>
-      <th>Camera permittion</th>
-      <th>Loud sound</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:group_name) %></th>
+      <th><%= model_class.human_attribute_name(:is_sunny) %></th>
+      <th><%= model_class.human_attribute_name(:fes_date_id) %></th>
+      <th><%= model_class.human_attribute_name(:time) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @stage_orders.each do |stage_order| %>
       <tr>
-        <td><%= stage_order.group %></td>
+        <td><%= stage_order.group_id %></td>
         <td><%= stage_order.is_sunny %></td>
-        <td><%= stage_order.fes_date %></td>
-        <td><%= stage_order.stage_first %></td>
-        <td><%= stage_order.stage_second %></td>
+        <td><%= stage_order.fes_date_id %></td>
         <td><%= stage_order.time %></td>
-        <td><%= stage_order.own_equipment %></td>
-        <td><%= stage_order.bgm %></td>
-        <td><%= stage_order.camera_permittion %></td>
-        <td><%= stage_order.loud_sound %></td>
-        <td><%= link_to 'Show', stage_order %></td>
-        <td><%= link_to 'Edit', edit_stage_order_path(stage_order) %></td>
-        <td><%= link_to 'Destroy', stage_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_stage_order_path(stage_order), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      stage_order_path(stage_order),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Stage order', new_stage_order_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_stage_order_path,
+            :class => 'btn btn-primary' %>

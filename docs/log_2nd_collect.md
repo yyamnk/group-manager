@@ -338,3 +338,23 @@ rake db:migrate
    -> 0.0163s
 == 20150607110533 CreateStageOrders: migrated (0.0163s) =======================
 ```
+
+
+## bootstrap適用
+
+```
+% bundle exec rails g bootstrap:themed StageOrders
+    conflict  app/views/stage_orders/index.html.erb
+Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/stage_orders/index.html.erb? (enter "h" for help) [Ynaqdh] a
+       force  app/views/stage_orders/index.html.erb
+    conflict  app/views/stage_orders/new.html.erb
+       force  app/views/stage_orders/new.html.erb
+    conflict  app/views/stage_orders/edit.html.erb
+       force  app/views/stage_orders/edit.html.erb
+    conflict  app/views/stage_orders/_form.html.erb
+       force  app/views/stage_orders/_form.html.erb
+    conflict  app/views/stage_orders/show.html.erb
+       force  app/views/stage_orders/show.html.erb
+```
+
+index から団体名，天候，日付以外のカラムを削除
