@@ -2,6 +2,9 @@ class PlaceOrder < ActiveRecord::Base
   belongs_to :group
   validate :select_different_stage
 
+  validates :group_id, presence: true
+  validates :group_id, uniqueness: true
+
   def select_different_stage
     return if first.nil? & second.nil? & third.nil? # 全てnil(初期値)なら無効
     if [first, second, third].uniq.size < 3
