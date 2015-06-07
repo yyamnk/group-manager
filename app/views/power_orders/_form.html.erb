@@ -1,9 +1,13 @@
 <%= simple_form_for @power_order, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.association :group, collection: @groups, selected: @groups.first%>
+  <%= f.association :group, collection: @groups, selected: @power_order.group_id %>
   <%= error_span(@power_order[:group_id]) %>
-  <%= f.input :item %>
+  <%= f.input :item,
+    hint: t(".hint_item")
+  %>
   <%= error_span(@power_order[:item]) %>
-  <%= f.input :power %>
+  <%= f.input :power,
+    hint: t(".hint_power")
+  %>
   <%= error_span(@power_order[:power]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
