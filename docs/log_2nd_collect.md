@@ -478,3 +478,14 @@ bundle exec rails g bootstrap:themed PlaceOrders
       create  app/views/place_orders/_form.html.erb
       create  app/views/place_orders/show.html.erb
 ```
+
+## 初期データの生成
+
+Groupモデルにinit_place_orderメソッドを追加
+
+```
+bundle exec rails g task place_order
+      create  lib/tasks/place_order.rake
+# 中身を書いて実行
+rake place_order:generate_for_preexist
+```

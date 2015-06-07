@@ -32,4 +32,9 @@ class Group < ActiveRecord::Base
     order.save
   end
 
+  def init_place_order
+    return if group_category_id == 3 # ステージ企画ならば戻る
+    order = PlaceOrder.new( group_id: id )
+    order.save
+  end
 end
