@@ -396,4 +396,35 @@ bundle exec rails generate active_admin:resource StageOrder
 
 # 電力申請の権限を追加
 
+---
 
+# 実施場所の申請
+
+## モデル作成
+
+```
+bundle exec rails g model place name_ja:string name_en:string is_outside:boolean
+      invoke  active_record
+      create    db/migrate/20150607150120_create_places.rb
+      create    app/models/place.rb
+
+rake db:migrate
+== 20150607150120 CreatePlaces: migrating =====================================
+-- create_table(:places)
+   -> 0.0051s
+== 20150607150120 CreatePlaces: migrated (0.0052s) ============================
+
+rake db:seed_fu
+== Seed from /Volumes/Data/Dropbox/nfes15/group_manager/db/fixtures/place.rb
+ - Place {:id=>1, :name_ja=>"事務棟エリア", :is_outside=>true}
+ - Place {:id=>2, :name_ja=>"図書館エリア", :is_outside=>true}
+ - Place {:id=>3, :name_ja=>"福利棟エリア", :is_outside=>true}
+ - Place {:id=>4, :name_ja=>"ステージエリア", :is_outside=>true}
+ - Place {:id=>5, :name_ja=>"体育館エリア", :is_outside=>true}
+ - Place {:id=>6, :name_ja=>"セコムホール", :is_outside=>false}
+ - Place {:id=>7, :name_ja=>"電気棟204", :is_outside=>false}
+ - Place {:id=>8, :name_ja=>"電気棟206", :is_outside=>false}
+ - Place {:id=>9, :name_ja=>"電気棟208", :is_outside=>false}
+ - Place {:id=>10, :name_ja=>"電気棟212", :is_outside=>false}
+ - Place {:id=>11, :name_ja=>"電気棟310", :is_outside=>false}
+```
