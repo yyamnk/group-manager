@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Place Orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>First</th>
+      <th>Second</th>
+      <th>Third</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @place_orders.each do |place_order| %>
+      <tr>
+        <td><%= place_order.group %></td>
+        <td><%= place_order.first %></td>
+        <td><%= place_order.second %></td>
+        <td><%= place_order.third %></td>
+        <td><%= link_to 'Show', place_order %></td>
+        <td><%= link_to 'Edit', edit_place_order_path(place_order) %></td>
+        <td><%= link_to 'Destroy', place_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Place order', new_place_order_path %>

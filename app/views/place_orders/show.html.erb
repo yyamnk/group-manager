@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @place_order.group %>
+</p>
+
+<p>
+  <strong>First:</strong>
+  <%= @place_order.first %>
+</p>
+
+<p>
+  <strong>Second:</strong>
+  <%= @place_order.second %>
+</p>
+
+<p>
+  <strong>Third:</strong>
+  <%= @place_order.third %>
+</p>
+
+<%= link_to 'Edit', edit_place_order_path(@place_order) %> |
+<%= link_to 'Back', place_orders_path %>

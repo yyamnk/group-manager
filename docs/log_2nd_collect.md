@@ -428,3 +428,41 @@ rake db:seed_fu
  - Place {:id=>10, :name_ja=>"電気棟212", :is_outside=>false}
  - Place {:id=>11, :name_ja=>"電気棟310", :is_outside=>false}
 ```
+
+## 場所申請用のCURD生成
+
+```
+bundle exec rails g scaffold place_order group:references first:integer second:integer third:integer
+      invoke  active_record
+      create    db/migrate/20150607152236_create_place_orders.rb
+      create    app/models/place_order.rb
+      invoke  resource_route
+       route    resources :place_orders
+      invoke  scaffold_controller
+      create    app/controllers/place_orders_controller.rb
+      invoke    erb
+      create      app/views/place_orders
+      create      app/views/place_orders/index.html.erb
+      create      app/views/place_orders/edit.html.erb
+      create      app/views/place_orders/show.html.erb
+      create      app/views/place_orders/new.html.erb
+      create      app/views/place_orders/_form.html.erb
+      invoke    helper
+      create      app/helpers/place_orders_helper.rb
+      invoke    jbuilder
+      create      app/views/place_orders/index.json.jbuilder
+      create      app/views/place_orders/show.json.jbuilder
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/place_orders.coffee
+      invoke    scss
+      create      app/assets/stylesheets/place_orders.scss
+      invoke  scss
+   identical    app/assets/stylesheets/scaffolds.scss
+
+rake db:migrate
+== 20150607152236 CreatePlaceOrders: migrating ================================
+-- create_table(:place_orders)
+   -> 0.0140s
+== 20150607152236 CreatePlaceOrders: migrated (0.0141s) =======================
+```

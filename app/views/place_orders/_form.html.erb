@@ -1,0 +1,14 @@
+<%= simple_form_for(@place_order) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :group %>
+    <%= f.input :first %>
+    <%= f.input :second %>
+    <%= f.input :third %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
