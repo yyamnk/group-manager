@@ -499,3 +499,10 @@ rake place_order:generate_for_preexist
 ## PlaceOrderにバリデート追加
 
 ## show, index修正
+
+## ActiveAdminに追加
+
+```
+bundle exec rails generate active_admin:resource PlaceOrder
+      create  app/admin/place_order.rb
+```
