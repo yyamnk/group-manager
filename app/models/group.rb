@@ -7,6 +7,7 @@ class Group < ActiveRecord::Base
   validates :activity, presence: true
   validates :group_category, presence: true
 
+  # このメソッドselfいらないな...
   def self.init_rental_order(id) # RentalOrderのレコードが無ければ数量0で登録する
     items_ids = RentalItem.all.pluck('id')
     items_ids.each{ |item_id|
