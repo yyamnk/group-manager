@@ -5,7 +5,11 @@ class PlaceOrdersController < ApplicationController
   # GET /place_orders
   # GET /place_orders.json
   def index
-    @place_orders = PlaceOrder.all
+    @groups = Group.where( user_id: current_user.id ) # 所有する団体
+    @place_orders = [] # 初期化
+    @groups.each { |group|
+      @place_orders += PlaceOrder.where( group_id: group.id ).order('id')
+    }
   end
 
   # GET /place_orders/1
