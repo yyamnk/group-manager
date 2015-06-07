@@ -491,3 +491,5 @@ rake place_order:generate_for_preexist
 ```
 
 ## Group作成時にPlaceOrderの初期データを投入させる
+
+## welcome_inedxにリンクを追加
