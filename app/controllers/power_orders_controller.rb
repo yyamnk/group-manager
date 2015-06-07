@@ -5,7 +5,12 @@ class PowerOrdersController < ApplicationController
   # GET /power_orders
   # GET /power_orders.json
   def index
-    @power_orders = PowerOrder.all
+    @power_orders = []
+    # 所有する団体のみで絞り込み
+    @groups.each { |group|
+      get_orders = PowerOrder.where( group_id: group.id )
+      @power_orders = @power_orders + get_orders
+    }
   end
 
   # GET /power_orders/1
