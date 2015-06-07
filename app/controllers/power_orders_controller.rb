@@ -1,5 +1,6 @@
 class PowerOrdersController < ApplicationController
   before_action :set_power_order, only: [:show, :edit, :update, :destroy]
+  before_action :get_groups # カレントユーザの所有する団体を@groupsとする
 
   # GET /power_orders
   # GET /power_orders.json
@@ -70,5 +71,9 @@ class PowerOrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def power_order_params
       params.require(:power_order).permit(:group_id, :item, :power)
+    end
+
+    def get_groups
+      @groups = Group.where( user_id: current_user.id )
     end
 end

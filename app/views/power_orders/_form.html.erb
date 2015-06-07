@@ -1,5 +1,5 @@
-<%= simple_form_for @power_order, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :group_id %>
+<%= simple_form_for @power_order, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.association :group, collection: @groups, selected: @groups.first%>
   <%= error_span(@power_order[:group_id]) %>
   <%= f.input :item %>
   <%= error_span(@power_order[:item]) %>

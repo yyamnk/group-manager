@@ -244,3 +244,8 @@ group_idからgroup_nameに修正
 ## モデルにバリデーション追加
 
 条件，合計1000W以下，ついては後ほど追加する
+
+## _formを修正
+
+group選択を所有する団体のみで絞り込が必要
+-> controllersにget_groupsで@groupsインスタンス変数を用意した
