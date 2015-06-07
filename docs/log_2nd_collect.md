@@ -497,3 +497,5 @@ rake place_order:generate_for_preexist
 ## formを修正
 
 ## PlaceOrderにバリデート追加
+
+## show, index修正

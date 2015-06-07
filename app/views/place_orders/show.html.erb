@@ -4,22 +4,17 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:group_id) %>:</strong></dt>
-  <dd><%= @place_order.group_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:group_name) %>:</strong></dt>
+  <dd><%= @place_order.group.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:first) %>:</strong></dt>
-  <dd><%= @place_order.first %></dd>
+  <dd><%= Place.find(@place_order.first) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:second) %>:</strong></dt>
-  <dd><%= @place_order.second %></dd>
+  <dd><%= Place.find(@place_order.second) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:third) %>:</strong></dt>
-  <dd><%= @place_order.third %></dd>
+  <dd><%= Place.find(@place_order.third) %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               place_orders_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_place_order_path(@place_order), :class => 'btn btn-default' %>
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              place_order_path(@place_order),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>

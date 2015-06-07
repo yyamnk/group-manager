@@ -44,6 +44,7 @@ ja:
           is_sunny: 天候
           fes_date_id: 開催日
         place_order:
+          group_name: 運営団体の名称
           first: 第一希望
           second: 第二希望
           third: 第三希望
