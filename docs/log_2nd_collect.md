@@ -385,3 +385,9 @@ StageOrder.kibou1, StageOrder.kibou2を追加
 ## indexを修正
 
 辞書追加, 希望場所を表示
+
+## ActiveAdminの管理対象に追加
+
+```
+bundle exec rails generate active_admin:resource StageOrder
+```

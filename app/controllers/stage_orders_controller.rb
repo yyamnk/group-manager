@@ -1,11 +1,15 @@
 class StageOrdersController < ApplicationController
   before_action :set_stage_order, only: [:show, :edit, :update, :destroy]
   before_action :get_groups # カレントユーザの所有する団体を@groupsとする
+  load_and_authorize_resource # for cancancan
 
   # GET /stage_orders
   # GET /stage_orders.json
   def index
-    @stage_orders = StageOrder.all
+    @stage_orders = [] # 初期化
+    @groups.each { |group|
+      @stage_orders += StageOrder.where( group_id: group.id ).order('id')
+    }
   end
 
   # GET /stage_orders/1

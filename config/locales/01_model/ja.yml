@@ -7,6 +7,7 @@ ja:
       rental_order: 物品貸出の申請
       rental_item_allow_list: 物品とカテゴリの関連
       power_order: 使用電力の申請
+      stage_order: ステージ利用の申請
     attributes:
         group:
           name: 運営団体の名称
