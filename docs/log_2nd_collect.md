@@ -213,4 +213,6 @@ rake db:migrate
 == 20150607054939 CreatePowerOrders: migrated (0.0113s) =======================
 ```
 
+## Dashboardに電力申請用のリンクを追加する
 
+welcome_inedxに追加
