@@ -1,13 +1,12 @@
-<%= simple_form_for(@power_order) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @power_order, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :group_id %>
+  <%= error_span(@power_order[:group_id]) %>
+  <%= f.input :item %>
+  <%= error_span(@power_order[:item]) %>
+  <%= f.input :power %>
+  <%= error_span(@power_order[:power]) %>
 
-  <div class="form-inputs">
-    <%= f.association :group %>
-    <%= f.input :item %>
-    <%= f.input :power %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                power_orders_path, :class => 'btn btn-default' %>
 <% end %>

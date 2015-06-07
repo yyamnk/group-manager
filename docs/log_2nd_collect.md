@@ -216,3 +216,21 @@ rake db:migrate
 ## Dashboardに電力申請用のリンクを追加する
 
 welcome_inedxに追加
+
+## bootstrapを適用
+
+```
+bundle exec rails g bootstrap:themed powerOrders
+    conflict  app/views/power_orders/index.html.erb
+Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/power_orders/index.html.erb? (enter "h" for help) [Ynaqdh]
+       force  app/views/power_orders/index.html.erb
+    conflict  app/views/power_orders/new.html.erb
+Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/power_orders/new.html.erb? (enter "h" for help) [Ynaqdh] a
+       force  app/views/power_orders/new.html.erb
+    conflict  app/views/power_orders/edit.html.erb
+       force  app/views/power_orders/edit.html.erb
+    conflict  app/views/power_orders/_form.html.erb
+       force  app/views/power_orders/_form.html.erb
+    conflict  app/views/power_orders/show.html.erb
+       force  app/views/power_orders/show.html.erb
+```
