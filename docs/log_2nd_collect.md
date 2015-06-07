@@ -391,3 +391,9 @@ StageOrder.kibou1, StageOrder.kibou2を追加
 ```
 bundle exec rails generate active_admin:resource StageOrder
 ```
+
+---
+
+# 電力申請の権限を追加
+
+

@@ -41,7 +41,8 @@ class Ability
       can :manage, :all # 下記以外の全てOK
       cannot [:create, :update, :destroy], Role # roleの作成と編集, 編集, 削除は不可
       cannot [:create, :update, :destroy], User # roleを含むため, Userの作成, 編集, 削除は不可
-      cannot [:create, :update, :destroy], RentalOrder # 数量0で対応する．
+      cannot [:create, :destroy], RentalOrder # 数量0で対応する．
+      cannot [:create, :destroy], StageOrder
     end
     if user.role_id == 3 then # for user (デフォルトのrole)
       can :manage, :welcome
@@ -54,6 +55,8 @@ class Ability
       # 貸出物品は自分の団体のみ読み，更新を許可
       groups = Group.where( user_id: user.id ).pluck('id')
       can [:read, :update], RentalOrder, :group_id => groups
+      # 電力申請は自分の団体のみ作成，読み，更新，削除を許可
+      can :manage, PowerOrder, :group_id => groups
       # ステージ利用申請は自分の団体のみ読み，更新を許可
       can [:read, :update], StageOrder, :group_id => groups
     end
