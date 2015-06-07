@@ -255,3 +255,10 @@ group選択を所有する団体のみで絞り込が必要
 辞書参照先変更，辞書の追加
 
 ## indexで表示を絞込
+## 1団体で合計1000Wを超える場合に追加を禁止する
+
+[参考](http://qiita.com/n-oshiro/items/4a3188be66dd0e18bae5)
+[参考](http://guides.rubyonrails.org/active_record_validations.html#working-with-validation-errors-errors)
+
+`app/validators/power_order_validator.rb`にバリデートを追加
+新規追加と更新で別のメソッドを指定できなかったので別クラスとした...

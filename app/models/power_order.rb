@@ -6,4 +6,7 @@ class PowerOrder < ActiveRecord::Base
     only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000,
   }
 
+  validates_with PowerOrderCreateValidator, on: :create
+  validates_with PowerOrderUpdateValidator, on: :update
+
 end

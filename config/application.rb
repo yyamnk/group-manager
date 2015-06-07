@@ -37,5 +37,8 @@ module GroupManager
 
     # scaffoldで生成するコントローラーにinherited_resoucesを継承させない
     config.app_generators.scaffold_controller = :scaffold_controller
+
+    # カスタムバリデータを読み込むようにする
+    config.autoload_paths += Dir["#{config.root}/app/validators"]
   end
 end
