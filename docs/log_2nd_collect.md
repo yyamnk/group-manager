@@ -377,3 +377,7 @@ rake stage_orders:generate_for_preexist
 ## formを修正
 
 辞書を追加，いくつかのパラメータをhiddenに
+
+## showを修正
+
+StageOrder.kibou1, StageOrder.kibou2を追加

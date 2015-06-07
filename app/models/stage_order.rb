@@ -21,4 +21,12 @@ class StageOrder < ActiveRecord::Base
         errors.add( :stage_second, "候補が重複しています。")
     end
   end
+
+  def kibou1
+    return Stage.find( stage_first )
+  end
+
+  def kibou2
+    return Stage.find( stage_second )
+  end
 end
