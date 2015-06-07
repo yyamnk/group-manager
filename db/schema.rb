@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607105823) do
+ActiveRecord::Schema.define(version: 20150607110533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,6 +141,24 @@ ActiveRecord::Schema.define(version: 20150607105823) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "stage_orders", force: :cascade do |t|
+    t.integer  "group_id"
+    t.boolean  "is_sunny"
+    t.integer  "fes_date_id"
+    t.integer  "stage_first"
+    t.integer  "stage_second"
+    t.string   "time"
+    t.boolean  "own_equipment"
+    t.boolean  "bgm"
+    t.boolean  "camera_permittion"
+    t.boolean  "loud_sound"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "stage_orders", ["fes_date_id"], name: "index_stage_orders_on_fes_date_id", using: :btree
+  add_index "stage_orders", ["group_id"], name: "index_stage_orders_on_group_id", using: :btree
+
   create_table "stages", force: :cascade do |t|
     t.string   "name_ja"
     t.string   "name_en"
@@ -202,6 +220,8 @@ ActiveRecord::Schema.define(version: 20150607105823) do
   add_foreign_key "rental_item_allow_lists", "rental_items"
   add_foreign_key "rental_orders", "groups"
   add_foreign_key "rental_orders", "rental_items"
+  add_foreign_key "stage_orders", "fes_dates"
+  add_foreign_key "stage_orders", "groups"
   add_foreign_key "user_details", "departments"
   add_foreign_key "user_details", "grades"
   add_foreign_key "user_details", "users"

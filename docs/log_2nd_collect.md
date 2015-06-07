@@ -325,3 +325,16 @@ rake db:seed_fu
  - FesDate {:id=>2, :days_num=>1, :date=>"1日目"}
  - FesDate {:id=>3, :days_num=>2, :date=>"2日目"}
 ```
+
+
+## ステージ用の申請CURDを作成
+
+```
+bundle exec rails g scaffold stage_order group:references is_sunny:boolean fes_date:references stage_first:integer stage_second:integer time:string own_equipment:boolean bgm:boolean camera_permittion:boolean loud_sound:boolean
+
+rake db:migrate
+== 20150607110533 CreateStageOrders: migrating ================================
+-- create_table(:stage_orders)
+   -> 0.0163s
+== 20150607110533 CreateStageOrders: migrated (0.0163s) =======================
+```

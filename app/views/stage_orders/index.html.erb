@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Stage Orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Is sunny</th>
+      <th>Fes date</th>
+      <th>Stage first</th>
+      <th>Stage second</th>
+      <th>Time</th>
+      <th>Own equipment</th>
+      <th>Bgm</th>
+      <th>Camera permittion</th>
+      <th>Loud sound</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stage_orders.each do |stage_order| %>
+      <tr>
+        <td><%= stage_order.group %></td>
+        <td><%= stage_order.is_sunny %></td>
+        <td><%= stage_order.fes_date %></td>
+        <td><%= stage_order.stage_first %></td>
+        <td><%= stage_order.stage_second %></td>
+        <td><%= stage_order.time %></td>
+        <td><%= stage_order.own_equipment %></td>
+        <td><%= stage_order.bgm %></td>
+        <td><%= stage_order.camera_permittion %></td>
+        <td><%= stage_order.loud_sound %></td>
+        <td><%= link_to 'Show', stage_order %></td>
+        <td><%= link_to 'Edit', edit_stage_order_path(stage_order) %></td>
+        <td><%= link_to 'Destroy', stage_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Stage order', new_stage_order_path %>

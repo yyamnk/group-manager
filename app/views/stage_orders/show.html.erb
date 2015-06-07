@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @stage_order.group %>
+</p>
+
+<p>
+  <strong>Is sunny:</strong>
+  <%= @stage_order.is_sunny %>
+</p>
+
+<p>
+  <strong>Fes date:</strong>
+  <%= @stage_order.fes_date %>
+</p>
+
+<p>
+  <strong>Stage first:</strong>
+  <%= @stage_order.stage_first %>
+</p>
+
+<p>
+  <strong>Stage second:</strong>
+  <%= @stage_order.stage_second %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @stage_order.time %>
+</p>
+
+<p>
+  <strong>Own equipment:</strong>
+  <%= @stage_order.own_equipment %>
+</p>
+
+<p>
+  <strong>Bgm:</strong>
+  <%= @stage_order.bgm %>
+</p>
+
+<p>
+  <strong>Camera permittion:</strong>
+  <%= @stage_order.camera_permittion %>
+</p>
+
+<p>
+  <strong>Loud sound:</strong>
+  <%= @stage_order.loud_sound %>
+</p>
+
+<%= link_to 'Edit', edit_stage_order_path(@stage_order) %> |
+<%= link_to 'Back', stage_orders_path %>
