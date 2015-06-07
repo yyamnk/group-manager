@@ -20,7 +20,8 @@
     <h3 class="panel-title">物品貸出</h3>
   </div>
   <div class="panel-body">
-    技大祭で使用する物品を貸し出します。
+    技大祭で使用する物品を貸し出します。<br>
+    対象: 全ての団体
     <%= link_to t('welcome_controller.index'),
             rental_orders_path,
             :class => 'btn btn-default' %>
@@ -32,7 +33,8 @@
     <h3 class="panel-title">使用電力</h3>
   </div>
   <div class="panel-body">
-    模擬店，展示・体験企画で使用する電力の申請が可能です。
+    使用する電力の申請が必要です。<br>
+    対象: 参加形式が模擬店(食品販売，物品販売)，展示・体験，その他の団体
     <%= link_to t('welcome_controller.index'),
             power_orders_path,
             :class => 'btn btn-default' %>
