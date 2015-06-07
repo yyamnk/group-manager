@@ -8,6 +8,7 @@ ja:
       rental_item_allow_list: 物品とカテゴリの関連
       power_order: 使用電力の申請
       stage_order: ステージ利用の申請
+      place_order: 実施場所の申請
     attributes:
         group:
           name: 運営団体の名称
@@ -42,3 +43,7 @@ ja:
           loud_sound: 大きな音を出す
           is_sunny: 天候
           fes_date_id: 開催日
+        place_order:
+          first: 第一希望
+          second: 第二希望
+          third: 第三希望
