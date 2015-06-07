@@ -267,3 +267,27 @@ group選択を所有する団体のみで絞り込が必要
 
 バリデートでエラーを履いたときに，団体の選択を維持するように変更．
 ヒントを追加
+
+
+
+
+---
+
+# ステージ企画専用のアンケート
+
+## モデル
+
+```
+# ステージの場所
+bundle exec rails g model stage name_ja:string name_en:string is_sunny:boolean
+      invoke  active_record
+      create    db/migrate/20150607101623_create_stages.rb
+      create    app/models/stage.rb
+rake db:migrate
+== 20150607101623 CreateStages: migrating =====================================
+-- create_table(:stages)
+   -> 0.0140s
+== 20150607101623 CreateStages: migrated (0.0141s) ============================
+```
+
+
