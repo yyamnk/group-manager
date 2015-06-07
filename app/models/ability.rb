@@ -43,6 +43,7 @@ class Ability
       cannot [:create, :update, :destroy], User # roleを含むため, Userの作成, 編集, 削除は不可
       cannot [:create, :destroy], RentalOrder # 数量0で対応する．
       cannot [:create, :destroy], StageOrder
+      cannot [:create, :destroy], PlaceOrder
     end
     if user.role_id == 3 then # for user (デフォルトのrole)
       can :manage, :welcome
@@ -59,6 +60,8 @@ class Ability
       can :manage, PowerOrder, :group_id => groups
       # ステージ利用申請は自分の団体のみ読み，更新を許可
       can [:read, :update], StageOrder, :group_id => groups
+      # 実施場所申請は自分の団体のみ読み，更新を許可
+      can [:read, :update], PlaceOrder, :group_id => groups
     end
 
   end

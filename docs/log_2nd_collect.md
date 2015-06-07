@@ -506,3 +506,5 @@ rake place_order:generate_for_preexist
 bundle exec rails generate active_admin:resource PlaceOrder
       create  app/admin/place_order.rb
 ```
+
+## 権限を追加

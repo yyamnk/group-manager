@@ -1,5 +1,6 @@
 class PlaceOrdersController < ApplicationController
   before_action :set_place_order, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource # for cancancan
 
   # GET /place_orders
   # GET /place_orders.json
