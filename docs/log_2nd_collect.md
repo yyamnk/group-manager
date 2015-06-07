@@ -495,3 +495,5 @@ rake place_order:generate_for_preexist
 ## welcome_inedxにリンクを追加
 
 ## formを修正
+
+## PlaceOrderにバリデート追加
