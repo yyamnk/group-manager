@@ -54,6 +54,8 @@ class Ability
       # 貸出物品は自分の団体のみ読み，更新を許可
       groups = Group.where( user_id: user.id ).pluck('id')
       can [:read, :update], RentalOrder, :group_id => groups
+      # ステージ利用申請は自分の団体のみ読み，更新を許可
+      can [:read, :update], StageOrder, :group_id => groups
     end
 
   end
