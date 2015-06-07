@@ -364,4 +364,12 @@ index から団体名，天候，日付以外のカラムを削除
 ステージ企画の団体は，[1日目と2日目] × [晴れと雨] で4パターンの申請が必須．
 
 モデルにバリデートを追加
+stage_orderのレコードを生成するメソッドを追加
+全てのグループで初期データを生成するタスクを追加
 
+```
+bundle exec rails g task stage_orders
+      create  lib/tasks/stage_orders.rake
+# 実行
+rake stage_orders:generate_for_preexist
+```

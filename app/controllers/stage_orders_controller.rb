@@ -1,5 +1,6 @@
 class StageOrdersController < ApplicationController
   before_action :set_stage_order, only: [:show, :edit, :update, :destroy]
+  before_action :get_groups # カレントユーザの所有する団体を@groupsとする
 
   # GET /stage_orders
   # GET /stage_orders.json
@@ -70,5 +71,9 @@ class StageOrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def stage_order_params
       params.require(:stage_order).permit(:group_id, :is_sunny, :fes_date_id, :stage_first, :stage_second, :time, :own_equipment, :bgm, :camera_permittion, :loud_sound)
+    end
+
+    def get_groups
+      @groups = Group.where( user_id: current_user.id )
     end
 end
