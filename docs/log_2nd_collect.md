@@ -304,3 +304,24 @@ rake db:seed_fu
  - Stage {:id=>6, :name_ja=>"マルチメディアセンター", :is_sunny=>false}
  - Stage {:id=>7, :name_ja=>"武道館", :is_sunny=>false}
 ```
+
+```
+# 開催する日付のモデル
+bundle exec rails g model fesDate days_num:integer date:string
+      invoke  active_record
+      create    db/migrate/20150607105823_create_fes_dates.rb
+      create    app/models/fes_date.rb
+
+rake db:migrate
+== 20150607105823 CreateFesDates: migrating ===================================
+-- create_table(:fes_dates)
+   -> 0.0062s
+== 20150607105823 CreateFesDates: migrated (0.0063s) ==========================
+
+# 初期データ投入
+rake db:seed_fu
+== Seed from /Volumes/Data/Dropbox/nfes15/group_manager/db/fixtures/fes_date.rb
+ - FesDate {:id=>1, :days_num=>0, :date=>"準備日"}
+ - FesDate {:id=>2, :days_num=>1, :date=>"1日目"}
+ - FesDate {:id=>3, :days_num=>2, :date=>"2日目"}
+```
