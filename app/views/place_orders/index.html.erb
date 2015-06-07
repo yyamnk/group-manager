@@ -1,33 +1,42 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Place Orders</h1>
-
-<table>
+<%- model_class = PlaceOrder -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Group</th>
-      <th>First</th>
-      <th>Second</th>
-      <th>Third</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:group_id) %></th>
+      <th><%= model_class.human_attribute_name(:first) %></th>
+      <th><%= model_class.human_attribute_name(:second) %></th>
+      <th><%= model_class.human_attribute_name(:third) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @place_orders.each do |place_order| %>
       <tr>
-        <td><%= place_order.group %></td>
+        <td><%= link_to place_order.id, place_order_path(place_order) %></td>
+        <td><%= place_order.group_id %></td>
         <td><%= place_order.first %></td>
         <td><%= place_order.second %></td>
         <td><%= place_order.third %></td>
-        <td><%= link_to 'Show', place_order %></td>
-        <td><%= link_to 'Edit', edit_place_order_path(place_order) %></td>
-        <td><%= link_to 'Destroy', place_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l place_order.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_place_order_path(place_order), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      place_order_path(place_order),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Place order', new_place_order_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_place_order_path,
+            :class => 'btn btn-primary' %>

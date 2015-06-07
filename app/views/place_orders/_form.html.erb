@@ -1,14 +1,14 @@
-<%= simple_form_for(@place_order) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @place_order, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :group_id %>
+  <%= error_span(@place_order[:group_id]) %>
+  <%= f.input :first %>
+  <%= error_span(@place_order[:first]) %>
+  <%= f.input :second %>
+  <%= error_span(@place_order[:second]) %>
+  <%= f.input :third %>
+  <%= error_span(@place_order[:third]) %>
 
-  <div class="form-inputs">
-    <%= f.association :group %>
-    <%= f.input :first %>
-    <%= f.input :second %>
-    <%= f.input :third %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                place_orders_path, :class => 'btn btn-default' %>
 <% end %>

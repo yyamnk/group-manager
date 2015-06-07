@@ -1,6 +1,5 @@
-<h1>Editing Place Order</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @place_order %> |
-<%= link_to 'Back', place_orders_path %>
+<%- model_class = PlaceOrder -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>

@@ -466,3 +466,15 @@ rake db:migrate
    -> 0.0140s
 == 20150607152236 CreatePlaceOrders: migrated (0.0141s) =======================
 ```
+
+## bootstrap適用
+
+```
+# 一度views/place_orders/を全部消した...
+bundle exec rails g bootstrap:themed PlaceOrders
+      create  app/views/place_orders/index.html.erb
+      create  app/views/place_orders/new.html.erb
+      create  app/views/place_orders/edit.html.erb
+      create  app/views/place_orders/_form.html.erb
+      create  app/views/place_orders/show.html.erb
+```
