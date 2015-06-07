@@ -517,3 +517,10 @@ rake place_order:generate_for_preexist
 
 で初期データを生成 -> 更新 -> 再度タスク実行で別のレコードができる．
 group_idでユニークにしないとダメ．
+
+## placeのモデルを管理対象に追加
+
+```
+bundle exec rails generate active_admin:resource Place
+      create  app/admin/place.rb
+```

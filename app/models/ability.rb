@@ -44,6 +44,7 @@ class Ability
       cannot [:create, :destroy], RentalOrder # 数量0で対応する．
       cannot [:create, :destroy], StageOrder
       cannot [:create, :destroy], PlaceOrder
+      cannot [:destroy], Place # PlaceOrderからfindで引いている．削除は禁止
     end
     if user.role_id == 3 then # for user (デフォルトのrole)
       can :manage, :welcome
