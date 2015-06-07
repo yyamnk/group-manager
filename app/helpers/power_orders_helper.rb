@@ -1,0 +1,2 @@
+module PowerOrdersHelper
+end

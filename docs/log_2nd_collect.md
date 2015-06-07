@@ -168,3 +168,49 @@ load_and_authorize_resource # for cancancan
       groups = Group.where( user_id: user.id ).pluck('id')
       can [:read, :update], RentalOrder, :group_id => groups
 ```
+
+ここまで: 54ff23c
+
+
+--- 
+
+# 電力申請
+
+## 電力申請用のCURDを生成
+
+```
+bundle exec rails g scaffold power_order group:references item:string power:integer
+      invoke  active_record
+      create    db/migrate/20150607054939_create_power_orders.rb
+      create    app/models/power_order.rb
+      invoke  resource_route
+       route    resources :power_orders
+      invoke  scaffold_controller
+      create    app/controllers/power_orders_controller.rb
+      invoke    erb
+      create      app/views/power_orders
+      create      app/views/power_orders/index.html.erb
+      create      app/views/power_orders/edit.html.erb
+      create      app/views/power_orders/show.html.erb
+      create      app/views/power_orders/new.html.erb
+      create      app/views/power_orders/_form.html.erb
+      invoke    helper
+      create      app/helpers/power_orders_helper.rb
+      invoke    jbuilder
+      create      app/views/power_orders/index.json.jbuilder
+      create      app/views/power_orders/show.json.jbuilder
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/power_orders.coffee
+      invoke    scss
+      create      app/assets/stylesheets/power_orders.scss
+      invoke  scss
+   identical    app/assets/stylesheets/scaffolds.scss
+rake db:migrate
+== 20150607054939 CreatePowerOrders: migrating ================================
+-- create_table(:power_orders)
+   -> 0.0112s
+== 20150607054939 CreatePowerOrders: migrated (0.0113s) =======================
+```
+
+

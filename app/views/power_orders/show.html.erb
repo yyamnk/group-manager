@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @power_order.group %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @power_order.item %>
+</p>
+
+<p>
+  <strong>Power:</strong>
+  <%= @power_order.power %>
+</p>
+
+<%= link_to 'Edit', edit_power_order_path(@power_order) %> |
+<%= link_to 'Back', power_orders_path %>

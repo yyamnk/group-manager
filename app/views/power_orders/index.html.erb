@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Power Orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Item</th>
+      <th>Power</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @power_orders.each do |power_order| %>
+      <tr>
+        <td><%= power_order.group %></td>
+        <td><%= power_order.item %></td>
+        <td><%= power_order.power %></td>
+        <td><%= link_to 'Show', power_order %></td>
+        <td><%= link_to 'Edit', edit_power_order_path(power_order) %></td>
+        <td><%= link_to 'Destroy', power_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Power order', new_power_order_path %>

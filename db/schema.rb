@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606034829) do
+ActiveRecord::Schema.define(version: 20150607054939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 20150606034829) do
 
   add_index "groups", ["group_category_id"], name: "index_groups_on_group_category_id", using: :btree
   add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
+
+  create_table "power_orders", force: :cascade do |t|
+    t.integer  "group_id",   null: false
+    t.string   "item",       null: false
+    t.integer  "power"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "power_orders", ["group_id"], name: "index_power_orders_on_group_id", using: :btree
 
   create_table "rental_item_allow_lists", force: :cascade do |t|
     t.integer  "rental_item_id"
@@ -143,6 +153,7 @@ ActiveRecord::Schema.define(version: 20150606034829) do
 
   add_foreign_key "groups", "group_categories"
   add_foreign_key "groups", "users"
+  add_foreign_key "power_orders", "groups"
   add_foreign_key "rental_item_allow_lists", "group_categories"
   add_foreign_key "rental_item_allow_lists", "rental_items"
   add_foreign_key "rental_orders", "groups"
