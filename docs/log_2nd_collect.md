@@ -358,3 +358,10 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/stage_orders/inde
 ```
 
 index から団体名，天候，日付以外のカラムを削除
+
+## 初期データの生成
+
+ステージ企画の団体は，[1日目と2日目] × [晴れと雨] で4パターンの申請が必須．
+
+モデルにバリデートを追加
+
