@@ -79,6 +79,7 @@ class PowerOrdersController < ApplicationController
     end
 
     def get_groups
-      @groups = Group.where( user_id: current_user.id )
+      # 自分の所有するグループでステージ以外
+      @groups = Group.where( user_id: current_user.id ).where( group_category_id: [1,2,4,5] )
     end
 end
