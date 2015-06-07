@@ -249,3 +249,7 @@ group_idからgroup_nameに修正
 
 group選択を所有する団体のみで絞り込が必要
 -> controllersにget_groupsで@groupsインスタンス変数を用意した
+
+## showの修正
+
+辞書参照先変更，辞書の追加
