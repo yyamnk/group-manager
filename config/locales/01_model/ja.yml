@@ -39,3 +39,5 @@ ja:
           bgm: 実行委員にBGMをかけるのを依頼する(BGMは団体でご準備下さい)
           camera_permittion: 実行委員による撮影を許可する
           loud_sound: 大きな音を出す
+          is_sunny: 天候
+          fes_date_id: 開催日

@@ -381,3 +381,7 @@ rake stage_orders:generate_for_preexist
 ## showを修正
 
 StageOrder.kibou1, StageOrder.kibou2を追加
+
+## indexを修正
+
+辞書追加, 希望場所を表示

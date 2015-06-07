@@ -6,27 +6,26 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:group_name) %></th>
-      <th><%= model_class.human_attribute_name(:is_sunny) %></th>
       <th><%= model_class.human_attribute_name(:fes_date_id) %></th>
+      <th><%= model_class.human_attribute_name(:is_sunny) %></th>
       <th><%= model_class.human_attribute_name(:time) %></th>
+      <th><%= model_class.human_attribute_name(:stage_first) %></th>
+      <th><%= model_class.human_attribute_name(:stage_second) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @stage_orders.each do |stage_order| %>
       <tr>
-        <td><%= stage_order.group_id %></td>
-        <td><%= stage_order.is_sunny %></td>
-        <td><%= stage_order.fes_date_id %></td>
+        <td><%= stage_order.group.name %></td>
+        <td><%= stage_order.date %></td>
+        <td><%= stage_order.tenki %></td>
         <td><%= stage_order.time %></td>
+        <td><%= stage_order.stage_first ? stage_order.kibou1 : "未回答" %></td>
+        <td><%= stage_order.stage_second ? stage_order.kibou2 : "未回答" %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_stage_order_path(stage_order), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      stage_order_path(stage_order),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
         </td>
       </tr>
     <% end %>
