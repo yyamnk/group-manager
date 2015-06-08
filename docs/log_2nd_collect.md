@@ -524,3 +524,13 @@ group_idでユニークにしないとダメ．
 bundle exec rails generate active_admin:resource Place
       create  app/admin/place.rb
 ```
+
+---
+
+# 電力申請を管理対象へ追加
+
+```
+bundle exec rails generate active_admin:resource PowerOrder
+```
+
+groupカラムで団体名を表示するようにカスタマイズ
