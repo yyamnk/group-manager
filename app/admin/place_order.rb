@@ -17,7 +17,7 @@ ActiveAdmin.register PlaceOrder do
 
   csv do
     column :id
-    column :group do  |order|
+    column :group_name do  |order|
       order.group.name
     end
     column :first do  |order|
