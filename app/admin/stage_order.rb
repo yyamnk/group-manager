@@ -14,5 +14,22 @@ ActiveAdmin.register StageOrder do
   #   permitted
   # end
 
+  index do
+    selectable_column
+    id_column
+    column :group
+    column :fes_date do |order|
+      FesDate.find(order.fes_date_id).date
+    end
+    column :is_sunny
+    column :stage_first do  |order|
+      order.stage_first  ? Stage.find(order.stage_first)  : "未回答"
+    end
+    column :stage_second do |order|
+      order.stage_second ? Stage.find(order.stage_second) : "未回答"
+    end
+    column :time
+    actions
+  end
 
 end

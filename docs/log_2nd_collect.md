@@ -534,3 +534,9 @@ bundle exec rails generate active_admin:resource PowerOrder
 ```
 
 groupカラムで団体名を表示するようにカスタマイズ
+
+---
+
+# ステージ関連の申請に関するActiveAdminの表示項目を変更
+
+`fes_date`, `stage_first`, `stage_second`をDBから参照させる．
