@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150620135916) do
+ActiveRecord::Schema.define(version: 20150620141736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,19 @@ ActiveRecord::Schema.define(version: 20150620135916) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "employees", force: :cascade do |t|
+    t.integer  "group_id"
+    t.string   "name",                 null: false
+    t.integer  "student_id",           null: false
+    t.integer  "employee_category_id"
+    t.boolean  "duplication"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "employees", ["employee_category_id"], name: "index_employees_on_employee_category_id", using: :btree
+  add_index "employees", ["group_id"], name: "index_employees_on_group_id", using: :btree
 
   create_table "fes_dates", force: :cascade do |t|
     t.integer  "days_num"
@@ -210,6 +223,8 @@ ActiveRecord::Schema.define(version: 20150620135916) do
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
   add_index "users", ["user_detail_id"], name: "index_users_on_user_detail_id", using: :btree
 
+  add_foreign_key "employees", "employee_categories"
+  add_foreign_key "employees", "groups"
   add_foreign_key "groups", "group_categories"
   add_foreign_key "groups", "users"
   add_foreign_key "place_orders", "groups"

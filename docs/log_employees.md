@@ -23,3 +23,21 @@ rake db:migrate
 # 初期データ投入
 rake db:seed_fu
 ```
+
+## CURD生成
+
+```
+bundle exec rails g scaffold employee group:references name:string student_id:integer employee_category:references duplication:boolean
+```
+
+`db/migrate/***_create_employees.rb`で`name`, `student_id`を`null: false`で指定．
+
+```
+# マイグレーション
+rake db:migrate
+
+== 20150620141736 CreateEmployees: migrating ==================================
+-- create_table(:employees)
+   -> 0.0215s
+== 20150620141736 CreateEmployees: migrated (0.0215s) =========================
+```

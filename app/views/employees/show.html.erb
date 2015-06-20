@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @employee.group %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @employee.name %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @employee.student_id %>
+</p>
+
+<p>
+  <strong>Employee category:</strong>
+  <%= @employee.employee_category %>
+</p>
+
+<p>
+  <strong>Duplication:</strong>
+  <%= @employee.duplication %>
+</p>
+
+<%= link_to 'Edit', edit_employee_path(@employee) %> |
+<%= link_to 'Back', employees_path %>
