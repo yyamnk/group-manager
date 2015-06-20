@@ -18,10 +18,12 @@ ActiveAdmin.register StageOrder do
     selectable_column
     id_column
     column :group
-    column :fes_date do |order|
+    column :fes_date_id do |order|
       FesDate.find(order.fes_date_id).date
     end
-    column :is_sunny
+    column :is_sunny do |order|
+      order.tenki
+    end
     column :stage_first do  |order|
       order.stage_first  ? Stage.find(order.stage_first)  : "未回答"
     end
