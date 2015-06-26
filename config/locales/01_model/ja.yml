@@ -9,6 +9,7 @@ ja:
       power_order: 使用電力の申請
       stage_order: ステージ利用の申請
       place_order: 実施場所の申請
+      employee: 従業員
     attributes:
         group:
           name: 運営団体の名称
@@ -48,3 +49,8 @@ ja:
           first: 第一希望
           second: 第二希望
           third: 第三希望
+        employee:
+          group_name: 運営団体の名称
+          name: 氏名
+          student_id: 学籍番号
+          employee_category_id: 主な担当業務

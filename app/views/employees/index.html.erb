@@ -5,26 +5,20 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:group_id) %></th>
+      <th><%= model_class.human_attribute_name(:group_name) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:student_id) %></th>
       <th><%= model_class.human_attribute_name(:employee_category_id) %></th>
-      <th><%= model_class.human_attribute_name(:duplication) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @employees.each do |employee| %>
       <tr>
-        <td><%= link_to employee.id, employee_path(employee) %></td>
-        <td><%= employee.group_id %></td>
+        <td><%= employee.group.name %></td>
         <td><%= employee.name %></td>
         <td><%= employee.student_id %></td>
-        <td><%= employee.employee_category_id %></td>
-        <td><%= employee.duplication %></td>
-        <td><%=l employee.created_at %></td>
+        <td><%= employee.employee_category.name_ja %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_employee_path(employee), :class => 'btn btn-default btn-xs' %>

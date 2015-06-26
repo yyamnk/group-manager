@@ -84,3 +84,13 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/employees/index.h
 * 必須入力: group_id, student_id, name, employee_category_id
 * 整数のみ: group_id, student_id, employee_category_id
 * 8桁の数字のみ: student_id
+
+## views/index 修正
+
+### indexのカラムを修正
+
+カラムを整理．カラム名を表示する辞書ファイルを追加
+
+### indexで表示するレコードを自分のグループのみに限定
+
+`app/controllers/employees_controller.rb`のindexメソッドで取得するレコードを指定

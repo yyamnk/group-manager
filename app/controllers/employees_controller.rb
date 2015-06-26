@@ -1,10 +1,11 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :get_groups # カレントユーザの所有する団体を@groupsとする
 
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
+    @employees = Employee.where(group_id: @groups)
   end
 
   # GET /employees/1
@@ -70,5 +71,9 @@ class EmployeesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
       params.require(:employee).permit(:group_id, :name, :student_id, :employee_category_id, :duplication)
+    end
+
+    def get_groups
+      @groups = Group.where( user_id: current_user.id )
     end
 end
