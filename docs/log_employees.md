@@ -103,3 +103,7 @@ bundle exec rails generate active_admin:resource Employee
 ```
 
 index, csvメソッド追加
+
+## モデルにバリデーション追加
+
+学籍番号と団体でユニークに

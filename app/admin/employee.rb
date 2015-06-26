@@ -7,8 +7,9 @@ ActiveAdmin.register Employee do
     id_column
     column :group
     column :name
+    column :student_id
     column :employee_category
-    column :duplication
+    # column :duplication
     actions
   end
 
@@ -18,6 +19,7 @@ ActiveAdmin.register Employee do
       employee.group.name
     end
     column :name
+    column :student_id
     column :employee_category do |employee|
       employee.employee_category.name_ja
     end
