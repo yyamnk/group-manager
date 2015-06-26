@@ -94,3 +94,10 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/employees/index.h
 ### indexで表示するレコードを自分のグループのみに限定
 
 `app/controllers/employees_controller.rb`のindexメソッドで取得するレコードを指定
+
+
+## ActiveAdminの管理対象に追加
+
+```
+bundle exec rails generate active_admin:resource Employee
+```
