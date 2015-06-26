@@ -1,18 +1,27 @@
 ActiveAdmin.register Employee do
 
+  permit_params :group_id, :name, :student_id, :employee_category_id
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
+  index do
+    selectable_column
+    id_column
+    column :group
+    column :name
+    column :employee_category
+    column :duplication
+    actions
+  end
 
+  csv do
+    column :id
+    column :group_name do |employee|
+      employee.group.name
+    end
+    column :name
+    column :employee_category do |employee|
+      employee.employee_category.name_ja
+    end
+    column :duplication
+  end
 
 end

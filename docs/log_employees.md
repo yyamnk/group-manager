@@ -101,3 +101,5 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/employees/index.h
 ```
 bundle exec rails generate active_admin:resource Employee
 ```
+
+index, csvメソッド追加

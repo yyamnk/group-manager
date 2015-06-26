@@ -53,4 +53,5 @@ ja:
           group_name: 運営団体の名称
           name: 氏名
           student_id: 学籍番号
-          employee_category_id: 主な担当業務
+          employee_category: 主な担当業務
+          duplication: 他の団体との重複
