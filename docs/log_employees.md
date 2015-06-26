@@ -41,3 +41,21 @@ rake db:migrate
    -> 0.0215s
 == 20150620141736 CreateEmployees: migrated (0.0215s) =========================
 ```
+
+## boostrap適用
+
+```
+bundle exec rails g bootstrap:themed Employees
+
+    conflict  app/views/employees/index.html.erb
+Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/employees/index.html.erb? (enter "h" for help) [Ynaqdh] a       
+    force  app/views/employees/index.html.erb
+    conflict  app/views/employees/new.html.erb
+       force  app/views/employees/new.html.erb
+    conflict  app/views/employees/edit.html.erb
+       force  app/views/employees/edit.html.erb
+    conflict  app/views/employees/_form.html.erb
+       force  app/views/employees/_form.html.erb
+    conflict  app/views/employees/show.html.erb
+       force  app/views/employees/show.html.erb
+```
