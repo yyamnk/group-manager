@@ -59,3 +59,22 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/employees/index.h
     conflict  app/views/employees/show.html.erb
        force  app/views/employees/show.html.erb
 ```
+
+## welcome indexにリンクを追加
+
+```
+# app/views/welcome/index.html.erb
+
++<div class="panel panel-primary">
++  <div class="panel-heading">
++    <h3 class="panel-title">従業員登録</h3>
++  </div>
++  <div class="panel-body">
++    模擬店で食品を取り扱う団体はこちらから従業員を登録して下さい。<br>
++    対象: 参加形式が「模擬店(食品販売)」の団体
++    <%= link_to t('welcome_controller.index'),
++            employees_path,
++            :class => 'btn btn-default' %>
++  </div>
++</div>
+```
