@@ -78,3 +78,9 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/employees/index.h
 +  </div>
 +</div>
 ```
+
+## モデルにバリデーションを追加
+
+* 必須入力: group_id, student_id, name, employee_category_id
+* 整数のみ: group_id, student_id, employee_category_id
+* 8桁の数字のみ: student_id
