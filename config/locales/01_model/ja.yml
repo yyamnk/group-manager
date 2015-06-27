@@ -10,6 +10,7 @@ ja:
       stage_order: ステージ利用の申請
       place_order: 実施場所の申請
       employee: 従業員
+      food_product: 販売食品
     attributes:
         group:
           name: 運営団体の名称
@@ -55,3 +56,8 @@ ja:
           student_id: 学籍番号
           employee_category: 主な担当業務
           duplication: 他の団体との重複
+        food_product:
+          group: 運営団体の名称
+          name: 名称
+          num: 数量
+          is_cooking: 調理の有無

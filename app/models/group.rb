@@ -7,6 +7,12 @@ class Group < ActiveRecord::Base
   validates :activity, presence: true
   validates :group_category, presence: true
 
+  # simple_form, activeadminで表示するカラムを指定
+  # 関連モデル.groupが関連モデル.group.nameと同等になる
+  def to_s
+    self.name
+  end
+
   # このメソッドselfいらないな...
   def self.init_rental_order(id) # RentalOrderのレコードが無ければ数量0で登録する
     items_ids = RentalItem.all.pluck('id')

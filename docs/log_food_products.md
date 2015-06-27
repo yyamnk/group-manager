@@ -74,3 +74,9 @@ bundle exec rails generate active_admin:resource FoodProduct
 `permit_params`を設定し，ActiveAdminからレコードのCURDを許可する
 indexメソッドを追加して一覧表示をカスタマイズ
 csvメソッドを追加してcsv表示をカスタマイズ
+
+## views/index の編集
+
+表示カラムを整理．
+辞書を`config/locales/01_model/ja.yml`に追加
+`is_cooking`の表示を変更

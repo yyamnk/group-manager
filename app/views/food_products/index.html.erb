@@ -5,24 +5,20 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:group_id) %></th>
+      <th><%= model_class.human_attribute_name(:group) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:num) %></th>
       <th><%= model_class.human_attribute_name(:is_cooking) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @food_products.each do |food_product| %>
       <tr>
-        <td><%= link_to food_product.id, food_product_path(food_product) %></td>
-        <td><%= food_product.group_id %></td>
+        <td><%= food_product.group %></td>
         <td><%= food_product.name %></td>
         <td><%= food_product.num %></td>
-        <td><%= food_product.is_cooking %></td>
-        <td><%=l food_product.created_at %></td>
+        <td><%= food_product.is_cooking ? "有り" : "無し(提供のみ)" %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_food_product_path(food_product), :class => 'btn btn-default btn-xs' %>
