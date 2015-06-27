@@ -1,6 +1,7 @@
 class FoodProductsController < ApplicationController
   before_action :set_food_product, only: [:show, :edit, :update, :destroy]
   before_action :get_groups # 各アクションの実行前に実行
+  load_and_authorize_resource # for cancancan
 
   # GET /food_products
   # GET /food_products.json

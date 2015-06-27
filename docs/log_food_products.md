@@ -133,3 +133,24 @@ csvメソッドを追加してcsv表示をカスタマイズ
 ## views/show の修正
 
 表示カラムを変更．is_cookingをbooleanで表示するとわかりにくいので，'disp_cooking'メソッドを追加して対応．
+
+## 権限の設定
+
+別のユーザのレコードを編集できないように権限を追加する．
+
+```
+# app/models/ability.rb
+
+...
+    if user.role_id == 3 then # for user (デフォルトのrole)
+...
++      # 販売食品は自分の団体のみ自由に触れる
++      can :manage, FoodProduct, :group_id => groups
+...
+```
+
+```
+# app/controllers/food_products_controller.rb
+
++  load_and_authorize_resource # for cancancan
+```
