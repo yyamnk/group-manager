@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Food Products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Name</th>
+      <th>Num</th>
+      <th>Is cooking</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @food_products.each do |food_product| %>
+      <tr>
+        <td><%= food_product.group %></td>
+        <td><%= food_product.name %></td>
+        <td><%= food_product.num %></td>
+        <td><%= food_product.is_cooking %></td>
+        <td><%= link_to 'Show', food_product %></td>
+        <td><%= link_to 'Edit', edit_food_product_path(food_product) %></td>
+        <td><%= link_to 'Destroy', food_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Food product', new_food_product_path %>
