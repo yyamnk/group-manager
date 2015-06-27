@@ -63,6 +63,8 @@ class Ability
       can [:read, :update], StageOrder, :group_id => groups
       # 実施場所申請は自分の団体のみ読み，更新を許可
       can [:read, :update], PlaceOrder, :group_id => groups
+      # 従業員は自分の団体のみ自由に触れる
+      can :manage, Employee, :group_id => groups
       # 販売食品は自分の団体のみ自由に触れる
       can :manage, FoodProduct, :group_id => groups
     end

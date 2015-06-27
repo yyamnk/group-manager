@@ -117,3 +117,34 @@ group, employee_category_idをassociationへ変更
 
 duplicationを削除
 辞書を指定
+
+## 権限を設定
+
+```
+diff --git a/app/controllers/employees_controller.rb b/app/controllers/employees_controller.rb
+index cbb0a11..9e0667a 100644
+--- a/app/controllers/employees_controller.rb
++++ b/app/controllers/employees_controller.rb
+@@ -1,6 +1,7 @@
+ class EmployeesController < ApplicationController
+   before_action :set_employee, only: [:show, :edit, :update, :destroy]
+   before_action :get_groups # カレントユーザの所有する団体を@groupsとする
++  load_and_authorize_resource # for cancancan
+
+   # GET /employees
+   # GET /employees.json
+
+diff --git a/app/models/ability.rb b/app/models/ability.rb
+index 9441066..98eaa8a 100644
+--- a/app/models/ability.rb
++++ b/app/models/ability.rb
+@@ -63,6 +63,8 @@ class Ability
+       can [:read, :update], StageOrder, :group_id => groups
+       # 実施場所申請は自分の団体のみ読み，更新を許可
+       can [:read, :update], PlaceOrder, :group_id => groups
++      # 従業員は自分の団体のみ自由に触れる
++      can :manage, Employee, :group_id => groups
+       # 販売食品は自分の団体のみ自由に触れる
+       can :manage, FoodProduct, :group_id => groups
+     end
+```
