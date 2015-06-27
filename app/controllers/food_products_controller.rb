@@ -1,10 +1,11 @@
 class FoodProductsController < ApplicationController
   before_action :set_food_product, only: [:show, :edit, :update, :destroy]
+  before_action :get_groups # 各アクションの実行前に実行
 
   # GET /food_products
   # GET /food_products.json
   def index
-    @food_products = FoodProduct.all
+    @food_products = FoodProduct.where(group_id: @groups)
   end
 
   # GET /food_products/1
@@ -70,5 +71,10 @@ class FoodProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_product_params
       params.require(:food_product).permit(:group_id, :name, :num, :is_cooking)
+    end
+
+    # ユーザが所有し，模擬店(食品販売)のカテゴリの団体を取得する
+    def get_groups
+      @groups = Group.where( user_id: current_user.id ).where( group_category_id: 1)
     end
 end

@@ -77,6 +77,12 @@ csvメソッドを追加してcsv表示をカスタマイズ
 
 ## views/index の編集
 
-表示カラムを整理．
-辞書を`config/locales/01_model/ja.yml`に追加
-`is_cooking`の表示を変更
+* 表示カラムを整理
+    * `is_cooking`の表示を変更
+* 辞書を`config/locales/01_model/ja.yml`に追加
+
+## controllers/food_product 修正
+
+* ユーザが所有する団体かつ模擬店(食品)のレコードのみを取得させる
+    * 該当する団体を`before_action :get_groups`で取得し，`@groups`とする
+    * indexメソッドでgroup_idを`@groups`で取得
