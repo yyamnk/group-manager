@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @shop.name %>
+</p>
+
+<p>
+  <strong>Tel:</strong>
+  <%= @shop.tel %>
+</p>
+
+<p>
+  <strong>Time weekdays:</strong>
+  <%= @shop.time_weekdays %>
+</p>
+
+<p>
+  <strong>Time sat:</strong>
+  <%= @shop.time_sat %>
+</p>
+
+<p>
+  <strong>Time sun:</strong>
+  <%= @shop.time_sun %>
+</p>
+
+<p>
+  <strong>Time holidays:</strong>
+  <%= @shop.time_holidays %>
+</p>
+
+<%= link_to 'Edit', edit_shop_path(@shop) %> |
+<%= link_to 'Back', shops_path %>
