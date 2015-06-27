@@ -4,16 +4,14 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:group_id) %>:</strong></dt>
-  <dd><%= @employee.group_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:group) %>:</strong></dt>
+  <dd><%= @employee.group.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @employee.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:student_id) %>:</strong></dt>
   <dd><%= @employee.student_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:employee_category_id) %>:</strong></dt>
-  <dd><%= @employee.employee_category_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:duplication) %>:</strong></dt>
-  <dd><%= @employee.duplication %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:employee_category) %>:</strong></dt>
+  <dd><%= @employee.employee_category %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

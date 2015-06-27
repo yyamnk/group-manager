@@ -112,3 +112,8 @@ index, csvメソッド追加
 
 ヒントを追加．関係する辞書ファイルを追加
 group, employee_category_idをassociationへ変更
+
+## show 修正
+
+duplicationを削除
+辞書を指定

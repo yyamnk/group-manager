@@ -18,7 +18,7 @@
         <td><%= employee.group.name %></td>
         <td><%= employee.name %></td>
         <td><%= employee.student_id %></td>
-        <td><%= employee.employee_category.name_ja %></td>
+        <td><%= employee.employee_category %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_employee_path(employee), :class => 'btn btn-default btn-xs' %>
