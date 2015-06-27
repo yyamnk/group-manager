@@ -43,3 +43,22 @@ bundle exec rails g bootstrap:themed FoodProducts
 +  validates_presence_of :group_id, :name, :num
 +  validates_numericality_of :group_id, :num
 ```
+
+## topにリンクを追加
+
+```
+# app/views/welcome/index.html.erb
+
++<div class="panel panel-primary">
++  <div class="panel-heading">
++    <h3 class="panel-title">販売食品の登録</h3>
++  </div>
++  <div class="panel-body">
++    模擬店で販売する食品を登録して下さい。<br>
++    対象: 参加形式が「模擬店(食品販売)」の団体
++    <%= link_to t('welcome_controller.index'),
++            food_products_path,
++            :class => 'btn btn-default' %>
++  </div>
++</div>
+```
