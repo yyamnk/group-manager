@@ -62,3 +62,15 @@ bundle exec rails g bootstrap:themed FoodProducts
 +  </div>
 +</div>
 ```
+
+## ActiveAdminの管理対象に追加
+
+```
+bundle exec rails generate active_admin:resource FoodProduct
+
+      create  app/admin/food_product.rb
+```
+
+`permit_params`を設定し，ActiveAdminからレコードのCURDを許可する
+indexメソッドを追加して一覧表示をカスタマイズ
+csvメソッドを追加してcsv表示をカスタマイズ
