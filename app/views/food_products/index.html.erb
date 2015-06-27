@@ -18,7 +18,7 @@
         <td><%= food_product.group %></td>
         <td><%= food_product.name %></td>
         <td><%= food_product.num %></td>
-        <td><%= food_product.is_cooking ? "有り" : "無し(提供のみ)" %></td>
+        <td><%= food_product.disp_cooking %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_food_product_path(food_product), :class => 'btn btn-default btn-xs' %>
