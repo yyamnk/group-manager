@@ -34,3 +34,12 @@ rake db:migrate
 ```
 bundle exec rails g bootstrap:themed FoodProducts
 ```
+
+## バリデーション追加
+
+```
+# app/models/food_product.rb
+
++  validates_presence_of :group_id, :name, :num
++  validates_numericality_of :group_id, :num
+```
