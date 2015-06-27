@@ -86,3 +86,46 @@ csvメソッドを追加してcsv表示をカスタマイズ
 * ユーザが所有する団体かつ模擬店(食品)のレコードのみを取得させる
     * 該当する団体を`before_action :get_groups`で取得し，`@groups`とする
     * indexメソッドでgroup_idを`@groups`で取得
+
+## views/_form の修正
+
+* スタイルの変更 (テキストボックスを短く，項目名を見やすく)
+
+```
+-<%= simple_form_for @food_product, :html => { :class => 'form-horizontal' } do |f| %>
++<%= simple_form_for @food_product, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
+```
+
+* 選択可能な団体を限定
+
+```
+-  <%= f.input :group_id %>
++  <%= f.association :group, collection: @groups, selected: @employee.group_id %>
+```
+
+* ヒントを追加
+
+```
+-  <%= f.input :name %>
++  <%= f.input :name, hint: t(".hint_name") %>
+
+-  <%= f.input :num %>
++  <%= f.input :num, hint: t(".hint_num") %>
+
+-  <%= f.input :is_cooking %>
++  <%= f.input :is_cooking, hint: t(".hint_is_cooking") %>
+```
+
+* ヒントに関連する辞書を追加
+
+```
+# config/locales/03_views/ja.yml
+
++  food_products:
++    form:
++      hint_name: 販売する食品1品の名前を入力して下さい．複数の食品を販売する場合は申請を分割してください．例) たこ焼き
++      hint_num: 販売予定の数量を入力して下さい．
++      hint_is_cooking: どちらかを選択して下さい．
+```
+
+* 調理の有無について注意書きを追加

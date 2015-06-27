@@ -1,14 +1,36 @@
-<%= simple_form_for @food_product, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :group_id %>
+<%= simple_form_for @food_product, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
+
+  <%= f.association :group, collection: @groups, selected: @food_product.group_id %>
   <%= error_span(@food_product[:group_id]) %>
-  <%= f.input :name %>
+
+  <%= f.input :name, hint: t(".hint_name") %>
   <%= error_span(@food_product[:name]) %>
-  <%= f.input :num %>
+
+  <%= f.input :num, hint: t(".hint_num") %>
   <%= error_span(@food_product[:num]) %>
-  <%= f.input :is_cooking %>
+
+  <%#= f.input :is_cooking, hint: t(".hint_is_cooking") %>
+  <%= f.input :is_cooking,
+    hint: t(".hint_is_cooking"),
+    collection: [["調理あり", true],["調理なし(提供のみ)", false]],
+    as: :radio_buttons
+  %>
   <%= error_span(@food_product[:is_cooking]) %>
+
+  <div class="alert alert-dismissible alert-warning">
+    <h4>注意!</h4>
+    <p>調理の有無は次のように選択して下さい．</p>
+    <p><b>調理あり</b>：何らかの調理（料理・食品を直接覆うパッケージを開封など）が含まれるもの</p>
+    <p><b>調理なし</b> ：上記に該当しない場合</p>
+    <p>
+      例1）調理した食品を販売・提供する場合：調理あり<br>
+      例2）缶飲料等を開封し、紙コップで提供する場合：調理あり<br>
+      例3）缶飲料等を開封せず、そのまま提供する場合：調理なし
+    </p>
+  </div>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 food_products_path, :class => 'btn btn-default' %>
 <% end %>
+
