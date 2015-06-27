@@ -1,14 +1,14 @@
-<%= simple_form_for(@food_product) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @food_product, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :group_id %>
+  <%= error_span(@food_product[:group_id]) %>
+  <%= f.input :name %>
+  <%= error_span(@food_product[:name]) %>
+  <%= f.input :num %>
+  <%= error_span(@food_product[:num]) %>
+  <%= f.input :is_cooking %>
+  <%= error_span(@food_product[:is_cooking]) %>
 
-  <div class="form-inputs">
-    <%= f.association :group %>
-    <%= f.input :name %>
-    <%= f.input :num %>
-    <%= f.input :is_cooking %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                food_products_path, :class => 'btn btn-default' %>
 <% end %>

@@ -28,3 +28,9 @@ rake db:migrate
    -> 0.0121s
 == 20150627091843 CreateFoodProducts: migrated (0.0122s) ======================
 ```
+
+## boostrap適用
+
+```
+bundle exec rails g bootstrap:themed FoodProducts
+```
