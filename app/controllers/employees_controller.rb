@@ -74,6 +74,6 @@ class EmployeesController < ApplicationController
     end
 
     def get_groups
-      @groups = Group.where( user_id: current_user.id )
+      @groups = Group.where( user_id: current_user.id ).where( group_category_id: 1)
     end
 end

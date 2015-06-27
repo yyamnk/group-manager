@@ -107,3 +107,8 @@ index, csvメソッド追加
 ## モデルにバリデーション追加
 
 学籍番号と団体でユニークに
+
+## フォームの修正
+
+ヒントを追加．関係する辞書ファイルを追加
+group, employee_category_idをassociationへ変更

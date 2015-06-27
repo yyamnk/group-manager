@@ -25,3 +25,8 @@ ja:
   stage_orders:
     form:
       hint_time: 例）13時から14時まで，1時間程度
+  employees:
+    form:
+      hint_name: 例) 技大 太郎
+      hint_studentid: 学籍番号を8桁の数字で入力して下さい．
+      hint_category: 「調理」食品の料理に関わる業務．「運搬」材料の運搬に関わる業務．「売り子」調理した食品の受け渡しに関わる業務．

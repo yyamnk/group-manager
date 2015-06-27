@@ -50,7 +50,7 @@ ja:
           second: 第二希望
           third: 第三希望
         employee:
-          group_name: 運営団体の名称
+          group: 運営団体の名称
           name: 氏名
           student_id: 学籍番号
           employee_category: 主な担当業務
