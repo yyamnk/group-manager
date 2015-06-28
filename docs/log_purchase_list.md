@@ -174,3 +174,7 @@ rake db:migrate
    -> 0.0024s
 == 20150628202115 AddColumnToPurchaseList: migrated (0.0025s) =================
 ```
+
+## views/index_freshの編集
+
+カラムの整理と関連する辞書を追加

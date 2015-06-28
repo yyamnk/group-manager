@@ -8,20 +8,17 @@
       <th><%= model_class.human_attribute_name(:food_product) %></th>
       <th><%= model_class.human_attribute_name(:shop) %></th>
       <th><%= model_class.human_attribute_name(:fes_date) %></th>
-      <th><%= model_class.human_attribute_name(:is_fresh) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:items) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @purchase_lists.each do |purchase_list| %>
       <tr>
-        <td><%= link_to purchase_list.id, purchase_list_path(purchase_list) %></td>
-        <td><%= purchase_list.food_product_id %></td>
-        <td><%= purchase_list.shop_id %></td>
-        <td><%= purchase_list.fes_date_id %></td>
-        <td><%= purchase_list.is_fresh %></td>
-        <td><%=l purchase_list.created_at %></td>
+        <td><%= purchase_list.food_product.name %></td>
+        <td><%= purchase_list.shop.name %></td>
+        <td><%= purchase_list.fes_date.date %></td>
+        <td><%= purchase_list.items %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_purchase_list_path(purchase_list), :class => 'btn btn-default btn-xs' %>
