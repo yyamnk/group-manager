@@ -107,3 +107,11 @@ rake db:migrate
 ```
 rake db:seed_fu
 ```
+
+## 権限の追加
+
+ユーザに店舗を新規に登録させる必要がない気がしてきた．
+管理者にのみ編集権限を与えることにする．(ただし削除は禁止
+
+`app/controllers/shops_controller.rb`に`load_and_authorize_resource`を追加
+`app/models/ability.rb`のmanagerに`cannot [:destroy], Shop`を追加
