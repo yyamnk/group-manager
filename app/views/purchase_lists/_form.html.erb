@@ -1,0 +1,14 @@
+<%= simple_form_for(@purchase_list) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :food_product %>
+    <%= f.association :shop %>
+    <%= f.association :fes_date %>
+    <%= f.input :is_fresh %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

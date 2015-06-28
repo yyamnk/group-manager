@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Food product:</strong>
+  <%= @purchase_list.food_product %>
+</p>
+
+<p>
+  <strong>Shop:</strong>
+  <%= @purchase_list.shop %>
+</p>
+
+<p>
+  <strong>Fes date:</strong>
+  <%= @purchase_list.fes_date %>
+</p>
+
+<p>
+  <strong>Is fresh:</strong>
+  <%= @purchase_list.is_fresh %>
+</p>
+
+<%= link_to 'Edit', edit_purchase_list_path(@purchase_list) %> |
+<%= link_to 'Back', purchase_lists_path %>

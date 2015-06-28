@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Purchase Lists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Food product</th>
+      <th>Shop</th>
+      <th>Fes date</th>
+      <th>Is fresh</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @purchase_lists.each do |purchase_list| %>
+      <tr>
+        <td><%= purchase_list.food_product %></td>
+        <td><%= purchase_list.shop %></td>
+        <td><%= purchase_list.fes_date %></td>
+        <td><%= purchase_list.is_fresh %></td>
+        <td><%= link_to 'Show', purchase_list %></td>
+        <td><%= link_to 'Edit', edit_purchase_list_path(purchase_list) %></td>
+        <td><%= link_to 'Destroy', purchase_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Purchase list', new_purchase_list_path %>
