@@ -153,3 +153,24 @@ Overwrite /Volumes/HD2/Dropbox/nfes15/group_manager/app/views/purchase_lists/ind
 ```
 cp app/views/purchase_lists/index.html.erb app/views/purchase_lists/index_fresh.html.erb
 ```
+
+## itemsカラムを追加
+
+`PurchaseList`に購入品目のカラムが無かった．追加する．
+
+```
+bundle exec rails g migration AddColumnToPurchaseList items:string
+      invoke  active_record
+      create    db/migrate/20150628202115_add_column_to_purchase_list.rb
+```
+
+マイグレーションファイルを編集して`null: false`を設定
+
+```
+rake db:migrate
+
+== 20150628202115 AddColumnToPurchaseList: migrating ==========================
+-- add_column(:purchase_lists, :items, :string, {:null=>false})
+   -> 0.0024s
+== 20150628202115 AddColumnToPurchaseList: migrated (0.0025s) =================
+```

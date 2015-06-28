@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628192734) do
+ActiveRecord::Schema.define(version: 20150628202115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 20150628192734) do
     t.boolean  "is_fresh"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "items",           null: false
   end
 
   add_index "purchase_lists", ["fes_date_id"], name: "index_purchase_lists_on_fes_date_id", using: :btree

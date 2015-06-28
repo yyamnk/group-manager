@@ -5,10 +5,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:food_product_id) %></th>
-      <th><%= model_class.human_attribute_name(:shop_id) %></th>
-      <th><%= model_class.human_attribute_name(:fes_date_id) %></th>
+      <th><%= model_class.human_attribute_name(:food_product) %></th>
+      <th><%= model_class.human_attribute_name(:shop) %></th>
+      <th><%= model_class.human_attribute_name(:fes_date) %></th>
       <th><%= model_class.human_attribute_name(:is_fresh) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
