@@ -69,3 +69,11 @@ Overwrite /Volumes/HD2/Dropbox/nfes15/group_manager/app/views/shops/index.html.e
     conflict  app/views/shops/show.html.erb
        force  app/views/shops/show.html.erb
 ```
+
+## ActiveAdminの管理対象に追加
+
+```
+bundle exec rails generate active_admin:resource Shop
+```
+
+permit_paramsのみ設定
