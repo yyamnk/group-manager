@@ -129,3 +129,27 @@ viewファイルをコピー
 ```
 cp app/views/purchase_lists/index.html.erb app/views/purchase_lists/index_fresh.html.erb
 ```
+
+## bootstrap適用
+
+```
+bundle exec rails g bootstrap:themed PurchaseLists
+    conflict  app/views/purchase_lists/index.html.erb
+Overwrite /Volumes/HD2/Dropbox/nfes15/group_manager/app/views/purchase_lists/index.html.erb? (enter "h" for help) [Ynaqdh] a
+       force  app/views/purchase_lists/index.html.erb
+    conflict  app/views/purchase_lists/new.html.erb
+       force  app/views/purchase_lists/new.html.erb
+    conflict  app/views/purchase_lists/edit.html.erb
+       force  app/views/purchase_lists/edit.html.erb
+    conflict  app/views/purchase_lists/_form.html.erb
+       force  app/views/purchase_lists/_form.html.erb
+    conflict  app/views/purchase_lists/show.html.erb
+       force  app/views/purchase_lists/show.html.erb
+```
+
+`app/views/purchase_lists/index_fresh.html.erb`には適用されなかった．
+改変されたindexを再度コピーする．
+
+```
+cp app/views/purchase_lists/index.html.erb app/views/purchase_lists/index_fresh.html.erb
+```
