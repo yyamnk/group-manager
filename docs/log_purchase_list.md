@@ -55,3 +55,17 @@ bundle exec rails g scaffold purchaseList food_product:references shop:reference
       invoke  scss
    identical    app/assets/stylesheets/scaffolds.scss
 ```
+
+
+## マイグレーションの編集, 実行
+
+`food_product`, `shop`, `fes_date`に`null: false`を指定
+
+```
+rake db:migrate
+
+== 20150628192734 CreatePurchaseLists: migrating ==============================
+-- create_table(:purchase_lists)
+   -> 0.0165s
+== 20150628192734 CreatePurchaseLists: migrated (0.0166s) =====================
+```

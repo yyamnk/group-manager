@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628131626) do
+ActiveRecord::Schema.define(version: 20150628192734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,19 @@ ActiveRecord::Schema.define(version: 20150628131626) do
   end
 
   add_index "power_orders", ["group_id"], name: "index_power_orders_on_group_id", using: :btree
+
+  create_table "purchase_lists", force: :cascade do |t|
+    t.integer  "food_product_id", null: false
+    t.integer  "shop_id",         null: false
+    t.integer  "fes_date_id",     null: false
+    t.boolean  "is_fresh"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "purchase_lists", ["fes_date_id"], name: "index_purchase_lists_on_fes_date_id", using: :btree
+  add_index "purchase_lists", ["food_product_id"], name: "index_purchase_lists_on_food_product_id", using: :btree
+  add_index "purchase_lists", ["shop_id"], name: "index_purchase_lists_on_shop_id", using: :btree
 
   create_table "rental_item_allow_lists", force: :cascade do |t|
     t.integer  "rental_item_id"
@@ -254,6 +267,9 @@ ActiveRecord::Schema.define(version: 20150628131626) do
   add_foreign_key "groups", "users"
   add_foreign_key "place_orders", "groups"
   add_foreign_key "power_orders", "groups"
+  add_foreign_key "purchase_lists", "fes_dates"
+  add_foreign_key "purchase_lists", "food_products"
+  add_foreign_key "purchase_lists", "shops"
   add_foreign_key "rental_item_allow_lists", "group_categories"
   add_foreign_key "rental_item_allow_lists", "rental_items"
   add_foreign_key "rental_orders", "groups"
