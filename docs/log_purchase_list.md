@@ -178,3 +178,9 @@ rake db:migrate
 ## views/index_freshの編集
 
 カラムの整理と関連する辞書を追加
+
+## models/purchase_listにバリデーションを追加
+
+```
++  validates_presence_of :food_product_id, :shop_id, :fes_date_id, :items
+```
