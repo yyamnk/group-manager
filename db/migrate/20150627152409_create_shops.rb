@@ -1,8 +1,8 @@
 class CreateShops < ActiveRecord::Migration
   def change
     create_table :shops do |t|
-      t.string :name
-      t.string :tel
+      t.string :name, null: false
+      t.string :tel, null: false
       t.string :time_weekdays
       t.string :time_sat
       t.string :time_sun

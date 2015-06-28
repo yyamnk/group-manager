@@ -8,7 +8,7 @@
 Shopモデルに店舗情報を登録し，あとから実装する購入物品でこれと関連付ける．
 店舗は予め登録するが，ユーザから追加する場合を考慮してCURDも実装する．
 
-## CURD
+## shop CURD
 
 ```
 bundle exec rails g scaffold shop name:string tel:string time_weekdays:string time_sat:string time_sun:string time_holidays:string
@@ -39,4 +39,33 @@ bundle exec rails g scaffold shop name:string tel:string time_weekdays:string ti
       create      app/assets/stylesheets/shops.scss
       invoke  scss
    identical    app/assets/stylesheets/scaffolds.scss
+```
+
+`db/migrate/20150627152409_create_shops.rb`で`null: false`を追加
+
+```
+rake db:migrate
+
+== 20150627152409 CreateShops: migrating ======================================
+-- create_table(:shops)
+   -> 0.0074s
+== 20150627152409 CreateShops: migrated (0.0075s) =============================
+``` 
+
+## bootstrap 適用
+
+```
+bundle exec rails g bootstrap:themed Shops
+
+    conflict  app/views/shops/index.html.erb
+Overwrite /Volumes/HD2/Dropbox/nfes15/group_manager/app/views/shops/index.html.erb? (enter "h" for help) [Ynaqdh] a
+       force  app/views/shops/index.html.erb
+    conflict  app/views/shops/new.html.erb
+       force  app/views/shops/new.html.erb
+    conflict  app/views/shops/edit.html.erb
+       force  app/views/shops/edit.html.erb
+    conflict  app/views/shops/_form.html.erb
+       force  app/views/shops/_form.html.erb
+    conflict  app/views/shops/show.html.erb
+       force  app/views/shops/show.html.erb
 ```

@@ -1,34 +1,29 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Shop -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @shop.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @shop.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:tel) %>:</strong></dt>
+  <dd><%= @shop.tel %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:time_weekdays) %>:</strong></dt>
+  <dd><%= @shop.time_weekdays %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:time_sat) %>:</strong></dt>
+  <dd><%= @shop.time_sat %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:time_sun) %>:</strong></dt>
+  <dd><%= @shop.time_sun %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:time_holidays) %>:</strong></dt>
+  <dd><%= @shop.time_holidays %></dd>
+</dl>
 
-<p>
-  <strong>Tel:</strong>
-  <%= @shop.tel %>
-</p>
-
-<p>
-  <strong>Time weekdays:</strong>
-  <%= @shop.time_weekdays %>
-</p>
-
-<p>
-  <strong>Time sat:</strong>
-  <%= @shop.time_sat %>
-</p>
-
-<p>
-  <strong>Time sun:</strong>
-  <%= @shop.time_sun %>
-</p>
-
-<p>
-  <strong>Time holidays:</strong>
-  <%= @shop.time_holidays %>
-</p>
-
-<%= link_to 'Edit', edit_shop_path(@shop) %> |
-<%= link_to 'Back', shops_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              shops_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_shop_path(@shop), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              shop_path(@shop),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
