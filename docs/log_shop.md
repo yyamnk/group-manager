@@ -77,3 +77,19 @@ bundle exec rails generate active_admin:resource Shop
 ```
 
 permit_paramsのみ設定
+
+## Shopにカナ, closedを追加
+
+```
+bundle exec rails g migration AddColumnToShop kana:string closed:string
+      invoke  active_record
+      create    db/migrate/20150628131626_add_column_to_shop.rb
+
+rake db:migrate
+== 20150628131626 AddColumnToShop: migrating ==================================
+-- add_column(:shops, :kana, :string)
+   -> 0.0010s
+-- add_column(:shops, :closed, :string)
+   -> 0.0005s
+== 20150628131626 AddColumnToShop: migrated (0.0017s) =========================
+```
