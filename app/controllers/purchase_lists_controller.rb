@@ -3,7 +3,7 @@ class PurchaseListsController < ApplicationController
 
   # GET /purchase_lists
   # GET /purchase_lists.json
-  def index
+  def index_fresh
     @purchase_lists = PurchaseList.all
   end
 

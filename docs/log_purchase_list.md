@@ -23,6 +23,8 @@
 
 formは2段階にしたくないので，formへのリンクでGETパラメータを渡すことにする．
 
+welcome/indexからの遷移先は，「生鮮品」「非生鮮品」「非調理品」の3つにする．
+
 
 ## scaffold でCURD生成
 
@@ -68,4 +70,62 @@ rake db:migrate
 -- create_table(:purchase_lists)
    -> 0.0165s
 == 20150628192734 CreatePurchaseLists: migrated (0.0166s) =====================
+```
+
+## indexメソッドのリネーム( index -> index_fresh )，ルーティング・テンプレートの設定
+
+対象とするレコードに応じて3つのindexページを作る．
+最初は生鮮品の表示をするindex_freshとする．
+
+```
+# app/controllers/purchase_lists_controller.rb
+
+   # GET /purchase_lists
+   # GET /purchase_lists.json
+-  def index
++  def index_fresh
+     @purchase_lists = PurchaseList.all
+```   
+
+メソッド名を書き換えたので，このメソッドに対応するルーティングを設定
+
+```
+Rails.application.routes.draw do
+-  resources :purchase_lists
++  resources :purchase_lists do
++    # 標準の7つ以外を追加する
++    collection do
++      get 'index_fresh'
++    end
++  end
+   resources :shops
+   resources :food_products
+```
+
+welcomeページに生鮮品用のリンクを追加
+
+```
+# app/views/welcome/index.html.erb
+             :class => 'btn btn-default' %>
+   </div>
+ </div>
++
++<div class="panel panel-primary">
++  <div class="panel-heading">
++    <h3 class="panel-title">販売食品の商品・材料の登録</h3>
++  </div>
++  <div class="panel-body">
++    模擬店で販売する食品の商品(提供の場合)，材料(調理品の場合)の購入先を登録して下さい。<br>
++    対象: 参加形式が「模擬店(食品販売)」の団体<br>
++    <%= link_to t('調理品の材料(生鮮食品)の一覧'),
++            index_fresh_purchase_lists_path,
++            :class => 'btn btn-default' %>
++  </div>
++</div>
+```
+
+viewファイルをコピー
+
+```
+cp app/views/purchase_lists/index.html.erb app/views/purchase_lists/index_fresh.html.erb
 ```

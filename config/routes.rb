@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :purchase_lists
+  resources :purchase_lists do
+    # 標準の7つ以外を追加する
+    collection do
+      get 'index_fresh'
+    end
+  end
   resources :shops
   resources :food_products
   resources :employees
