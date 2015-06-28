@@ -69,6 +69,6 @@ class PurchaseListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def purchase_list_params
-      params.require(:purchase_list).permit(:food_product_id, :shop_id, :fes_date_id, :is_fresh)
+      params.require(:purchase_list).permit(:food_product_id, :shop_id, :fes_date_id, :is_fresh, :items)
     end
 end

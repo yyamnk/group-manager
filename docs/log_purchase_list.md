@@ -184,3 +184,12 @@ rake db:migrate
 ```
 +  validates_presence_of :food_product_id, :shop_id, :fes_date_id, :items
 ```
+
+## views/_formの編集
+
+登録フォームは2枚(調理有りのFoodProduct用，調理無し用)作成する．
+`is_fresh`, `fes_date_id`はhiddenで送る．
+
+現状確認のために`_form`を編集
+`FesDate`に`to_s`メソッド追加
+`permit_params`に追加した`:items`が入ってなかった．コントローラで追加

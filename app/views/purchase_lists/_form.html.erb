@@ -1,12 +1,19 @@
-<%= simple_form_for @purchase_list, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :food_product_id %>
+<%= simple_form_for @purchase_list, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
+
+  <%= f.association :food_product %>
   <%= error_span(@purchase_list[:food_product_id]) %>
-  <%= f.input :shop_id %>
+
+  <%= f.association :shop %>
   <%= error_span(@purchase_list[:shop_id]) %>
-  <%= f.input :fes_date_id %>
+
+  <%= f.association :fes_date %>
   <%= error_span(@purchase_list[:fes_date_id]) %>
+
   <%= f.input :is_fresh %>
   <%= error_span(@purchase_list[:is_fresh]) %>
+
+  <%= f.input :items %>
+  <%= error_span(@purchase_list[:items]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
