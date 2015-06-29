@@ -1,0 +1,10 @@
+<%- model_class = PurchaseList -%>
+<div class="page-header">
+  <h1>
+  <%= @purchase_list.fresh %>
+  <%= @purchase_list.fes_date %>
+  <%=t '.title', :default => [:'helpers.titles.new', 'の %{model}'], :model => model_class.model_name.human.titleize %>
+  </h1>
+</div>
+
+<%= render :partial => 'form_cooking' %>

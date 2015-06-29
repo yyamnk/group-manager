@@ -701,3 +701,38 @@ class PurchaseListsController < ApplicationController
 ```
 cp app/views/purchase_lists/index_cooking.html.erb app/views/purchase_lists/index_noncooking.html.erb
 ```
+
+### views/index_noncooking (ボタン) -> controllers#new_noncooking -> views/new_noncooking を準備
+
+index_noncookingにボタン追加
+
+```
+ <% fes_dates.each do |fesdate| %>
+-  <%# 保存食品はいつでも買える %>
+-  <%= link_to "#{fesdate.date}" + 'に購入する保存食品を追加',
++  <%# 提供品はいつでも買える %>
++  <%= link_to "#{fesdate.date}" + 'に購入する提供品を追加',
+               new_cooking_purchase_lists_path(is_fresh: false, fes_date_id: fesdate.id),
+               :class => 'btn btn-primary'%>
+ <% end %>
+```
+
+メソッド追加
+
+```
+@@ -24,6 +24,12 @@ class PurchaseListsController < ApplicationController
+     @purchase_list = PurchaseList.new( is_fresh: params[:is_fresh], fes_date_id: params[:fes_date_id])
+   end
+
++  # GET /purchase_lists/new_noncooking
++  def new_noncooking
++    @purchase_list = PurchaseList.new( is_fresh: false, fes_date_id: params[:fes_date_id])
++  end
+```
+
+テンプレート用意
+
+```
+cp app/views/purchase_lists/new_cooking.html.erb app/views/purchase_lists/new_noncooking.html.erb
+cp app/views/purchase_lists/_form_cooking.html.erb app/views/purchase_lists/_form_noncooking.html.erb
+```

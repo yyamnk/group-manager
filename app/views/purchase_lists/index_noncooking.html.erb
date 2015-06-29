@@ -1,13 +1,12 @@
 <%- model_class = PurchaseList -%>
 <div class="page-header">
-  <h1><%= "調理品の" %>
+  <h1><%= "提供品の" %>
   <%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:food_product) %></th>
-      <th><%= model_class.human_attribute_name(:is_fresh) %></th>
       <th><%= model_class.human_attribute_name(:fes_date) %></th>
       <th><%= model_class.human_attribute_name(:shop) %></th>
       <th><%= model_class.human_attribute_name(:items) %></th>
@@ -18,7 +17,6 @@
     <% @purchase_lists.each do |purchase_list| %>
       <tr>
         <td><%= purchase_list.food_product.name %></td>
-        <td><%= purchase_list.fresh %></td>
         <td><%= purchase_list.fes_date.date %></td>
         <td><%= purchase_list.shop.name %></td>
         <td><%= purchase_list.items %></td>
@@ -39,20 +37,10 @@
 <% fes_dates = FesDate.all %>
 
 <p>
-<% fes_dates[1, 2].each do |fesdate| %>
-  <%# 生鮮品は当日しか買えない %>
-  <%= link_to "#{fesdate.date}" + 'に使用する生鮮食品を追加',
-              new_cooking_purchase_lists_path(is_fresh: true, fes_date_id: fesdate.id), # 生鮮食品1日目
-              :class => 'btn btn-primary'%>
-<% end %>
-<%= render :partial => 'warnign_fresh' %>
-</p>
-
-<p>
 <% fes_dates.each do |fesdate| %>
-  <%# 保存食品はいつでも買える %>
-  <%= link_to "#{fesdate.date}" + 'に購入する保存食品を追加',
-              new_cooking_purchase_lists_path(is_fresh: false, fes_date_id: fesdate.id),
+  <%# 提供品はいつでも買える %>
+  <%= link_to "#{fesdate.date}" + 'に購入する提供品を追加',
+              new_cooking_purchase_lists_path(fes_date_id: fesdate.id),
               :class => 'btn btn-primary'%>
 <% end %>
 <%= render :partial => 'warnign_preserved' %>

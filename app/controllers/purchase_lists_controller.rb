@@ -24,6 +24,12 @@ class PurchaseListsController < ApplicationController
     @purchase_list = PurchaseList.new( is_fresh: params[:is_fresh], fes_date_id: params[:fes_date_id])
   end
 
+  # GET /purchase_lists/new_noncooking
+  def new_noncooking
+    @purchase_list = PurchaseList.new( is_fresh: false, fes_date_id: params[:fes_date_id])
+  end
+
+
   # GET /purchase_lists/1/edit
   def edit
     # テンプレートの指定
