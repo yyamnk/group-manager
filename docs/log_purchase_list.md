@@ -2,8 +2,15 @@
 
 ## 基本方針
 
-生鮮品(1日目で使用), 生鮮品(2日目で使用), 非生鮮品(1日目・2日目共通)の品目と購入先の登録が必要．
-生鮮品は当日しか購入できない．
+調理品の材料は
+
+* 生鮮品(1日目で使用), 
+* 生鮮品(2日目で使用), 
+* 非生鮮品(1日目・2日目共通)
+
+の品目と購入先の登録が必要．生鮮品は当日しか購入できない．
+
+非調理品は提供品の品目と購入先の登録が必要．
 
 関連するモデル
 
@@ -23,7 +30,7 @@
 
 formは2段階にしたくないので，formへのリンクでGETパラメータを渡すことにする．
 
-welcome/indexからの遷移先は，「生鮮品」「非生鮮品」「非調理品」の3つにする．
+welcome/indexからの遷移先は，「調理品の材料」「提供品」の2つにする．
 
 
 ## scaffold でCURD生成
@@ -175,17 +182,21 @@ rake db:migrate
 == 20150628202115 AddColumnToPurchaseList: migrated (0.0025s) =================
 ```
 
-## views/index_freshの編集
+---
+
+## 調理品の材料(生鮮品)の登録を実装
+
+### views/index_freshの編集
 
 カラムの整理と関連する辞書を追加
 
-## models/purchase_listにバリデーションを追加
+### models/purchase_listにバリデーションを追加
 
 ```
 +  validates_presence_of :food_product_id, :shop_id, :fes_date_id, :items
 ```
 
-## views/_formの編集
+### views/_formの編集
 
 登録フォームは2枚(調理有りのFoodProduct用，調理無し用)作成する．
 `is_fresh`, `fes_date_id`はhiddenで送る．
@@ -195,7 +206,7 @@ rake db:migrate
 `permit_params`に追加した`:items`が入ってなかった．コントローラで追加
 
 
-## views/index_fresh -> new_freshメソッド -> views/new_fresh の流れを実装
+### views/index_fresh -> new_freshメソッド -> views/new_fresh の流れを実装
 
 コントローラで`new`を生鮮食品用のメソッドへ変更
 
@@ -269,7 +280,7 @@ formでパラメータをhiddenに
 +  <%= f.hidden_field :is_fresh, value: @purchase_list.is_fresh %>
 ```
 
-## controllers/PurchaseList#index_freshの変更
+### controllers/PurchaseList#index_freshの変更
 
 `PurchaseListsController#get_foo_products`で
 ユーザが所有する模擬店(食品販売)のグループに登録された販売食品のidを`@food_product_ids`に取得．
@@ -306,7 +317,7 @@ formでパラメータをhiddenに
 +    end
 ```
 
-## new_fresh -> views/new(_form)で選択可能な販売食品を絞り込み
+### new_fresh -> views/new(_form)で選択可能な販売食品を絞り込み
 
 絞り込む要素は
 1. 所有グループに紐付いた
@@ -323,7 +334,7 @@ FoodProduct.groups(@group_ids).cooking
 
 で取得させる．
 
-## new_fresh -> views/new(_form)で選択可能な仕入先を絞り込み
+### new_fresh -> views/new(_form)で選択可能な仕入先を絞り込み
 
 `Shop.closed`の配列を検索するのが面倒．
 
@@ -369,7 +380,7 @@ rake db:migrate
 == 20150629091153 AddClosedColumnToShop: migrated (0.0035s) ===================
 ```
 
-### 初期データの修正
+#### 初期データの修正
 
 `closed: '0'`を`is_closed_sum: true`に変更 
 
@@ -396,7 +407,7 @@ rake db:migrate
 休みでないものを抽出するスコープを追加
 
 
-### FesDateに曜日を示すカラムを追加
+#### FesDateに曜日を示すカラムを追加
 
 TimeやDateTime, TimeWithZoneオブジェクトをDBに入れるとタイムゾーン関係が混乱する．
 素直にstringでDateとDayを決めてしまう．
@@ -457,7 +468,7 @@ rake db:migrate
 +  validates :days_num, inclusion: {in: [0, 1, 2]} # 準備日が0，1日目が1，2日目が2を示す．
 ```
 
-### 選択可能な仕入先を絞り込み
+#### 選択可能な仕入先を絞り込み
 
 メソッドを追加して
 
@@ -485,6 +496,38 @@ collectionで指定
 +  <%= f.association :shop, collection: Shop.open_at_fesdate_id(@purchase_list.fes_date_id)%>
 ```
 
-## views/purchase_list/show の修正
+### views/purchase_list/show の修正
 
 カラムの表示順を変更，itemsを追加，辞書追加
+
+---
+
+## 調理品の材料(非生鮮品)の登録を実装
+
+### views/index_freshの"保存食品追加ボタン" -> controllers#new_preserved -> views/new_preserved の流れを実装
+
+`views/index_fresh`に保存食品の追加ボタンを追加
+
+```
+# app/views/purchase_lists/index_fresh.html.erb
+
++<p>
++<%= link_to '1日目・2日目で使用する保存食品を追加',
++            new_preserved_purchase_lists_path(is_fresh: false), # 非生鮮食品
++            :class => 'btn btn-primary'%>
++</p>
+```
+
+ルーティング設定
+
+```
+# config/routes.rb
+
+@@ -4,6 +4,7 @@ Rails.application.routes.draw do
+     collection do
+       get 'index_fresh'
+       get 'new_fresh'
++      get 'new_preserved'
+     end
+   end
+```

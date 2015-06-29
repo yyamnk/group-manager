@@ -1,11 +1,13 @@
 <%- model_class = PurchaseList -%>
 <div class="page-header">
-<h1><%= '生鮮食品の購入リスト' %></h1>
+  <h1><%= "調理品の" %>
+  <%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:food_product) %></th>
+      <th><%= model_class.human_attribute_name(:is_fresh) %></th>
       <th><%= model_class.human_attribute_name(:fes_date) %></th>
       <th><%= model_class.human_attribute_name(:shop) %></th>
       <th><%= model_class.human_attribute_name(:items) %></th>
@@ -16,6 +18,7 @@
     <% @purchase_lists.each do |purchase_list| %>
       <tr>
         <td><%= purchase_list.food_product.name %></td>
+        <td><%= purchase_list.fresh %></td>
         <td><%= purchase_list.fes_date.date %></td>
         <td><%= purchase_list.shop.name %></td>
         <td><%= purchase_list.items %></td>
@@ -33,6 +36,7 @@
   </tbody>
 </table>
 
+<p>
 <%= link_to '1日目で使用する生鮮食品を追加',
             new_fresh_purchase_lists_path(is_fresh: true, fes_date_id: 2), # 生鮮食品1日目
             :class => 'btn btn-primary'%>
@@ -40,3 +44,9 @@
 <%= link_to '2日目で使用する生鮮食品を追加',
             new_fresh_purchase_lists_path(is_fresh: true, fes_date_id: 3), # 生鮮食品2日目
             :class => 'btn btn-primary'%>
+</p>
+<p>
+<%= link_to '1日目・2日目で使用する保存食品を追加',
+            new_preserved_purchase_lists_path(is_fresh: false), # 非生鮮食品
+            :class => 'btn btn-primary'%>
+</p>

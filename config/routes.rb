@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     collection do
       get 'index_fresh'
       get 'new_fresh'
+      get 'new_preserved'
     end
   end
   resources :shops
