@@ -368,3 +368,11 @@ rake db:migrate
    -> 0.0003s
 == 20150629091153 AddClosedColumnToShop: migrated (0.0035s) ===================
 ```
+
+### 初期データの修正
+
+`closed: '0'`を`is_closed_sum: true`に変更 
+
+```
+rake db:seed_fu
+```
