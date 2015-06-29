@@ -1,10 +1,11 @@
 class PurchaseListsController < ApplicationController
   before_action :set_purchase_list, only: [:show, :edit, :update, :destroy]
+  before_action :get_food_products # 各アクション実行前に実行
 
   # GET /purchase_lists
   # GET /purchase_lists.json
   def index_fresh
-    @purchase_lists = PurchaseList.all
+    @purchase_lists = PurchaseList.where( food_product_id: @food_product_ids ).where( is_fresh: 'true')
   end
 
   # GET /purchase_lists/1
@@ -70,5 +71,13 @@ class PurchaseListsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def purchase_list_params
       params.require(:purchase_list).permit(:food_product_id, :shop_id, :fes_date_id, :is_fresh, :items)
+    end
+
+    def get_food_products
+      # ユーザが所有し，種別が模擬店(食品販売)の団体のid
+      group_ids = Group.where( "user_id = ? and group_category_id = ?", current_user.id, 1).pluck('id')
+      # logger.debug group_ids
+      @food_product_ids = FoodProduct.where( group_id: group_ids).pluck('id')
+      # logger.debug @food_product_ids
     end
 end

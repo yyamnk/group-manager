@@ -268,3 +268,40 @@ formでパラメータをhiddenに
 +  <%= f.hidden_field :fes_date_id, value: @purchase_list.fes_date_id %>
 +  <%= f.hidden_field :is_fresh, value: @purchase_list.is_fresh %>
 ```
+
+## controllers/PurchaseList#index_freshの変更
+
+`PurchaseListsController#get_foo_products`で
+ユーザが所有する模擬店(食品販売)のグループに登録された販売食品のidを`@food_product_ids`に取得．
+
+`PurchaseListsController#index_fresh`で生鮮品のみに絞り込み
+
+```
+--- a/app/controllers/purchase_lists_controller.rb
++++ b/app/controllers/purchase_lists_controller.rb
+@@ -1,10 +1,11 @@
+ class PurchaseListsController < ApplicationController
+   before_action :set_purchase_list, only: [:show, :edit, :update, :destroy]
++  before_action :get_food_products # 各アクション実行前に実行
+
+   # GET /purchase_lists
+   # GET /purchase_lists.json
+   def index_fresh
+-    @purchase_lists = PurchaseList.all
++    @purchase_lists = PurchaseList.where( food_product_id: @food_product_ids ).where( is_fresh: 'true')
+   end
+
+   # GET /purchase_lists/1
+@@ -71,4 +72,12 @@ class PurchaseListsController < ApplicationController
+     def purchase_list_params
+       params.require(:purchase_list).permit(:food_product_id, :shop_id, :fes_date_id, :is_fresh, :items)
+     end
++
++    def get_food_products
++      # ユーザが所有し，種別が模擬店(食品販売)の団体のid
++      group_ids = Group.where( "user_id = ? and group_category_id = ?", current_user.id, 1).pluck('id')
++      # logger.debug group_ids
++      @food_product_ids = FoodProduct.where( group_id: group_ids).pluck('id')
++      # logger.debug @food_product_ids
++    end
+```
