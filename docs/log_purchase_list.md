@@ -322,3 +322,49 @@ FoodProduct.groups(@group_ids).cooking
 ```
 
 で取得させる．
+
+## new_fresh -> views/new(_form)で選択可能な仕入先を絞り込み
+
+`Shop.closed`の配列を検索するのが面倒．
+
+`is_closed_sun:boolean`, `is_closed_sat:boolean`で対応することにする．
+
+### マイグレーションで`closed`カラムを削除, `is_closed_曜日`カラムを追加
+
+```
+bundle exec rails g migration RemoveColumnToShop closed
+
+      invoke  active_record
+      create    db/migrate/20150629090720_remove_column_to_shop.rb
+
+bundle exec rails g migration AddClosedColumnToShop is_closed_sun:boolean is_closed_mon:boolean is_closed_tue:boolean is_closed_wed:boolean is_closed_thu:boolean is_closed_fri:boolean is_closed_sat:boolean is_closed_holiday:boolean 
+
+      invoke  active_record
+      create    db/migrate/20150629091153_add_closed_column_to_shop.rb
+
+rake db:migrate
+
+== 20150629090720 RemoveColumnToShop: migrating ===============================
+-- remove_column(:shops, :closed, :string)
+   -> 0.0020s
+== 20150629090720 RemoveColumnToShop: migrated (0.0023s) ======================
+
+== 20150629091153 AddClosedColumnToShop: migrating ============================
+-- add_column(:shops, :is_closed_sun, :boolean)
+   -> 0.0007s
+-- add_column(:shops, :is_closed_mon, :boolean)
+   -> 0.0004s
+-- add_column(:shops, :is_closed_tue, :boolean)
+   -> 0.0004s
+-- add_column(:shops, :is_closed_wed, :boolean)
+   -> 0.0003s
+-- add_column(:shops, :is_closed_thu, :boolean)
+   -> 0.0004s
+-- add_column(:shops, :is_closed_fri, :boolean)
+   -> 0.0003s
+-- add_column(:shops, :is_closed_sat, :boolean)
+   -> 0.0004s
+-- add_column(:shops, :is_closed_holiday, :boolean)
+   -> 0.0003s
+== 20150629091153 AddClosedColumnToShop: migrated (0.0035s) ===================
+```

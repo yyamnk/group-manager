@@ -6,4 +6,7 @@ class Shop < ActiveRecord::Base
   # tel -> 半角数字とハイフンのみ, [4444-22-4444, for 固定] )
   validates :tel,     format: { with: /(\A\d{4}-\d{2}-\d{4})+\z/i }
 
+  # 日曜日が休みでないもの
+  # scope :enable_sun, -> {where.not( closed: '0')}
+
 end

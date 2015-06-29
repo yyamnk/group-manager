@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628202115) do
+ActiveRecord::Schema.define(version: 20150629091153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -180,16 +180,23 @@ ActiveRecord::Schema.define(version: 20150628202115) do
   end
 
   create_table "shops", force: :cascade do |t|
-    t.string   "name",          null: false
-    t.string   "tel",           null: false
+    t.string   "name",              null: false
+    t.string   "tel",               null: false
     t.string   "time_weekdays"
     t.string   "time_sat"
     t.string   "time_sun"
     t.string   "time_holidays"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "kana"
-    t.string   "closed"
+    t.boolean  "is_closed_sun"
+    t.boolean  "is_closed_mon"
+    t.boolean  "is_closed_tue"
+    t.boolean  "is_closed_wed"
+    t.boolean  "is_closed_thu"
+    t.boolean  "is_closed_fri"
+    t.boolean  "is_closed_sat"
+    t.boolean  "is_closed_holiday"
   end
 
   create_table "stage_orders", force: :cascade do |t|
