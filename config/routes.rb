@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   resources :purchase_lists do
     # 標準の7つ以外を追加する
     collection do
-      get 'index_fresh'
-      get 'new_fresh'
-      get 'new_preserved'
+      get 'index_cooking'
+      get 'new_cooking'
     end
   end
   resources :shops

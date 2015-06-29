@@ -538,3 +538,13 @@ new, formをコピー
 cp app/views/purchase_lists/new_fresh.html.erb app/views/purchase_lists/new_preserved.html.erb
 cp app/views/purchase_lists/_form.html.erb app/views/purchase_lists/_form_preserved.html.erb
 ```
+
+inedx_freshをリネーム，追加用のボタンを整理．
+
+## 構成の変更
+
+調理品の登録はnewメソッドもviews/_form, newも1つでいい．
+
+`views/purchase_lists/new_fresh`と`views/purchase_lists/new_preserved`を`views/purchase_lists/new_cooking`で統合．
+同じく`_form_***`も統合．
+これに合わせてルーティングとcontrollers, 辞書を書き換え

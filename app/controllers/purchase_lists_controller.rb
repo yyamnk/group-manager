@@ -1,12 +1,12 @@
 class PurchaseListsController < ApplicationController
   before_action :set_purchase_list, only: [:show, :edit, :update, :destroy]
   before_action :set_group_ids        # 各アクション実行前に実行
-  before_action :set_food_product_ids # 各アクション実行前に実行
+  before_action :set_cooking_product_ids # 各アクション実行前に実行
 
   # GET /purchase_lists
   # GET /purchase_lists.json
-  def index_fresh
-    @purchase_lists = PurchaseList.where( food_product_id: @food_product_ids ).where( is_fresh: 'true')
+  def index_cooking
+    @purchase_lists = PurchaseList.where( food_product_id: @cooking_product_ids )
   end
 
   # GET /purchase_lists/1
@@ -14,14 +14,9 @@ class PurchaseListsController < ApplicationController
   def show
   end
 
-  # GET /purchase_lists/new_fresh
-  def new_fresh
+  # GET /purchase_lists/new_cooking
+  def new_cooking
     @purchase_list = PurchaseList.new( is_fresh: params[:is_fresh], fes_date_id: params[:fes_date_id])
-  end
-
-  # GET /purchase_lists/new_preserved
-  def new_preserved
-    @purchase_list = PurchaseList.new( is_fresh: false )
   end
 
   # GET /purchase_lists/1/edit
@@ -85,8 +80,8 @@ class PurchaseListsController < ApplicationController
       # logger.debug @group_ids
     end
 
-    def set_food_product_ids
-      @food_product_ids = FoodProduct.where( group_id: @group_ids).pluck('id')
+    def set_cooking_product_ids
+      @cooking_product_ids = FoodProduct.where( group_id: @group_ids).where(is_cooking: true).pluck('id')
       # logger.debug @food_product_ids
     end
 end

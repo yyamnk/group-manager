@@ -36,17 +36,22 @@
   </tbody>
 </table>
 
-<p>
-<%= link_to '1日目で使用する生鮮食品を追加',
-            new_fresh_purchase_lists_path(is_fresh: true, fes_date_id: 2), # 生鮮食品1日目
-            :class => 'btn btn-primary'%>
+<% fes_dates = FesDate.all %>
 
-<%= link_to '2日目で使用する生鮮食品を追加',
-            new_fresh_purchase_lists_path(is_fresh: true, fes_date_id: 3), # 生鮮食品2日目
-            :class => 'btn btn-primary'%>
-</p>
 <p>
-<%= link_to '1日目・2日目で使用する保存食品を追加',
-            new_preserved_purchase_lists_path(is_fresh: false), # 非生鮮食品
-            :class => 'btn btn-primary'%>
+<% fes_dates[1, 2].each do |fesdate| %>
+  <%# 生鮮品は当日しか買えない %>
+  <%= link_to "#{fesdate.date}" + 'に使用する生鮮食品を追加',
+              new_cooking_purchase_lists_path(is_fresh: true, fes_date_id: fesdate.id), # 生鮮食品1日目
+              :class => 'btn btn-primary'%>
+<% end %>
+</p>
+
+<p>
+<% fes_dates.each do |fesdate| %>
+  <%# 保存食品はいつでも買える %>
+  <%= link_to "#{fesdate.date}" + 'に購入する保存食品を追加',
+              new_cooking_purchase_lists_path(is_fresh: false, fes_date_id: fesdate.id),
+              :class => 'btn btn-primary'%>
+<% end %>
 </p>
