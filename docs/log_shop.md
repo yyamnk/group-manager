@@ -163,3 +163,5 @@ permit_paramsに追加
 
 パーシャルで`warning_xxx`を追加．
 登録ボタンに確認ダイアログを追加
+
+## views/purchase_lists/_form に仕入先登録のリンクを追加

@@ -1,0 +1,8 @@
+<div class="well well-sm">
+  <p>希望する仕入先が一覧に無い場合には
+  <%= link_to '仕入先の新規登録',
+              new_shop_path,
+              :class => 'btn btn-primary' %>
+  より登録が可能です．</p>
+  <%= render :partial => 'shops/warning_use_default' %>
+</div>
