@@ -6,6 +6,10 @@ class FoodProduct < ActiveRecord::Base
   # boolean型をチェック. presence_of ではfalseでエラーになってしまう
   validates :is_cooking, inclusion: {in: [true, false]}
 
+  def to_s
+    self.name
+  end
+
   def disp_cooking
     disp = self.is_cooking ? '調理あり' : '調理なし(提供のみ)'
     return disp

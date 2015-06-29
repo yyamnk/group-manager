@@ -5,4 +5,7 @@ class PurchaseList < ActiveRecord::Base
 
   validates_presence_of :food_product_id, :shop_id, :fes_date_id, :items
 
+  def fresh
+    return self.is_fresh ? "生鮮品" : "非生鮮品"
+  end
 end

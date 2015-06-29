@@ -484,3 +484,7 @@ collectionで指定
 -  <%= f.association :shop %>
 +  <%= f.association :shop, collection: Shop.open_at_fesdate_id(@purchase_list.fes_date_id)%>
 ```
+
+## views/purchase_list/show の修正
+
+カラムの表示順を変更，itemsを追加，辞書追加
