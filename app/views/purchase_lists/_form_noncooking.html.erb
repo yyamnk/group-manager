@@ -1,8 +1,8 @@
 <%= simple_form_for @purchase_list, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
 
-  <%# 生鮮品を登録可能なFoodProductのみに絞り込み %>
+  <%# 提供品を登録可能なFoodProductのみに絞り込み %>
   <%= f.association :food_product,
-    collection: FoodProduct.groups(@group_ids).cooking,
+    collection: FoodProduct.groups(@group_ids).non_cooking,
     include_blank: false, # 失敗時のリダイレクト先がFoodProductで決まるためnilを避ける
     hint: t(".hint_food_product") %>
   <%= error_span(@purchase_list[:food_product_id]) %>
@@ -13,27 +13,13 @@
     hint: t(".hint_shop") %>
   <%= error_span(@purchase_list[:shop_id]) %>
 
-  <%# 生鮮品or長期保存食によってヒントを変更 %>
-  <% if @purchase_list.is_fresh %>
-    <% hint_items = 'hint_items_fresh' %>
-  <% else %>
-    <% hint_items = 'hint_items_preserved' %>
-  <% end %>
-
-  <%= f.input :items, hint: t("." + hint_items)%>
+  <%= f.input :items, hint: t(".hint_items")%>
   <%= error_span(@purchase_list[:items]) %>
 
   <%= f.hidden_field :fes_date_id, value: @purchase_list.fes_date_id %>
   <%= f.hidden_field :is_fresh, value: @purchase_list.is_fresh %>
 
-  <%# 生鮮品or長期保存食によってWarningを変更 %>
-  <% if @purchase_list.is_fresh %>
-    <%= render :partial => 'warnign_fresh' %>
-  <% else %>
-    <%= render :partial => 'warnign_preserved' %>
-  <% end %>
-
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                index_cooking_purchase_lists_path, :class => 'btn btn-default' %>
+                index_noncooking_purchase_lists_path, :class => 'btn btn-default' %>
 <% end %>

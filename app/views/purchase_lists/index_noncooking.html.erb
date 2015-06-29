@@ -40,7 +40,7 @@
 <% fes_dates.each do |fesdate| %>
   <%# 提供品はいつでも買える %>
   <%= link_to "#{fesdate.date}" + 'に購入する提供品を追加',
-              new_cooking_purchase_lists_path(fes_date_id: fesdate.id),
+              new_noncooking_purchase_lists_path(fes_date_id: fesdate.id),
               :class => 'btn btn-primary'%>
 <% end %>
 <%= render :partial => 'warnign_preserved' %>

@@ -736,3 +736,7 @@ index_noncookingにボタン追加
 cp app/views/purchase_lists/new_cooking.html.erb app/views/purchase_lists/new_noncooking.html.erb
 cp app/views/purchase_lists/_form_cooking.html.erb app/views/purchase_lists/_form_noncooking.html.erb
 ```
+
+## formの修正
+
+warning削除，パスの修正
