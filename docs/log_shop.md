@@ -138,3 +138,7 @@ Deleteボタン削除，辞書追加．
 permit_paramsに追加
 バリデーションを追加．
 辞書追加
+
+### 管理用設定の変更
+
+permit_paramsに追加
