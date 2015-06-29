@@ -13,8 +13,8 @@ class PurchaseListsController < ApplicationController
   end
 
   # GET /purchase_lists/new
-  def new
-    @purchase_list = PurchaseList.new
+  def new_fresh
+    @purchase_list = PurchaseList.new( is_fresh: params[:is_fresh], fes_date_id: params[:fes_date_id])
   end
 
   # GET /purchase_lists/1/edit

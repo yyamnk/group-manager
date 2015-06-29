@@ -193,3 +193,78 @@ rake db:migrate
 現状確認のために`_form`を編集
 `FesDate`に`to_s`メソッド追加
 `permit_params`に追加した`:items`が入ってなかった．コントローラで追加
+
+
+## views/index_fresh -> new_freshメソッド -> views/new_fresh の流れを実装
+
+コントローラで`new`を生鮮食品用のメソッドへ変更
+
+```
+# app/controllers/purchase_lists_controller.rb
+@@ -13,8 +13,8 @@ class PurchaseListsController < ApplicationController
+   end
+
+   # GET /purchase_lists/new
+-  def new
+-    @purchase_list = PurchaseList.new
++  def new_fresh
++    @purchase_list = PurchaseList.new( is_fresh: params[:is_fresh], fes_date_id: params[:fes_date_id])
+   end
+```
+
+`views/index_fresh`に1日目の生鮮食品，2日目の生鮮食品のボタンを追加．getパラメータを付加．
+
+```
+# app/views/purchase_lists/index_fresh.html.erb
+
+-<%= link_to t('.new', :default => t("helpers.links.new")),
+-            new_purchase_list_path,
+-            :class => 'btn btn-primary' %>
++<%= link_to '1日目で使用する生鮮食品を追加',
++            new_fresh_purchase_lists_path(is_fresh: true, fes_date_id: 2), # 生鮮食品1日目
++            :class => 'btn btn-primary'%>
++
++<%= link_to '2日目で使用する生鮮食品を追加',
++            new_fresh_purchase_lists_path(is_fresh: true, fes_date_id: 3), # 生鮮食品2日目
++            :class => 'btn btn-primary'%>
+```
+
+ルーティングを設定
+ 
+```
+# config/routes.rb
+
+     # 標準の7つ以外を追加する
+     collection do
+       get 'index_fresh'
++      get 'new_fresh'
+     end
+```
+
+viewのnewをリネーム
+
+```
+cp app/views/purchase_lists/new.html.erb app/views/purchase_lists/new_fresh.html.erb
+```
+
+formでパラメータをhiddenに
+
+```
+# app/views/purchase_lists/_form.html.erb
+
+@@ -6,15 +6,12 @@
+   <%= f.association :shop %>
+   <%= error_span(@purchase_list[:shop_id]) %>
+
+-  <%= f.association :fes_date %>
+-  <%= error_span(@purchase_list[:fes_date_id]) %>
+-
+-  <%= f.input :is_fresh %>
+-  <%= error_span(@purchase_list[:is_fresh]) %>
+-
+   <%= f.input :items %>
+   <%= error_span(@purchase_list[:items]) %>
+
++  <%= f.hidden_field :fes_date_id, value: @purchase_list.fes_date_id %>
++  <%= f.hidden_field :is_fresh, value: @purchase_list.is_fresh %>
+```

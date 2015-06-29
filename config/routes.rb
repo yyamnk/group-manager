@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     # 標準の7つ以外を追加する
     collection do
       get 'index_fresh'
+      get 'new_fresh'
     end
   end
   resources :shops

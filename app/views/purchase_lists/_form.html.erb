@@ -6,14 +6,11 @@
   <%= f.association :shop %>
   <%= error_span(@purchase_list[:shop_id]) %>
 
-  <%= f.association :fes_date %>
-  <%= error_span(@purchase_list[:fes_date_id]) %>
-
-  <%= f.input :is_fresh %>
-  <%= error_span(@purchase_list[:is_fresh]) %>
-
   <%= f.input :items %>
   <%= error_span(@purchase_list[:items]) %>
+
+  <%= f.hidden_field :fes_date_id, value: @purchase_list.fes_date_id %>
+  <%= f.hidden_field :is_fresh, value: @purchase_list.is_fresh %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
