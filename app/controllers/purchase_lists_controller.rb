@@ -76,7 +76,7 @@ class PurchaseListsController < ApplicationController
 
     def set_group_ids
       # ユーザが所有し，種別が模擬店(食品販売)の団体のid
-      @group_ids = Group.where( "user_id = ? and group_category_id = ?", current_user.id, 1).pluck('id')
+      @group_ids = Group.where( ["user_id = ? and group_category_id = ?", current_user.id, 1]).pluck('id')
       # logger.debug @group_ids
     end
 

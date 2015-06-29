@@ -456,3 +456,31 @@ rake db:migrate
 +  validates :day, inclusion: {in: ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'holiday']}
 +  validates :days_num, inclusion: {in: [0, 1, 2]} # 準備日が0，1日目が1，2日目が2を示す．
 ```
+
+### 選択可能な仕入先を絞り込み
+
+メソッドを追加して
+
+```
+@@ -15,7 +15,9 @@ class Shop < ActiveRecord::Base
+   validates :is_closed_sat    , inclusion: {in: [true, false]}
+   validates :is_closed_holiday, inclusion: {in: [true, false]}
+
+-  # 休みでないもの
+-  scope :open_sun, -> { where( is_closed: 'false') }
+-  scope :open_sat, -> { where( is_closed: 'false') }
++  # FesDateのidを指定し，その日が休日でないものを抜き出す．
++  def self.open_at_fesdate_id( fes_date_id )
++    day = FesDate.find(fes_date_id).day
++    self.where( "is_closed_" + day + " = ?", 'false')
++  end
+```
+
+collectionで指定
+
+```
+# app/views/purchase_lists/_form.html.erb
+
+-  <%= f.association :shop %>
++  <%= f.association :shop, collection: Shop.open_at_fesdate_id(@purchase_list.fes_date_id)%>
+```

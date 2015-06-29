@@ -15,7 +15,9 @@ class Shop < ActiveRecord::Base
   validates :is_closed_sat    , inclusion: {in: [true, false]}
   validates :is_closed_holiday, inclusion: {in: [true, false]}
 
-  # 休みでないもの
-  scope :open_sun, -> { where( is_closed: 'false') }
-  scope :open_sat, -> { where( is_closed: 'false') }
+  # FesDateのidを指定し，その日が休日でないものを抜き出す．
+  def self.open_at_fesdate_id( fes_date_id )
+    day = FesDate.find(fes_date_id).day
+    self.where( "is_closed_" + day + " = ?", 'false')
+  end
 end
