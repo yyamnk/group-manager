@@ -11,7 +11,7 @@ ja:
       place_order: 実施場所の申請
       employee: 従業員
       food_product: 販売食品
-      purchase_list: 購入リスト(仕入品と仕入先)
+      purchase_list: 購入リスト
     attributes:
         group:
           name: 運営団体の名称

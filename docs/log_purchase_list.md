@@ -548,3 +548,7 @@ inedx_freshをリネーム，追加用のボタンを整理．
 `views/purchase_lists/new_fresh`と`views/purchase_lists/new_preserved`を`views/purchase_lists/new_cooking`で統合．
 同じく`_form_***`も統合．
 これに合わせてルーティングとcontrollers, 辞書を書き換え
+
+## views/テンプレートの整理
+
+タイトルの整理，Warning追加，Backボタンのリンク先修正
