@@ -742,3 +742,41 @@ cp app/views/purchase_lists/_form_cooking.html.erb app/views/purchase_lists/_for
 warning削除，パスの修正
 
 ## editテンプレートの追加
+
+```
+cp app/views/purchase_lists/edit_cooking.html.erb app/views/purchase_lists/edit_noncooking.html.erb
+```
+
+editのrenderで`form_noncooking`を指定
+
+## showテンプレートの分割
+
+調理用材料と提供品で分割する．
+
+テンプレート用意
+
+```
+mv app/views/purchase_lists/show.html.erb app/views/purchase_lists/show_cooking.html.erb
+cp app/views/purchase_lists/show_cooking.html.erb app/views/purchase_lists/show_noncooking.html.erb
+```
+
+レンダー指定の変更
+
+```
+@@ -17,6 +17,13 @@ class PurchaseListsController < ApplicationController
+   # GET /purchase_lists/1
+   # GET /purchase_lists/1.json
+   def show
+   def show
++    # テンプレートの指定,
++    # show終了時にrenderで指定したテンプレートを表示する．
++    if @purchase_list.food_product.is_cooking
++      render 'show_cooking'
++    else
++      render 'show_noncooking'
++    end
+   end
+```
+
+`views/purchase_lists/show_noncooking`でBackのリンク先を変更
+`is_fresh`の表示を削除

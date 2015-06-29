@@ -17,6 +17,13 @@ class PurchaseListsController < ApplicationController
   # GET /purchase_lists/1
   # GET /purchase_lists/1.json
   def show
+    # テンプレートの指定,
+    # show終了時にrenderで指定したテンプレートを表示する．
+    if @purchase_list.food_product.is_cooking
+      render 'show_cooking'
+    else
+      render 'show_noncooking'
+    end
   end
 
   # GET /purchase_lists/new_cooking
