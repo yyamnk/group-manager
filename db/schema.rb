@@ -180,23 +180,23 @@ ActiveRecord::Schema.define(version: 20150629091153) do
   end
 
   create_table "shops", force: :cascade do |t|
-    t.string   "name",              null: false
-    t.string   "tel",               null: false
+    t.string   "name",                              null: false
+    t.string   "tel",                               null: false
     t.string   "time_weekdays"
     t.string   "time_sat"
     t.string   "time_sun"
     t.string   "time_holidays"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "kana"
-    t.boolean  "is_closed_sun"
-    t.boolean  "is_closed_mon"
-    t.boolean  "is_closed_tue"
-    t.boolean  "is_closed_wed"
-    t.boolean  "is_closed_thu"
-    t.boolean  "is_closed_fri"
-    t.boolean  "is_closed_sat"
-    t.boolean  "is_closed_holiday"
+    t.boolean  "is_closed_sun",     default: false
+    t.boolean  "is_closed_mon",     default: false
+    t.boolean  "is_closed_tue",     default: false
+    t.boolean  "is_closed_wed",     default: false
+    t.boolean  "is_closed_thu",     default: false
+    t.boolean  "is_closed_fri",     default: false
+    t.boolean  "is_closed_sat",     default: false
+    t.boolean  "is_closed_holiday", default: false
   end
 
   create_table "stage_orders", force: :cascade do |t|

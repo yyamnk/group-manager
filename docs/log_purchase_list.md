@@ -376,3 +376,21 @@ rake db:migrate
 ```
 rake db:seed_fu
 ```
+
+`seed_fu`で未指定のカラムは`null`になる．`is_closed_曜日`のデフォルト値を`false`にしたい．
+
+```
+# 一度DBをrollback, 20150629091153より前の状態にする
+rake db:rollback
+```
+
+マイグレーションファイル`db/migrate/20150629091153_add_closed_column_to_shop.rb`
+を変更して`default: false`を設定する．
+
+```
+# マイグレーション再実行
+rake db:migrate
+```
+
+`is_closed_曜日`が`true` or `false`になるようにモデルにバリデーション追加
+休みでないものを抽出するスコープを追加
