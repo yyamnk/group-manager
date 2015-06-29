@@ -45,7 +45,7 @@ class Ability
       cannot [:create, :destroy], StageOrder
       cannot [:create, :destroy], PlaceOrder
       cannot [:destroy], Place # PlaceOrderからfindで引いている．削除は禁止
-      cannot [:destroy], Shop # Shopは削除禁止
+      cannot [:destroy], Shop, :id => [*(1..23)]  # Shopは1-23のデフォルトの削除禁止
     end
     if user.role_id == 3 then # for user (デフォルトのrole)
       can :manage, :welcome

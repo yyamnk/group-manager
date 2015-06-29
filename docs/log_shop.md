@@ -165,3 +165,11 @@ permit_paramsに追加
 登録ボタンに確認ダイアログを追加
 
 ## views/purchase_lists/_form に仕入先登録のリンクを追加
+
+## 権限を変更
+
+```
+@@ -45,7 +45,7 @@ class Ability
+-      cannot [:destroy], Shop # Shopは削除禁止
++      cannot [:destroy], Shop, :id => [*(1..23)]  # Shopは1-23のデフォルトの削除禁止
+```
