@@ -4,6 +4,9 @@
   <%= f.association :food_product, collection: FoodProduct.groups(@group_ids).cooking %>
   <%= error_span(@purchase_list[:food_product_id]) %>
 
+  <%= if FesDate.find(@purchase_list.fes_date_id).
+  %>
+
   <%= f.association :shop %>
   <%= error_span(@purchase_list[:shop_id]) %>
 

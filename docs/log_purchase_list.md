@@ -394,3 +394,43 @@ rake db:migrate
 
 `is_closed_曜日`が`true` or `false`になるようにモデルにバリデーション追加
 休みでないものを抽出するスコープを追加
+
+
+### FesDateに曜日を示すカラムを追加
+
+TimeやDateTime, TimeWithZoneオブジェクトをDBに入れるとタイムゾーン関係が混乱する．
+素直にstringでDateとDayを決めてしまう．
+
+```
+# マイグレーション生成
+bundle exec rails g migration AddDayColumnToFesDate day:string
+
+      invoke  active_record
+      create    db/migrate/20150629103756_add_day_column_to_fes_date.rb
+
+rake db:migrate
+
+== 20150629103756 AddDayColumnToFesDate: migrating ============================
+-- add_column(:fes_dates, :day, :string)
+   -> 0.0011s
+== 20150629103756 AddDayColumnToFesDate: migrated (0.0012s) ===================
+```
+
+DBで`day`カラムを`null: false`にしたいが，既存データに無いためマイグレーションが通らない．
+まず初期データを変更し，
+
+```
+ FesDate.seed( :id,
+-  { id: 1 , days_num:0, date: '準備日' },
+-  { id: 2 , days_num:1, date: '1日目' },
+-  { id: 3 , days_num:2, date: '2日目' },
++  { id: 1, days_num:0, date: '準備日', day: 'fri'} ,
++  { id: 2, days_num:1, date: '1日目' , day: 'sat'} ,
++  { id: 3, days_num:2, date: '2日目' , day: 'sun' },
+ )
+```
+
+```
+# 投入
+rake db:seed_fu
+```
