@@ -21,6 +21,12 @@ class PurchaseListsController < ApplicationController
 
   # GET /purchase_lists/1/edit
   def edit
+    # テンプレートの指定
+    if @purchase_list.food_product.is_cooking
+      render 'edit_cooking'
+    else
+      render 'edit_noncooking'
+    end
   end
 
   # POST /purchase_lists

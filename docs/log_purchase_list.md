@@ -573,3 +573,24 @@ inedx_freshをリネーム，追加用のボタンを整理．
 -      format.html { redirect_to purchase_lists_url, notice: 'Purchase list was successfully destroyed.' }
 +      format.html { redirect_to action: redirect_action, notice: 'Purchase list was successfully destroyed.' }
 ```
+
+
+## editメソッドの修正
+
+```
+   # GET /purchase_lists/1/edit
+   def edit
++    # テンプレートの指定
++    if @purchase_list.food_product.is_cooking
++      render 'edit_cooking'
++    else
++      render 'edit_noncooking'
++    end
+   end
+```
+
+テンプレートをリネーム
+
+```
+mv app/views/purchase_lists/edit.html.erb app/views/purchase_lists/edit_cooking.html.erb
+```
