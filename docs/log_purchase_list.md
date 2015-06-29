@@ -434,3 +434,16 @@ DBで`day`カラムを`null: false`にしたいが，既存データに無いた
 # 投入
 rake db:seed_fu
 ```
+
+次に改めてマイグレーションファイルで`null: false`を指定．
+
+```
+bundle exec rails g migration ChangeDayToFesDate
+
+      invoke  active_record
+      create    db/migrate/20150629110115_change_day_to_fes_date.rb
+```
+
+```
+rake db:migrate
+```
