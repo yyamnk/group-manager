@@ -1,5 +1,8 @@
 <%= simple_form_for @shop, wrapper: "horizontal_form",  :html => { :class => 'form-horizontal' } do |f| %>
 
+  <%# 警告表示 %>
+  <%= render :partial => 'warning_use_default' %>
+
   <%= f.input :name, hint: t(".hint_name") %>
   <%= error_span(@shop[:name]) %>
 
@@ -47,7 +50,11 @@
   <%= f.input :is_closed_holiday, as: :boolean, checked_value: true, unchecked_value: false %>
   <%= error_span(@shop[:is_closed_holiday]) %>
 
-  <%= f.button :submit, :class => 'btn-primary' %>
+  <%# 警告表示 %>
+  <%= render :partial => 'warning_nomodify' %>
+
+  <%= f.button :submit, :class => 'btn-primary',
+                data: { confirm: '登録後は変更・削除できません．登録しますか?' } %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 shops_path, :class => 'btn btn-default' %>
 <% end %>

@@ -142,3 +142,24 @@ permit_paramsに追加
 ### 管理用設定の変更
 
 permit_paramsに追加
+
+## 仕入先一覧のリンクを追加
+
+```
+--- a/app/views/welcome/index.html.erb
++++ b/app/views/welcome/index.html.erb
+@@ -107,5 +107,8 @@
+     <%= link_to t('提供品の一覧'),
+             index_noncooking_purchase_lists_path,
+             :class => 'btn btn-default' %>
++    <%= link_to t('選択可能な仕入先の一覧'),
++            shops_path,
++            :class => 'btn btn-default' %>
+   </div>
+ </div>
+```
+
+## 警告の追加
+
+パーシャルで`warning_xxx`を追加．
+登録ボタンに確認ダイアログを追加
