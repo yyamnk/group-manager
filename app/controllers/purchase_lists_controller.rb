@@ -39,6 +39,11 @@ class PurchaseListsController < ApplicationController
         format.html { redirect_to @purchase_list, notice: 'Purchase list was successfully created.' }
         format.json { render :show, status: :created, location: @purchase_list }
       else
+        if @purchase_list.food_product.is_cooking
+          format.html { render :new_cooking }
+        else
+          format.html { render :new_noncooking }
+        end
         format.html { render :new }
         format.json { render json: @purchase_list.errors, status: :unprocessable_entity }
       end

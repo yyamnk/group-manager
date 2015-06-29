@@ -3,6 +3,7 @@
   <%# 生鮮品を登録可能なFoodProductのみに絞り込み %>
   <%= f.association :food_product,
     collection: FoodProduct.groups(@group_ids).cooking,
+    include_blank: false, # 失敗時のリダイレクト先がFoodProductで決まるためnilを避ける
     hint: t(".hint_food_product") %>
   <%= error_span(@purchase_list[:food_product_id]) %>
 

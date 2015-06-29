@@ -616,3 +616,38 @@ mv app/views/purchase_lists/edit.html.erb app/views/purchase_lists/edit_cooking.
        end
      end
 ```
+
+## createメソッドの修正
+
+```
+--- a/app/controllers/purchase_lists_controller.rb
++++ b/app/controllers/purchase_lists_controller.rb
+@@ -39,6 +39,11 @@ class PurchaseListsController < ApplicationController
+         format.html { redirect_to @purchase_list, notice: 'Purchase list was successfully created.' }
+         format.json { render :show, status: :created, location: @purchase_list }
+       else
++        if @purchase_list.food_product.is_cooking
++          format.html { render :new_cooking }
++        else
++          format.html { render :new_noncooking }
++        end
+         format.html { render :new }
+         format.json { render json: @purchase_list.errors, status: :unprocessable_entity }
+```
+
+create, updateで失敗時の遷移は`.food_product.is_cooking`で決まる．
+`nil`でエラーになるため，
+
+```
+--- a/app/views/purchase_lists/_form_cooking.html.erb
++++ b/app/views/purchase_lists/_form_cooking.html.erb
+@@ -3,6 +3,7 @@
+   <%# 生鮮品を登録可能なFoodProductのみに絞り込み %>
+   <%= f.association :food_product,
+     collection: FoodProduct.groups(@group_ids).cooking,
++    include_blank: false, # 失敗時のリダイレクト先がFoodProductで決まるためnilを避ける
+     hint: t(".hint_food_product") %>
+   <%= error_span(@purchase_list[:food_product_id]) %>
+```
+
+でblankを削除．
