@@ -791,3 +791,24 @@ bundle exec rails generate active_admin:resource PurchaseList
 
       create  app/admin/purchase_list.rb
 ```
+
+## 権限の追加
+
+cancancan設定．
+
+```
+ class PurchaseListsController < ApplicationController
+   before_action :set_purchase_list, only: [:show, :edit, :update, :destroy]
+   before_action :set_group_ids        # 各アクション実行前に実行
++  load_and_authorize_resource # for cancancan
+```
+
+```
+@@ -68,6 +68,9 @@ class Ability
+       can :manage, Employee, :group_id => groups
+       # 販売食品は自分の団体のみ自由に触れる
+       can :manage, FoodProduct, :group_id => groups
++      # 購入リストは自分が持つ販売食品に紐付いたもののみ自由に触れる
++      food_ids = FoodProduct.where( group_id: groups ).pluck('id')
++      can :manage, PurchaseList, :food_product_id => food_ids
+```
