@@ -1,6 +1,7 @@
 <%= simple_form_for @purchase_list, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
 
-  <%= f.association :food_product %>
+  <%# 生鮮品を登録可能なFoodProductのみに絞り込み %>
+  <%= f.association :food_product, collection: FoodProduct.groups(@group_ids).cooking %>
   <%= error_span(@purchase_list[:food_product_id]) %>
 
   <%= f.association :shop %>

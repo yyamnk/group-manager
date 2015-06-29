@@ -1,6 +1,7 @@
 class PurchaseListsController < ApplicationController
   before_action :set_purchase_list, only: [:show, :edit, :update, :destroy]
-  before_action :get_food_products # 各アクション実行前に実行
+  before_action :set_group_ids        # 各アクション実行前に実行
+  before_action :set_food_product_ids # 各アクション実行前に実行
 
   # GET /purchase_lists
   # GET /purchase_lists.json
@@ -73,11 +74,14 @@ class PurchaseListsController < ApplicationController
       params.require(:purchase_list).permit(:food_product_id, :shop_id, :fes_date_id, :is_fresh, :items)
     end
 
-    def get_food_products
+    def set_group_ids
       # ユーザが所有し，種別が模擬店(食品販売)の団体のid
-      group_ids = Group.where( "user_id = ? and group_category_id = ?", current_user.id, 1).pluck('id')
-      # logger.debug group_ids
-      @food_product_ids = FoodProduct.where( group_id: group_ids).pluck('id')
+      @group_ids = Group.where( "user_id = ? and group_category_id = ?", current_user.id, 1).pluck('id')
+      # logger.debug @group_ids
+    end
+
+    def set_food_product_ids
+      @food_product_ids = FoodProduct.where( group_id: @group_ids).pluck('id')
       # logger.debug @food_product_ids
     end
 end

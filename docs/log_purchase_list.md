@@ -305,3 +305,20 @@ formでパラメータをhiddenに
 +      # logger.debug @food_product_ids
 +    end
 ```
+
+## new_fresh -> views/new(_form)で選択可能な販売食品を絞り込み
+
+絞り込む要素は
+1. 所有グループに紐付いた
+2. 調理ありの
+販売食品なので，`app/models/food_product.rb`にスコープ`gorups`, `cooking`を追加して
+
+```
+# contorllerで@gorup_idsを設定
+@group_ids = Group.where( "user_id = ? and group_category_id = ?", current_user.id, 1).pluck('id')
+
+# viewsで該当するようにスコープを連結
+FoodProduct.groups(@group_ids).cooking 
+```
+
+で取得させる．

@@ -11,4 +11,11 @@ class FoodProduct < ActiveRecord::Base
     return disp
   end
 
+  # グループidで検索するスコープ
+  scope :groups, -> (group_ids) {where( group_id: group_ids )}
+  # 調理ありを検索するスコープ
+  scope :cooking, -> {where( is_cooking: 'true' )}
+  # 調理なしを検索するスコープ
+  scope :non_cooking, -> {where( is_cooking: 'false' )}
+
 end
