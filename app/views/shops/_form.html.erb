@@ -1,16 +1,51 @@
-<%= simple_form_for @shop, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :name %>
+<%= simple_form_for @shop, wrapper: "horizontal_form",  :html => { :class => 'form-horizontal' } do |f| %>
+
+  <%= f.input :name, hint: t(".hint_name") %>
   <%= error_span(@shop[:name]) %>
-  <%= f.input :tel %>
+
+  <%= f.input :kana, hint: t(".hint_kana") %>
+  <%= error_span(@shop[:kana]) %>
+
+  <%= f.input :tel , hint: t(".hint_tel") %>
   <%= error_span(@shop[:tel]) %>
-  <%= f.input :time_weekdays %>
+
+  <%= f.input :time_weekdays, hint: t(".hint_time") %>
   <%= error_span(@shop[:time_weekdays]) %>
-  <%= f.input :time_sat %>
+
+  <%= f.input :time_sat , hint: t(".hint_time") %>
   <%= error_span(@shop[:time_sat]) %>
-  <%= f.input :time_sun %>
+
+  <%= f.input :time_sun , hint: t(".hint_time") %>
   <%= error_span(@shop[:time_sun]) %>
-  <%= f.input :time_holidays %>
+
+  <%= f.input :time_holidays , hint: t(".hint_time") %>
   <%= error_span(@shop[:time_holidays]) %>
+
+  <%= '定休日を選択して下さい．' %>
+
+  <%= f.input :is_closed_sun, as: :boolean, checked_value: true, unchecked_value: false%>
+  <%= error_span(@shop[:is_closed_sun]) %>
+
+  <%= f.input :is_closed_mon, as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= error_span(@shop[:is_closed_mon]) %>
+
+  <%= f.input :is_closed_tue, as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= error_span(@shop[:is_closed_tue]) %>
+
+  <%= f.input :is_closed_wed, as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= error_span(@shop[:is_closed_wed]) %>
+
+  <%= f.input :is_closed_thu, as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= error_span(@shop[:is_closed_thu]) %>
+
+  <%= f.input :is_closed_fri, as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= error_span(@shop[:is_closed_fri]) %>
+
+  <%= f.input :is_closed_sat, as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= error_span(@shop[:is_closed_sat]) %>
+
+  <%= f.input :is_closed_holiday, as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= error_span(@shop[:is_closed_holiday]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

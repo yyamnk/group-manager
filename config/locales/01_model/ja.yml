@@ -78,3 +78,11 @@ ja:
           time_sun: 営業時間(Sun.)
           time_holidays: 営業時間(祝日)
           closed_days: 定休日
+          is_closed_sun: 日曜定休
+          is_closed_mon: 月曜定休
+          is_closed_tue: 火曜定休
+          is_closed_wed: 水曜定休
+          is_closed_thu: 木曜定休
+          is_closed_fri: 金曜定休
+          is_closed_sat: 土曜定休
+          is_closed_holiday: 祝日定休

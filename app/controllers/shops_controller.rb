@@ -70,6 +70,6 @@ class ShopsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
-      params.require(:shop).permit(:name, :tel, :time_weekdays, :time_sat, :time_sun, :time_holidays)
+      params.require(:shop).permit(:name, :tel, :time_weekdays, :time_sat, :time_sun, :time_holidays, :is_closed_sun, :is_closed_mon, :is_closed_tue, :is_closed_wed, :is_closed_thu, :is_closed_fri, :is_closed_sat, :is_closed_holiday, :kana)
     end
 end
