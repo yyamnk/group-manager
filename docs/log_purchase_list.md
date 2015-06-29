@@ -447,3 +447,12 @@ bundle exec rails g migration ChangeDayToFesDate
 ```
 rake db:migrate
 ```
+
+`FesDateモデル`にバリデーション追加
+
+```
+ class FesDate < ActiveRecord::Base
+
++  validates :day, inclusion: {in: ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'holiday']}
++  validates :days_num, inclusion: {in: [0, 1, 2]} # 準備日が0，1日目が1，2日目が2を示す．
+```
