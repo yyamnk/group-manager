@@ -552,3 +552,24 @@ inedx_freshをリネーム，追加用のボタンを整理．
 ## views/テンプレートの整理
 
 タイトルの整理，Warning追加，Backボタンのリンク先修正
+
+## destroyメソッドの修正
+
+リダイレクト先が`index`になっているのを修正
+
+```
+@@ -56,9 +56,15 @@ class PurchaseListsController < ApplicationController
+   # DELETE /purchase_lists/1
+   # DELETE /purchase_lists/1.json
+   def destroy
++    if @purchase_list.food_product.is_cooking
++      redirect_action = 'index_cooking'
++    else
++      redirect_action = 'index_noncooking'
++    end
++
+     @purchase_list.destroy
+     respond_to do |format|
+-      format.html { redirect_to purchase_lists_url, notice: 'Purchase list was successfully destroyed.' }
++      format.html { redirect_to action: redirect_action, notice: 'Purchase list was successfully destroyed.' }
+```
