@@ -651,3 +651,53 @@ create, updateで失敗時の遷移は`.food_product.is_cooking`で決まる．
 ```
 
 でblankを削除．
+
+---
+
+## 提供品の実装
+
+### welcome/index -> controllers#index_noncooking -> views/index_noncooking の準備
+
+
+ルーティング
+
+```
+@@ -4,6 +4,8 @@ Rails.application.routes.draw do
+     collection do
+       get 'index_cooking'
+       get 'new_cooking'
++      get 'index_noncooking'
++      get 'new_noncooking'
+     end
+   end
+```
+
+メソッド追加
+
+```
+class PurchaseListsController < ApplicationController
+
++  def index_noncooking
++    set_noncooking_product_ids
++    @purchase_lists = PurchaseList.where( food_product_id: @noncooking_product_ids )
++  end
++
+   # GET /purchase_lists/1
+   # GET /purchase_lists/1.json
+   def show
+@@ -106,4 +111,9 @@ class PurchaseListsController < ApplicationController
+       @cooking_product_ids = FoodProduct.where( group_id: @group_ids).where(is_cooking: true).pluck('id')
+       # logger.debug @food_product_ids
+     end
++
++    def set_noncooking_product_ids
++      @noncooking_product_ids = FoodProduct.where( group_id: @group_ids).where(is_cooking: false).pluck('id')
++      # logger.debug @food_product_ids
++    end
+```
+
+テンプレート用意
+
+```
+cp app/views/purchase_lists/index_cooking.html.erb app/views/purchase_lists/index_noncooking.html.erb
+```

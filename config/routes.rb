@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     collection do
       get 'index_cooking'
       get 'new_cooking'
+      get 'index_noncooking'
+      get 'new_noncooking'
     end
   end
   resources :shops

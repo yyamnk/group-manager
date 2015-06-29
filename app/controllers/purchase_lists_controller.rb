@@ -1,12 +1,17 @@
 class PurchaseListsController < ApplicationController
   before_action :set_purchase_list, only: [:show, :edit, :update, :destroy]
   before_action :set_group_ids        # 各アクション実行前に実行
-  before_action :set_cooking_product_ids # 各アクション実行前に実行
 
   # GET /purchase_lists
   # GET /purchase_lists.json
   def index_cooking
+    set_cooking_product_ids
     @purchase_lists = PurchaseList.where( food_product_id: @cooking_product_ids )
+  end
+
+  def index_noncooking
+    set_noncooking_product_ids
+    @purchase_lists = PurchaseList.where( food_product_id: @noncooking_product_ids )
   end
 
   # GET /purchase_lists/1
@@ -104,6 +109,11 @@ class PurchaseListsController < ApplicationController
 
     def set_cooking_product_ids
       @cooking_product_ids = FoodProduct.where( group_id: @group_ids).where(is_cooking: true).pluck('id')
+      # logger.debug @food_product_ids
+    end
+
+    def set_noncooking_product_ids
+      @noncooking_product_ids = FoodProduct.where( group_id: @group_ids).where(is_cooking: false).pluck('id')
       # logger.debug @food_product_ids
     end
 end

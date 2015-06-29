@@ -1,0 +1,59 @@
+<%- model_class = PurchaseList -%>
+<div class="page-header">
+  <h1><%= "調理品の" %>
+  <%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:food_product) %></th>
+      <th><%= model_class.human_attribute_name(:is_fresh) %></th>
+      <th><%= model_class.human_attribute_name(:fes_date) %></th>
+      <th><%= model_class.human_attribute_name(:shop) %></th>
+      <th><%= model_class.human_attribute_name(:items) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @purchase_lists.each do |purchase_list| %>
+      <tr>
+        <td><%= purchase_list.food_product.name %></td>
+        <td><%= purchase_list.fresh %></td>
+        <td><%= purchase_list.fes_date.date %></td>
+        <td><%= purchase_list.shop.name %></td>
+        <td><%= purchase_list.items %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_purchase_list_path(purchase_list), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      purchase_list_path(purchase_list),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% fes_dates = FesDate.all %>
+
+<p>
+<% fes_dates[1, 2].each do |fesdate| %>
+  <%# 生鮮品は当日しか買えない %>
+  <%= link_to "#{fesdate.date}" + 'に使用する生鮮食品を追加',
+              new_cooking_purchase_lists_path(is_fresh: true, fes_date_id: fesdate.id), # 生鮮食品1日目
+              :class => 'btn btn-primary'%>
+<% end %>
+<%= render :partial => 'warnign_fresh' %>
+</p>
+
+<p>
+<% fes_dates.each do |fesdate| %>
+  <%# 保存食品はいつでも買える %>
+  <%= link_to "#{fesdate.date}" + 'に購入する保存食品を追加',
+              new_cooking_purchase_lists_path(is_fresh: false, fes_date_id: fesdate.id),
+              :class => 'btn btn-primary'%>
+<% end %>
+<%= render :partial => 'warnign_preserved' %>
+</p>

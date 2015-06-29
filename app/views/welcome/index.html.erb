@@ -99,10 +99,13 @@
     <h3 class="panel-title">販売食品の商品・材料の登録</h3>
   </div>
   <div class="panel-body">
-    模擬店で販売する食品の商品(提供の場合)，材料(調理品の場合)の購入先を登録して下さい。<br>
+    模擬店で販売する食品の提供品(提供の場合)，材料(調理品の場合)の購入日と購入先を登録して下さい。<br>
     対象: 参加形式が「模擬店(食品販売)」の団体<br>
-    <%= link_to t('調理品の材料(生鮮食品)の一覧'),
-            index_fresh_purchase_lists_path,
+    <%= link_to t('調理品材料の一覧'),
+            index_cooking_purchase_lists_path,
+            :class => 'btn btn-default' %>
+    <%= link_to t('提供品の一覧'),
+            index_noncooking_purchase_lists_path,
             :class => 'btn btn-default' %>
   </div>
 </div>
