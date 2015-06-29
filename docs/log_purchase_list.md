@@ -594,3 +594,25 @@ inedx_freshをリネーム，追加用のボタンを整理．
 ```
 mv app/views/purchase_lists/edit.html.erb app/views/purchase_lists/edit_cooking.html.erb
 ```
+
+## updateメソッドの修正
+
+失敗時のリダイレクト先を指定
+
+```
+--- a/app/controllers/purchase_lists_controller.rb
++++ b/app/controllers/purchase_lists_controller.rb
+@@ -53,7 +53,11 @@ class PurchaseListsController < ApplicationController
+         format.html { redirect_to @purchase_list, notice: 'Purchase list was successfully updated.' }
+         format.json { render :show, status: :ok, location: @purchase_list }
+       else
+-        format.html { render :edit }
++        if @purchase_list.food_product.is_cooking
++          format.html { render :new_cooking }
++        else
++          format.html { render :new_noncooking }
++        end
+         format.json { render json: @purchase_list.errors, status: :unprocessable_entity }
+       end
+     end
+```
