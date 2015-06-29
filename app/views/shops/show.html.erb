@@ -6,6 +6,8 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @shop.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:kana) %>:</strong></dt>
+  <dd><%= @shop.kana %></dd>
   <dt><strong><%= model_class.human_attribute_name(:tel) %>:</strong></dt>
   <dd><%= @shop.tel %></dd>
   <dt><strong><%= model_class.human_attribute_name(:time_weekdays) %>:</strong></dt>
@@ -16,14 +18,9 @@
   <dd><%= @shop.time_sun %></dd>
   <dt><strong><%= model_class.human_attribute_name(:time_holidays) %>:</strong></dt>
   <dd><%= @shop.time_holidays %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:closed_days) %>:</strong></dt>
+  <dd><%= @shop.closed_days %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               shops_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_shop_path(@shop), :class => 'btn btn-default' %>
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              shop_path(@shop),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>

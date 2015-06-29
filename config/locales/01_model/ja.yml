@@ -71,4 +71,10 @@ ja:
           is_fresh: 購入品の種類
         shop:
           name: 店舗名称
+          kana: 店舗名称(かな)
           tel: 電話番号
+          time_weekdays: 営業時間(Mon. - Fri.)
+          time_sat: 営業時間(Sat.)
+          time_sun: 営業時間(Sun.)
+          time_holidays: 営業時間(祝日)
+          closed_days: 定休日

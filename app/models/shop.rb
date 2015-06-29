@@ -24,4 +24,17 @@ class Shop < ActiveRecord::Base
     day = FesDate.find(fes_date_id).day
     self.where( "is_closed_" + day + " = ?", 'false')
   end
+
+  # 休日を表示
+  def closed_days
+    days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'holiday']
+    hash_data = self.attributes # ハッシュへ
+    closed_days = Array.new
+    days.each do |day|
+      if hash_data[ 'is_closed_' + day]
+        closed_days.push( day )
+      end
+    end
+    return closed_days.join(', ')
+  end
 end

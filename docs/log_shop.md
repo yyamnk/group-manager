@@ -126,3 +126,8 @@ rake db:seed_fu
 ### views/indexの修正
 
 Deleteボタン削除，辞書追加
+
+### views/showの修正
+
+Deleteボタン削除，辞書追加．
+休日表示のため`closed_days`メソッドを追加
