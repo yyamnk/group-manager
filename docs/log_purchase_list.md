@@ -740,3 +740,5 @@ cp app/views/purchase_lists/_form_cooking.html.erb app/views/purchase_lists/_for
 ## formの修正
 
 warning削除，パスの修正
+
+## editテンプレートの追加
