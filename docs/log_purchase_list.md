@@ -531,3 +531,10 @@ collectionで指定
      end
    end
 ```
+
+new, formをコピー
+
+```
+cp app/views/purchase_lists/new_fresh.html.erb app/views/purchase_lists/new_preserved.html.erb
+cp app/views/purchase_lists/_form.html.erb app/views/purchase_lists/_form_preserved.html.erb
+```
