@@ -780,3 +780,14 @@ cp app/views/purchase_lists/show_cooking.html.erb app/views/purchase_lists/show_
 
 `views/purchase_lists/show_noncooking`でBackのリンク先を変更
 `is_fresh`の表示を削除
+
+
+---
+
+## ActiveAdminの管理対象に追加
+
+```
+bundle exec rails generate active_admin:resource PurchaseList
+
+      create  app/admin/purchase_list.rb
+```
