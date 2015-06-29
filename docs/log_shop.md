@@ -115,3 +115,14 @@ rake db:seed_fu
 
 `app/controllers/shops_controller.rb`に`load_and_authorize_resource`を追加
 `app/models/ability.rb`のmanagerに`cannot [:destroy], Shop`を追加
+
+---
+
+## 需要があったためユーザによるCURDを実装する．
+
+ユーザの削除，更新を禁止とする．
+閲覧・追加のみ許可
+
+### views/indexの修正
+
+Deleteボタン削除，辞書追加

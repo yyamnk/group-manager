@@ -12,6 +12,7 @@ ja:
       employee: 従業員
       food_product: 販売食品
       purchase_list: 購入リスト
+      shop: 仕入先店舗
     attributes:
         group:
           name: 運営団体の名称
@@ -68,3 +69,6 @@ ja:
           fes_date: 購入日
           items: 仕入れ品
           is_fresh: 購入品の種類
+        shop:
+          name: 店舗名称
+          tel: 電話番号
