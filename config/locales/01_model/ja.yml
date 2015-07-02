@@ -12,7 +12,7 @@ ja:
       employee: 従業員
       food_product: 販売食品
       purchase_list: 購入リスト
-      shop: 仕入先店舗
+      shop: 仕入先
     attributes:
         group:
           name: 運営団体の名称

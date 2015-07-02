@@ -14,3 +14,11 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+#
+#
+# pluralizeメソッドはつねに:enがデフォルト引数
+# 「日本語s」を避ける．
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.plural(/^.*[^A-Za-z]$/, '\0')
+  inflect.singular(/^.*[^A-Za-z]$/, '\0')
+end
