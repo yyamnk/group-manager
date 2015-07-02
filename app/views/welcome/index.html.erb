@@ -96,19 +96,27 @@
 
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title">販売食品の提供品・材料の登録</h3>
+    <h3 class="panel-title">購入リスト登録</h3>
   </div>
   <div class="panel-body">
     模擬店で販売する食品の提供品(提供の場合)，材料(調理品の場合)の購入日と購入先を登録して下さい。<br>
-    対象: 参加形式が「模擬店(食品販売)」の団体<br>
-    <%= link_to t('調理品材料の一覧'),
-            index_cooking_purchase_lists_path,
-            :class => 'btn btn-default' %>
+    <p>
+    対象: 参加形式が「模擬店(食品販売)」で，販売食品(調理なし)を登録した団体
     <%= link_to t('提供品の一覧'),
             index_noncooking_purchase_lists_path,
             :class => 'btn btn-default' %>
+    </p>
+    <p>
+    対象: 参加形式が「模擬店(食品販売)」で，販売食品(調理あり)を登録した団体
+    <%= link_to t('調理品材料の一覧'),
+            index_cooking_purchase_lists_path,
+            :class => 'btn btn-default' %>
+    </p>
+    <p>
+    提供品，調理品材料を購入可能な店舗はこちらから確認できます
     <%= link_to t('選択可能な仕入先の一覧'),
             shops_path,
             :class => 'btn btn-default' %>
+    </p>
   </div>
 </div>
