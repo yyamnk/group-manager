@@ -36,6 +36,6 @@ class Shop < ActiveRecord::Base
         closed_days.push( day )
       end
     end
-    return closed_days.join(', ')
+    return closed_days.length == 0 ? 'なし' : closed_days.join(', ')
   end
 end
