@@ -67,7 +67,7 @@ ja:
           food_product: 販売食品
           shop: 仕入先
           fes_date: 購入日
-          items: 仕入れ品
+          items: 仕入品
           is_fresh: 購入品の種類
         shop:
           name: 店舗名称
