@@ -173,3 +173,18 @@ permit_paramsに追加
 -      cannot [:destroy], Shop # Shopは削除禁止
 +      cannot [:destroy], Shop, :id => [*(1..23)]  # Shopは1-23のデフォルトの削除禁止
 ```
+
+## 調理開始時間の追加
+
+```
+bundle exec rails g migration AddColumnStartToFoodProduct start:string
+      invoke  active_record
+      create    db/migrate/20150703190414_add_column_start_to_food_product.rb
+
+rake db:migrate
+
+== 20150703190414 AddColumnStartToFoodProduct: migrating ======================
+-- add_column(:food_products, :start, :string)
+   -> 0.0010s
+== 20150703190414 AddColumnStartToFoodProduct: migrated (0.0011s) =============
+```
