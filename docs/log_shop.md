@@ -215,3 +215,14 @@ ActiveAdminで`start`カラムが編集可能なように`permit_params`を追�
 +    column :start
    end
 ```
+
+バリデーションを追加
+
+```
+class FoodProduct < ActiveRecord::Base
+   belongs_to :group
+
++  validates_presence_of :start, if: :is_cooking # self.is_cooking == true でstartが必須
+
+   validates_numericality_of :group_id, :num
+```
