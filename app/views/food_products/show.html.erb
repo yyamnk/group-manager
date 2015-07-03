@@ -12,6 +12,8 @@
   <dd><%= @food_product.num %></dd>
   <dt><strong><%= model_class.human_attribute_name(:is_cooking) %>:</strong></dt>
   <dd><%= @food_product.disp_cooking %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:start) %>:</strong></dt>
+  <dd><%= @food_product.start %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
