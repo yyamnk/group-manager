@@ -29,6 +29,9 @@
     </p>
   </div>
 
+  <%= f.input :start, hint: t(".hint_start") %>
+  <%= error_span(@food_product[:num]) %>
+
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 food_products_path, :class => 'btn btn-default' %>

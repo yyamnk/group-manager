@@ -71,7 +71,7 @@ class FoodProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_product_params
-      params.require(:food_product).permit(:group_id, :name, :num, :is_cooking)
+      params.require(:food_product).permit(:group_id, :name, :num, :is_cooking, :start)
     end
 
     # ユーザが所有し，模擬店(食品販売)のカテゴリの団体を取得する

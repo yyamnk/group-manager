@@ -226,3 +226,27 @@ class FoodProduct < ActiveRecord::Base
 
    validates_numericality_of :group_id, :num
 ```
+
+フォームから`start`を編集可能にする
+
+```
+app/views/food_products/_form.html.erb
+@@ -29,6 +29,9 @@
+     </p>
+   </div>
+
++  <%= f.input :start, hint: t(".hint_start") %>
++  <%= error_span(@food_product[:num]) %>
++
+   <%= f.button :submit, :class => 'btn-primary' %>
+```
+
+```
+class FoodProductsController < ApplicationController
+
+     # Never trust parameters from the scary internet, only allow the white list through.
+     def food_product_params
+-      params.require(:food_product).permit(:group_id, :name, :num, :is_cooking)
++      params.require(:food_product).permit(:group_id, :name, :num, :is_cooking, :start)
+     end
+```
