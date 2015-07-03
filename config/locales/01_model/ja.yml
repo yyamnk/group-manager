@@ -63,6 +63,7 @@ ja:
           name: 名称
           num: 数量
           is_cooking: 調理の有無
+          start: 調理開始時間
         purchase_list:
           food_product: 販売食品
           shop: 仕入先

@@ -188,3 +188,30 @@ rake db:migrate
    -> 0.0010s
 == 20150703190414 AddColumnStartToFoodProduct: migrated (0.0011s) =============
 ```
+
+ActiveAdminで`start`カラムが編集可能なように`permit_params`を追加，表示へカラムを追加
+
+```
+@@ -1,6 +1,6 @@
+ ActiveAdmin.register FoodProduct do
+
+-  permit_params :group_id, :name, :num, :is_cooking
++  permit_params :group_id, :name, :num, :is_cooking, :start
+
+   index do
+     selectable_column
+@@ -9,6 +9,7 @@ ActiveAdmin.register FoodProduct do
+     column :name
+     column :num
+     column :is_cooking
++    column :start
+     actions
+   end
+
+@@ -20,6 +21,7 @@ ActiveAdmin.register FoodProduct do
+     column :name
+     column :num
+     column :is_cooking
++    column :start
+   end
+```
