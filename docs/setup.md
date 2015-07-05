@@ -2,10 +2,13 @@
 
 各環境でアプリを動かす手順
 
+# rubyのインストール
+※ 導入するrubyのバージョンは2.2.0  (gemfileで確認して下さい)  
+\# mac  
+[Homebrewのインストールとrbenvのインストール Mac編]( http://qiita.com/issobero/items/e0443b79da117ed48294)
 # postgresqlの準備
-
 ```sh
-# mac
+#mac
 brew install postgresql
 
 # linux
@@ -25,13 +28,26 @@ export PGDATA=/var/lib/pgsql/data     # linux
 # $PGDATAを初期化
 initdb --encoding=UTF-8 --locale=ja_JP.UTF-8
 ```
+ここでmacの人は"もう既にディレクトリがあるよ！"と怒られるかもしれない.
+こんなエラーが出たら``/usr/local/var/postgres``ディレクトリを消す.
+```sh
+#エラー文
+initdb: directory "/usr/local/var/postgres" exists but is not empty
+If you want toreate a new database system, either remove or empty
+the directory "/usr/local/var/postgres" or run initdb
+with an argument other than "/usr/local/var/postgres".
 
+# /usr/local/var/postgresを消す
+rm -rf /usr/local/var/postgres
+```
+そしてもう一度``initdb``を行う.
 # development環境
 
 ```sh
 git clone
 cd group_manager
 bundle install --path vendor/bundle
+pg_ctl start
 rake db:create  # postgresqlのDB作成
 rake db:migrate # マイグレーション実行, モデルが生成されてDBに反映される
 rake db:seed_fu # 初期値投入
