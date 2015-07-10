@@ -1,6 +1,7 @@
 class PowerOrdersController < ApplicationController
   before_action :set_power_order, only: [:show, :edit, :update, :destroy]
   before_action :get_groups # カレントユーザの所有する団体を@groupsとする
+  load_and_authorize_resource # for cancancan
 
   # GET /power_orders
   # GET /power_orders.json

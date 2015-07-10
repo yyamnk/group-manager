@@ -60,6 +60,7 @@ class Ability
       can [:read, :update], RentalOrder, :group_id => groups
       # 電力申請は自分の団体のみ作成，読み，更新，削除を許可
       can :manage, PowerOrder, :group_id => groups
+      can :new, PowerOrder
       # ステージ利用申請は自分の団体のみ読み，更新を許可
       can [:read, :update], StageOrder, :group_id => groups
       # 実施場所申請は自分の団体のみ読み，更新を許可
