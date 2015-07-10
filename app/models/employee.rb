@@ -10,7 +10,7 @@ class Employee < ActiveRecord::Base
 
   validates :student_id, format: { with: /(\A\d{8}+\z)/i }
 
-  validates :group_id, :uniqueness => {:scope => [:student_id] } # 団体と学籍番号でユニーク
+  validates :student_id, :uniqueness => {:scope => [:group_id] } # 団体と学籍番号でユニーク
 
   # 同じ学籍番号が登録されていれば重複を記録する
   def give_duplication
