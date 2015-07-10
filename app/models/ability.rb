@@ -67,8 +67,9 @@ class Ability
       # 従業員は自分の団体のみ自由に触れる. ただしnewはidに無関係に許可
       can :manage, Employee, :group_id => groups
       can :new, Employee
-      # 販売食品は自分の団体のみ自由に触れる
+      # 販売食品は自分の団体のみ自由に触れる．ただしnewはidに無関係に許可
       can :manage, FoodProduct, :group_id => groups
+      can :new, FoodProduct
       # 購入リストは自分が持つ販売食品に紐付いたもののみ自由に触れる
       food_ids = FoodProduct.where( group_id: groups ).pluck('id')
       can :manage, PurchaseList, :food_product_id => food_ids
