@@ -74,6 +74,8 @@ class Ability
       # 購入リストは自分が持つ販売食品に紐付いたもののみ自由に触れる
       food_ids = FoodProduct.where( group_id: groups ).pluck('id')
       can :manage, PurchaseList, :food_product_id => food_ids
+      # 店舗リストは読み，新規作成を許可
+      can [:read, :create], Shop
     end
 
   end
