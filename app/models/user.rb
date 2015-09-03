@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
     :rememberable,
     :trackable,
     :validatable,
-    # :registerable, # 登録を不可に変更
+    :registerable, # 登録を可に
     :confirmable
 
   belongs_to :role      # Userからroleを参照可能にする, ex) User.find(1).role
