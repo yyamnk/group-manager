@@ -5,30 +5,26 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:group_id) %></th>
+      <th><%= model_class.human_attribute_name(:group_name) %></th>
       <th><%= model_class.human_attribute_name(:name_ja) %></th>
       <th><%= model_class.human_attribute_name(:name_en) %></th>
-      <th><%= model_class.human_attribute_name(:department_id) %></th>
-      <th><%= model_class.human_attribute_name(:grade_id) %></th>
+      <th><%= model_class.human_attribute_name(:department) %></th>
+      <th><%= model_class.human_attribute_name(:grade) %></th>
       <th><%= model_class.human_attribute_name(:tel) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @sub_reps.each do |sub_rep| %>
       <tr>
-        <td><%= link_to sub_rep.id, sub_rep_path(sub_rep) %></td>
-        <td><%= sub_rep.group_id %></td>
+        <td><%= sub_rep.group.name %></td>
         <td><%= sub_rep.name_ja %></td>
         <td><%= sub_rep.name_en %></td>
-        <td><%= sub_rep.department_id %></td>
-        <td><%= sub_rep.grade_id %></td>
+        <td><%= sub_rep.department.name_ja %></td>
+        <td><%= sub_rep.grade.name %></td>
         <td><%= sub_rep.tel %></td>
         <td><%= sub_rep.email %></td>
-        <td><%=l sub_rep.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_sub_rep_path(sub_rep), :class => 'btn btn-default btn-xs' %>

@@ -112,3 +112,12 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/sub_reps/index.ht
     conflict  app/views/sub_reps/show.html.erb
        force  app/views/sub_reps/show.html.erb
 ```
+
+### index表示項目を整理
+
+* 不要な項目の削除
+    - id
+* 表示内容の変更
+    - `group`
+    - `department`
+    - `grade`
