@@ -62,3 +62,6 @@ gem 'twitter-bootstrap-rails'
 
 # heroku監視
 gem 'newrelic_rpm'
+
+# for e-mail validate
+gem 'validates_email_format_of'
