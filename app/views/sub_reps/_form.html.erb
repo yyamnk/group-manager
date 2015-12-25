@@ -1,0 +1,17 @@
+<%= simple_form_for(@sub_rep) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :group %>
+    <%= f.input :name_ja %>
+    <%= f.input :name_en %>
+    <%= f.association :department %>
+    <%= f.association :grade %>
+    <%= f.input :tel %>
+    <%= f.input :email %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

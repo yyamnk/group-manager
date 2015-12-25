@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @sub_rep.group %>
+</p>
+
+<p>
+  <strong>Name ja:</strong>
+  <%= @sub_rep.name_ja %>
+</p>
+
+<p>
+  <strong>Name en:</strong>
+  <%= @sub_rep.name_en %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @sub_rep.department %>
+</p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= @sub_rep.grade %>
+</p>
+
+<p>
+  <strong>Tel:</strong>
+  <%= @sub_rep.tel %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @sub_rep.email %>
+</p>
+
+<%= link_to 'Edit', edit_sub_rep_path(@sub_rep) %> |
+<%= link_to 'Back', sub_reps_path %>

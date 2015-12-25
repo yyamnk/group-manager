@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sub Reps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Name ja</th>
+      <th>Name en</th>
+      <th>Department</th>
+      <th>Grade</th>
+      <th>Tel</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sub_reps.each do |sub_rep| %>
+      <tr>
+        <td><%= sub_rep.group %></td>
+        <td><%= sub_rep.name_ja %></td>
+        <td><%= sub_rep.name_en %></td>
+        <td><%= sub_rep.department %></td>
+        <td><%= sub_rep.grade %></td>
+        <td><%= sub_rep.tel %></td>
+        <td><%= sub_rep.email %></td>
+        <td><%= link_to 'Show', sub_rep %></td>
+        <td><%= link_to 'Edit', edit_sub_rep_path(sub_rep) %></td>
+        <td><%= link_to 'Destroy', sub_rep, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sub rep', new_sub_rep_path %>
