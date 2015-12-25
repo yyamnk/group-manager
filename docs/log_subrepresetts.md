@@ -69,3 +69,29 @@ $ rake db:migrate
 +
 +  validates :email, :email_format => { :message => '有効なe-mailアドレスを入力してください' }
 ```
+
+## 副代表の入力画面をDashboardに追加
+
+```diff
+--- a/app/views/welcome/index.html.erb
++++ b/app/views/welcome/index.html.erb
+@@ -17,6 +17,19 @@
+
++<div class="panel panel-primary">
++  <div class="panel-heading">
++    <h3 class="panel-title">副代表</h3>
++  </div>
++  <div class="panel-body">
++    参加団体の副代表を追加・編集します。<br>
++    対象: 全ての団体
++    <%= link_to t('welcome_controller.index'),
++            sub_reps_path,
++            :class => 'btn btn-default' %>
++  </div>
++</div>
++
+ <div class="panel panel-primary">
+   <div class="panel-heading">
+     <h3 class="panel-title">物品貸出</h3>
+   </div>
+```
