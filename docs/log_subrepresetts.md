@@ -95,3 +95,20 @@ $ rake db:migrate
      <h3 class="panel-title">物品貸出</h3>
    </div>
 ```
+
+## bootstrap適用
+
+```sh
+$ bundle exec rails g bootstrap:themed SubReps
+    conflict  app/views/sub_reps/index.html.erb
+Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/sub_reps/index.html.erb? (enter "h" for help) [Ynaqdh] a
+       force  app/views/sub_reps/index.html.erb
+    conflict  app/views/sub_reps/new.html.erb
+       force  app/views/sub_reps/new.html.erb
+    conflict  app/views/sub_reps/edit.html.erb
+       force  app/views/sub_reps/edit.html.erb
+    conflict  app/views/sub_reps/_form.html.erb
+       force  app/views/sub_reps/_form.html.erb
+    conflict  app/views/sub_reps/show.html.erb
+       force  app/views/sub_reps/show.html.erb
+```

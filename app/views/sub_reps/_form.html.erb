@@ -1,17 +1,20 @@
-<%= simple_form_for(@sub_rep) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @sub_rep, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :group_id %>
+  <%= error_span(@sub_rep[:group_id]) %>
+  <%= f.input :name_ja %>
+  <%= error_span(@sub_rep[:name_ja]) %>
+  <%= f.input :name_en %>
+  <%= error_span(@sub_rep[:name_en]) %>
+  <%= f.input :department_id %>
+  <%= error_span(@sub_rep[:department_id]) %>
+  <%= f.input :grade_id %>
+  <%= error_span(@sub_rep[:grade_id]) %>
+  <%= f.input :tel %>
+  <%= error_span(@sub_rep[:tel]) %>
+  <%= f.input :email %>
+  <%= error_span(@sub_rep[:email]) %>
 
-  <div class="form-inputs">
-    <%= f.association :group %>
-    <%= f.input :name_ja %>
-    <%= f.input :name_en %>
-    <%= f.association :department %>
-    <%= f.association :grade %>
-    <%= f.input :tel %>
-    <%= f.input :email %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                sub_reps_path, :class => 'btn btn-default' %>
 <% end %>
