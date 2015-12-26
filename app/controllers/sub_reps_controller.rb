@@ -1,5 +1,6 @@
 class SubRepsController < ApplicationController
   before_action :set_sub_rep, only: [:show, :edit, :update, :destroy]
+  before_action :get_groups # カレントユーザの所有する団体を@groupsとする
 
   # GET /sub_reps
   # GET /sub_reps.json
@@ -70,5 +71,9 @@ class SubRepsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def sub_rep_params
       params.require(:sub_rep).permit(:group_id, :name_ja, :name_en, :department_id, :grade_id, :tel, :email)
+    end
+
+    def get_groups
+      @groups = Group.where( user_id: current_user.id )
     end
 end

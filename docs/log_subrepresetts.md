@@ -121,3 +121,10 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/sub_reps/index.ht
     - `group`
     - `department`
     - `grade`
+
+### _formの編集
+
+* 関連項目の変更 (`f.input` から`f.association`へ)
+    - group, `views/employee/_form...`を参考に
+        - コントローラで`@groups`を取得
+    - department, grade, `views/user_detail/_form`を参考に
