@@ -6,7 +6,7 @@ class SubRepsController < ApplicationController
   # GET /sub_reps
   # GET /sub_reps.json
   def index
-    @sub_reps = SubRep.all
+    @sub_reps = SubRep.where(group_id: @groups)
   end
 
   # GET /sub_reps/1
