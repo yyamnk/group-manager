@@ -145,3 +145,10 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/sub_reps/index.ht
 ## 各種申請時に選択可能な参加団体を変更
 
 副代表が登録されている団体のみを選択肢として与える．
+
+## 副代表登録の警告文を追加
+
+副代表が登録されていない団体がある場合にwarningを表示させる
+
+`app/views/shared/_warning_subrep.html.erb`を作成
+このパーシャルを`welcome/index`, `sub_reps/index.html.erb`で表示

@@ -1,4 +1,4 @@
-class SubRepsController < ApplicationController
+class SubRepsController < GroupBase
   before_action :set_sub_rep, only: [:show, :edit, :update, :destroy]
   before_action :get_groups # カレントユーザの所有する団体を@groupsとする
   load_and_authorize_resource # for cancancan
