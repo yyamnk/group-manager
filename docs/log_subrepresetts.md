@@ -136,3 +136,8 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/sub_reps/index.ht
 * コントローラ
     - `controllers/sub_reps_controller.rb`に`load_and_authorize_resource`を追記
         - これでcancancanの設定が反映される
+
+## 各種申請時に副代表の登録を必須にする
+
+`cancancan`で編集可能なレコードを変更．
+ユーザが所有していて，副代表が登録済みのgroup_idのみに権限を与える

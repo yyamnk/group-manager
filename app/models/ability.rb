@@ -59,31 +59,46 @@ class Ability
       can :manage, Group, :user_id => user.id
       # ユーザに紐付いている参加団体
       groups = Group.where( user_id: user.id ).pluck('id')
-      # 貸出物品は自分の団体のみ読み，更新を許可
-      can [:read, :update], RentalOrder, :group_id => groups
-      # 電力申請は自分の団体のみ作成，読み，更新，削除を許可
-      can :manage, PowerOrder, :group_id => groups
+      # ユーザに紐付き & 副代表が登録済みの団体
+      groups_with_subrep = get_groups_with_subrep(groups)
+      # 貸出物品は自分の団体で副代表登録済みなら読み，更新を許可
+      can [:read, :update], RentalOrder, :group_id => groups_with_subrep
+      # 電力申請は自分の団体で副代表登録済みなら全て許可
+      # ただしnewはidに無関係に許可
+      can :manage, PowerOrder, :group_id => groups_with_subrep
       can :new, PowerOrder
-      # ステージ利用申請は自分の団体のみ読み，更新を許可
-      can [:read, :update], StageOrder, :group_id => groups
-      # 実施場所申請は自分の団体のみ読み，更新を許可
-      can [:read, :update], PlaceOrder, :group_id => groups
-      # 従業員は自分の団体のみ自由に触れる. ただしnewはidに無関係に許可
-      can :manage, Employee, :group_id => groups
+      # ステージ利用申請は自分の団体で副代表登録済みなら読み，更新を許可
+      can [:read, :update], StageOrder, :group_id => groups_with_subrep
+      # 実施場所申請は自分の団体で副代表登録済みなら読み，更新を許可
+      can [:read, :update], PlaceOrder, :group_id => groups_with_subrep
+      # 従業員は自分の団体で副代表登録済みなら自由に触れる.
+      # ただしnewはidに無関係に許可
+      can :manage, Employee, :group_id => groups_with_subrep
       can :new, Employee
-      # 販売食品は自分の団体のみ自由に触れる．ただしnewはidに無関係に許可
-      can :manage, FoodProduct, :group_id => groups
+      # 販売食品は自分の団体で副代表登録済みなら自由に触れる．
+      # ただしnewはidに無関係に許可
+      can :manage, FoodProduct, :group_id => groups_with_subrep
       can :new, FoodProduct
       # 購入リストは自分が持つ販売食品に紐付いたもののみ自由に触れる
       food_ids = FoodProduct.where( group_id: groups ).pluck('id')
       can :manage, PurchaseList, :food_product_id => food_ids
       # 店舗リストは読み，新規作成を許可
       can [:read, :create], Shop
-      # 副代表は自分の団体のみ自由に触れる．だたしnewはidに無関係に許可
+      # 副代表は自分の団体のみ自由に触れる．
+      # だたしnewはidに無関係に許可
       can :manage, SubRep, :group_id => groups
       can :new, SubRep
     end
-
   end
 
+  def get_groups_with_subrep(group_ids)
+    # 副代表が登録済みのgroup_idsを返す
+    subrep_groups = []
+    for id in group_ids do
+      if Group.find(id).is_exist_subrep
+        subrep_groups.push(id)
+      end
+    end
+    return subrep_groups
+  end
 end
