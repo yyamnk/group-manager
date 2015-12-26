@@ -49,14 +49,17 @@ class Ability
     end
     if user.role_id == 3 then # for user (デフォルトのrole)
       can :manage, :welcome
-      # emailのconfirmが終わっていれば
+      #
+      # TODO: emailのconfirmで判定する
+      # confirmした後のみ各種CURDできるようにさせたい．
       #
       # UserDetailの自分のレコードは作成, 更新, 読みが可能. 削除はだめ.
       can [:read, :create, :update], UserDetail, :user_id => user.id
       # 所有するGroupのレコードは自由に触れる
       can :manage, Group, :user_id => user.id
-      # 貸出物品は自分の団体のみ読み，更新を許可
+      # ユーザに紐付いている参加団体
       groups = Group.where( user_id: user.id ).pluck('id')
+      # 貸出物品は自分の団体のみ読み，更新を許可
       can [:read, :update], RentalOrder, :group_id => groups
       # 電力申請は自分の団体のみ作成，読み，更新，削除を許可
       can :manage, PowerOrder, :group_id => groups
@@ -76,6 +79,9 @@ class Ability
       can :manage, PurchaseList, :food_product_id => food_ids
       # 店舗リストは読み，新規作成を許可
       can [:read, :create], Shop
+      # 副代表は自分の団体のみ自由に触れる．だたしnewはidに無関係に許可
+      can :manage, SubRep, :group_id => groups
+      can :new, SubRep
     end
 
   end

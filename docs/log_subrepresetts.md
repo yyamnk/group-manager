@@ -128,3 +128,11 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/sub_reps/index.ht
     - group, `views/employee/_form...`を参考に
         - コントローラで`@groups`を取得
     - department, grade, `views/user_detail/_form`を参考に
+
+## 編集権限を付加
+
+* cancancan
+    - `models/ability.rb`で`SubRep`の権限を設定
+* コントローラ
+    - `controllers/sub_reps_controller.rb`に`load_and_authorize_resource`を追記
+        - これでcancancanの設定が反映される
