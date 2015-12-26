@@ -69,7 +69,16 @@ export EMAIL_SENDER='送信者名 <ユーザ名@gmail.com>'
 export DEFAULT_URL=https://<アプリ名>.herokuapp.com
 ```
 
-あとは`bundle exec rails s`でサーバ起動, `localholt:3000`でアクセス
+環境変数を追加, 変更, 削除した場合は  
+terminal上で以下を必ず実行する.  
+```
+# 設定ファイルの再読み込み
+source $HOME/.***rc
+```
+
+
+あとは`bundle exec rails s`でサーバ起動,  
+`localhost:3000`でアクセス
 
 # production環境
 
@@ -88,9 +97,97 @@ createuser -P -d group_manager
 rake db:create RAILS_ENV=production
 rake db:migrate RAILS_ENV=production
 rake db:seed_fu RAILS_ENV=production
+
+# terminal
+$ source ~/.***rc
 ```
 
-サーバ起動
+`bundle exec rails s -e production`でサーバ起動,  
+`localhost:3000`でアクセス  
+
+```sh 
+# エラー
+`raise_no_secret_key': Devise.secret_key was not set. Please add the following to your Devise initializer:
+```
+
+になった.
+
+[rakeがDevise.secret_key was not setと出て失敗するときの対処法](http://hack.aipo.com/archives/7992/)
+を参考に, `config/initializers/devise.rb`に追加する.
+
+ソースにsecret_keyを入れたくない.
+環境変数から設定する.
+
+```
+# config/initializers/devise.rb
+
+Devise.setup do |config|
+    ...
+  config.secret_key = ENV['DEVICE_SECRET_KEY']
+    ...
+``` 
+
+```
+
+# terminal上でsecret_keyを生成
+$ rake secret
+
+# ~/.***rcに追加
+export DEVICE_SECRET_KEY=<生成したsecret_key>
+
+# terminal
+$ source ~/.***rc
+```
+
+これで
+
+`bundle exec rails s -e production`でサーバ起動,  
+`localhost:3000`にアクセス  
+
+```
+# エラー
+Missing `secret_token` and `secret_key_base` for 'production' environment, set these values in `config/secrets.yml` 
+```
+
+secret_key_baseを追加する   
+環境変数から設定する. 
+
+```
+# config/secrets.yml
+production:
+  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
+  ...
+
+# terminalでsecret_keyを生成
+$ rake secret
+
+# ~/.***rc 
+export SECRET_KEY_BASE=<secret_key>
+
+# terminal
+$ source ~/.***rc
+```
+
+
+サーバ起動とアクセス
+
+```sh
+bundle exec rails s -e production
+```
+
+css, jsがうまく読み込めていない  
+
+[RailsをローカルでProductionモードで起動させる方法](http://ruby-rails.hatenadiary.com/entry/20141110/1415623670)を参考に,  
+`~/.***rc`に環境変数を追加する
+```
+# ~/.***rcに追加
+export RAILS_SERVE_STATIC_FILES=true
+
+# terminal 
+source ~/.***rc
+```
+
+サーバ起動とアクセス
 
 ```sh
 bundle exec rails s -e production
