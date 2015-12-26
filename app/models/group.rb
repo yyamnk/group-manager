@@ -45,9 +45,14 @@ class Group < ActiveRecord::Base
     order.save
   end
 
-  # 副代表の有無
   def is_exist_subrep
+    # 副代表の有無
     num_subrep = self.sub_reps.count
     return num_subrep > 0 ? true : false
+  end
+
+  def self.get_has_subreps(user_id)
+    # 副代表が登録済みの団体を返す
+    return Group.joins(:sub_reps).where( user_id: user_id )
   end
 end

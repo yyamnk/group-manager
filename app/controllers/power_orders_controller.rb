@@ -1,4 +1,4 @@
-class PowerOrdersController < ApplicationController
+class PowerOrdersController < GroupBase
   before_action :set_power_order, only: [:show, :edit, :update, :destroy]
   before_action :get_groups # カレントユーザの所有する団体を@groupsとする
   load_and_authorize_resource # for cancancan
@@ -80,7 +80,8 @@ class PowerOrdersController < ApplicationController
     end
 
     def get_groups
+      super  # set @groups by GroupBase.get_groups
       # 自分の所有するグループでステージ以外
-      @groups = Group.where( user_id: current_user.id ).where( group_category_id: [1,2,4,5] )
+      @groups = @groups.where( group_category_id: [1,2,4,5] )
     end
 end

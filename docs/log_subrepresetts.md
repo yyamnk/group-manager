@@ -1,6 +1,6 @@
 <!-- ************** docs/log_subrepresetts.md **************
 Created    : 2015-Dec-25
-Last Change: 2015-Dec-26.
+Last Change: 2015-Dec-27.
 -->
 
 
@@ -141,3 +141,7 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/sub_reps/index.ht
 
 `cancancan`で編集可能なレコードを変更．
 ユーザが所有していて，副代表が登録済みのgroup_idのみに権限を与える
+
+## 各種申請時に選択可能な参加団体を変更
+
+副代表が登録されている団体のみを選択肢として与える．
