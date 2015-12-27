@@ -91,3 +91,12 @@ $ rake db:migrate
 +  belongs_to :fes_year
    has_many :sub_reps
 ```
+
+## 既存の団体を全て2015年に紐付ける
+
+```sh
+$ bundle exec rails g task set_year_to_groups
+      create  lib/tasks/set_year_to_groups.rake
+```
+
+タスクを書いて,  `rake set_year_to_groups:set_2015`で実行
