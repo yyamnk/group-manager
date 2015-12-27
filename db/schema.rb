@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227123846) do
+ActiveRecord::Schema.define(version: 20151227124815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,8 +108,10 @@ ActiveRecord::Schema.define(version: 20151227123846) do
     t.text     "first_question"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "fes_year_id"
   end
 
+  add_index "groups", ["fes_year_id"], name: "index_groups_on_fes_year_id", using: :btree
   add_index "groups", ["group_category_id"], name: "index_groups_on_group_category_id", using: :btree
   add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
 
@@ -299,6 +301,7 @@ ActiveRecord::Schema.define(version: 20151227123846) do
   add_foreign_key "employees", "groups"
   add_foreign_key "fes_dates", "fes_years"
   add_foreign_key "food_products", "groups"
+  add_foreign_key "groups", "fes_years"
   add_foreign_key "groups", "group_categories"
   add_foreign_key "groups", "users"
   add_foreign_key "place_orders", "groups"

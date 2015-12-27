@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
   belongs_to :group_category
   belongs_to :user
+  belongs_to :fes_year
   has_many :sub_reps
 
   validates :name, presence: true, uniqueness: true

@@ -68,3 +68,26 @@ $ rake db:migrate
 * model リレーション追加
     - `../app/models/fes_date.rb`
     - `../app/models/fes_year.rb`
+
+# 団体とFesYearを関連付け
+
+```sh
+$ bundle exec rails g migration AddFesYearToGroup fes_year:references
+      invoke  active_record
+      create    db/migrate/20151227124815_add_fes_year_to_group.rb
+$ rake db:migrate 
+== 20151227124815 AddFesYearToGroup: migrating ================================
+-- add_reference(:groups, :fes_year, {:index=>true, :foreign_key=>true})
+   -> 0.0094s
+== 20151227124815 AddFesYearToGroup: migrated (0.0095s) =======================
+```
+
+## モデルで関連付け
+
+```diff
+ class Group < ActiveRecord::Base
+   belongs_to :group_category
+   belongs_to :user
++  belongs_to :fes_year
+   has_many :sub_reps
+```
