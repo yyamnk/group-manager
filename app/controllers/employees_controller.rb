@@ -1,4 +1,4 @@
-class EmployeesController < ApplicationController
+class EmployeesController < GroupBase
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
   before_action :get_groups # カレントユーザの所有する団体を@groupsとする
   load_and_authorize_resource # for cancancan
@@ -75,6 +75,7 @@ class EmployeesController < ApplicationController
     end
 
     def get_groups
-      @groups = Group.where( user_id: current_user.id ).where( group_category_id: 1)
+      super  # set @groups by GroupBase.get_groups
+      @groups = @groups.where( group_category_id: 1)
     end
 end

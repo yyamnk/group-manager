@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
   belongs_to :group_category
   belongs_to :user
+  has_many :sub_reps
 
   validates :name, presence: true, uniqueness: true
   validates :user, presence: true
@@ -42,5 +43,16 @@ class Group < ActiveRecord::Base
     return if group_category_id == 3 # ステージ企画ならば戻る
     order = PlaceOrder.new( group_id: id )
     order.save
+  end
+
+  def is_exist_subrep
+    # 副代表の有無
+    num_subrep = self.sub_reps.count
+    return num_subrep > 0 ? true : false
+  end
+
+  def self.get_has_subreps(user_id)
+    # 副代表が登録済みの団体を返す
+    return Group.joins(:sub_reps).where(user_id: user_id)
   end
 end

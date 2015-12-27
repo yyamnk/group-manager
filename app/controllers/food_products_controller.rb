@@ -1,4 +1,4 @@
-class FoodProductsController < ApplicationController
+class FoodProductsController < GroupBase
   before_action :set_food_product, only: [:show, :edit, :update, :destroy]
   before_action :get_groups # 各アクションの実行前に実行
   load_and_authorize_resource # for cancancan
@@ -74,8 +74,9 @@ class FoodProductsController < ApplicationController
       params.require(:food_product).permit(:group_id, :name, :num, :is_cooking, :start)
     end
 
-    # ユーザが所有し，模擬店(食品販売)のカテゴリの団体を取得する
     def get_groups
-      @groups = Group.where( user_id: current_user.id ).where( group_category_id: 1)
+      # ユーザが所有し，模擬店(食品販売)のカテゴリの団体を取得する
+      super  # set @groups by GroupBase.get_groups
+      @groups = @groups.where( group_category_id: 1)
     end
 end

@@ -1,4 +1,6 @@
 <%= render 'dashboard' %>
+<%# 副代表未登録の警告 %>
+<%= render partial: 'shared/warning_subrep' %>
 
 <div class="panel panel-primary">
   <div class="panel-heading">
@@ -14,6 +16,24 @@
             :class => 'btn btn-primary' %>
   </div>
 </div>
+
+<% if @num_nosubrep_groups > 0 %>
+  <%# 未登録の団体がある場合は副代表の枠をwarningへ変更 %>
+  <div class="panel panel-warning">
+<% else %>
+  <div class="panel panel-primary">
+<% end %>
+    <div class="panel-heading">
+      <h3 class="panel-title">副代表</h3>
+    </div>
+    <div class="panel-body">
+      参加団体の副代表を追加・編集します。各種申請には副代表の登録が必要です。<br>
+      対象: 全ての団体
+      <%= link_to t('welcome_controller.index'),
+              sub_reps_path,
+              :class => 'btn btn-default' %>
+    </div>
+  </div>
 
 <div class="panel panel-primary">
   <div class="panel-heading">
