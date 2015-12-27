@@ -8,6 +8,7 @@ class Group < ActiveRecord::Base
   validates :user, presence: true
   validates :activity, presence: true
   validates :group_category, presence: true
+  validates :fes_year, presence: true
 
   # simple_form, activeadminで表示するカラムを指定
   # 関連モデル.groupが関連モデル.group.nameと同等になる
