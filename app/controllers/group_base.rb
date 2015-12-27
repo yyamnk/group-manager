@@ -13,7 +13,8 @@ class GroupBase < ApplicationController
     # ログインユーザの所有しているグループのうち，
     # 副代表が登録されていない団体数を取得する
     @num_nosubrep_groups = @groups.count -
-                           Group.get_has_subreps(current_user.id).count
+                           Group.where(fes_year: this_year).
+                                 get_has_subreps(current_user.id).count
   end
 
 end
