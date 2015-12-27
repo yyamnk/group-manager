@@ -41,3 +41,10 @@ $ bundle exec rails generate active_admin:resource FesYear
 
 `app/admin/fes_year.rb`を編集．
 `parmit_params`, `index`を追記
+
+# seed追加
+
+```sh
+$ vim db/fixtures/fes_year.rb
+$ rake db:seed_fu
+```
