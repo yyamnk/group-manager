@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227120540) do
+ActiveRecord::Schema.define(version: 20151227123846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,10 +61,13 @@ ActiveRecord::Schema.define(version: 20151227120540) do
   create_table "fes_dates", force: :cascade do |t|
     t.integer  "days_num"
     t.string   "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "day",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "day",         null: false
+    t.integer  "fes_year_id"
   end
+
+  add_index "fes_dates", ["fes_year_id"], name: "index_fes_dates_on_fes_year_id", using: :btree
 
   create_table "fes_years", force: :cascade do |t|
     t.integer  "fes_year",   null: false
@@ -294,6 +297,7 @@ ActiveRecord::Schema.define(version: 20151227120540) do
 
   add_foreign_key "employees", "employee_categories"
   add_foreign_key "employees", "groups"
+  add_foreign_key "fes_dates", "fes_years"
   add_foreign_key "food_products", "groups"
   add_foreign_key "groups", "group_categories"
   add_foreign_key "groups", "users"

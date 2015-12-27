@@ -48,3 +48,23 @@ $ bundle exec rails generate active_admin:resource FesYear
 $ vim db/fixtures/fes_year.rb
 $ rake db:seed_fu
 ```
+
+# FesDateにFesYearを関連付け
+
+```sh
+$ bundle exec rails g migration AddFesYearToFesDate fes_year:references
+      invoke  active_record
+      create    db/migrate/20151227123846_add_fes_year_to_fes_date.rb
+
+$ rake db:migrate
+== 20151227123846 AddFesYearToFesDate: migrating ==============================
+-- add_reference(:fes_dates, :fes_year, {:index=>true, :foreign_key=>true})
+   -> 0.0098s
+== 20151227123846 AddFesYearToFesDate: migrated (0.0099s) =====================
+```
+
+* seed変更
+    - `../db/fixtures/fes_year_date.rb` # fes_dateより先にfes_yearのseedを加える
+* model リレーション追加
+    - `../app/models/fes_date.rb`
+    - `../app/models/fes_year.rb`
