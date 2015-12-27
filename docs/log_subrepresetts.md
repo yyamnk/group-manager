@@ -152,3 +152,10 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/sub_reps/index.ht
 
 `app/views/shared/_warning_subrep.html.erb`を作成
 このパーシャルを`welcome/index`, `sub_reps/index.html.erb`で表示
+
+## 副代表のテーブルをactive adminの管理対象へ追加
+
+```sh
+$ bundle exec rails generate active_admin:resource SubRep
+      create  app/admin/sub_rep.rb
+```
