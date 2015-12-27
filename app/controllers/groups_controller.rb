@@ -1,11 +1,10 @@
-class GroupsController < ApplicationController
+class GroupsController < GroupBase
   before_action :set_group, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource # for cancancan
 
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.where( user_id: current_user.id )
   end
 
   # GET /groups/1
@@ -82,6 +81,8 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:name, :group_category_id, :user_id, :activity, :first_question)
+      params.require(:group).
+        permit(:name, :group_category_id, :user_id, :activity, :first_question,
+               :fes_year_id)
     end
 end
