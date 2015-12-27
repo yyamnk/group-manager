@@ -31,3 +31,13 @@ $ rake db:migrate
    -> 0.0038s
 == 20151227120540 CreateFesYears: migrated (0.0039s) ==========================
 ```
+
+# ActiveAdminの管理対象へ追加
+
+```sh
+$ bundle exec rails generate active_admin:resource FesYear
+      create  app/admin/fes_year.rb
+```
+
+`app/admin/fes_year.rb`を編集．
+`parmit_params`, `index`を追記
