@@ -1,5 +1,7 @@
 <%= simple_form_for @group, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.hidden_field :user_id, value: @group[:user_id] %>
+  <%= f.hidden_field :fes_year_id,
+      value: FesYear.where(fes_year: Time.now.year).first.id %>
   <%= f.input :name,
     hint: t(".hint_name")
   %>

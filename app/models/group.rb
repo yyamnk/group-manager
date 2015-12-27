@@ -1,12 +1,14 @@
 class Group < ActiveRecord::Base
   belongs_to :group_category
   belongs_to :user
+  belongs_to :fes_year
   has_many :sub_reps
 
   validates :name, presence: true, uniqueness: true
   validates :user, presence: true
   validates :activity, presence: true
   validates :group_category, presence: true
+  validates :fes_year, presence: true
 
   # simple_form, activeadminで表示するカラムを指定
   # 関連モデル.groupが関連モデル.group.nameと同等になる
