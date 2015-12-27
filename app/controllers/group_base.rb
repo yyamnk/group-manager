@@ -3,6 +3,8 @@ class GroupBase < ApplicationController
   before_action :set_groups # カレントユーザの所有する団体を@groupsへ
 
   def set_groups
+    # ログインしていなければ何もしない
+    return if current_user.nil?
     # 登録時の選択肢に使うグループを取得
     # 自分の所有するグループ, 副代表登録済み,
     @groups = Group.where(user_id: current_user.id)
