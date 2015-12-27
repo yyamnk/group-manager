@@ -1,4 +1,4 @@
-class PurchaseListsController < ApplicationController
+class PurchaseListsController < GroupBase
   before_action :set_purchase_list, only: [:show, :edit, :update, :destroy]
   before_action :set_group_ids        # 各アクション実行前に実行
   load_and_authorize_resource # for cancancan
@@ -117,7 +117,7 @@ class PurchaseListsController < ApplicationController
 
     def set_group_ids
       # ユーザが所有し，種別が模擬店(食品販売)の団体のid
-      @group_ids = Group.where( ["user_id = ? and group_category_id = ?", current_user.id, 1]).pluck('id')
+      @group_ids = @groups.where(group_category_id: 1).pluck('id')
       # logger.debug @group_ids
     end
 

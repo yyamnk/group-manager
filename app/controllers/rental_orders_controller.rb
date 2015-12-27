@@ -1,6 +1,5 @@
 class RentalOrdersController < GroupBase
   before_action :set_rental_order, only: [:show, :edit, :update, :destroy]
-  before_action :get_groups # カレントユーザの所有する団体を@groupsとする
   load_and_authorize_resource # for cancancan
 
   # GET /rental_orders
