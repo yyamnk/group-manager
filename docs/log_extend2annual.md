@@ -100,3 +100,9 @@ $ bundle exec rails g task set_year_to_groups
 ```
 
 タスクを書いて,  `rake set_year_to_groups:set_2015`で実行
+
+## FesDateを管理対象へ
+
+```sh
+$ bundle exec rails generate active_admin:resource FesDate
+```
