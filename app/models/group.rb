@@ -47,6 +47,12 @@ class Group < ActiveRecord::Base
     order.save
   end
 
+  def init_stage_common_option # StageCommonOptionのレコードが無ければ登録
+    return unless group_category_id == 3 # ステージ企画でなければ戻る
+    order = StageCommonOption.new( group_id: id, stage_content: '未回答' )
+    order.save
+  end
+
   def is_exist_subrep
     # 副代表の有無
     num_subrep = self.sub_reps.count
