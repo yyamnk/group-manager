@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @stage_common_option.group %>
+</p>
+
+<p>
+  <strong>Own equipment:</strong>
+  <%= @stage_common_option.own_equipment %>
+</p>
+
+<p>
+  <strong>Bgm:</strong>
+  <%= @stage_common_option.bgm %>
+</p>
+
+<p>
+  <strong>Camera permittion:</strong>
+  <%= @stage_common_option.camera_permittion %>
+</p>
+
+<p>
+  <strong>Loud sound:</strong>
+  <%= @stage_common_option.loud_sound %>
+</p>
+
+<p>
+  <strong>Stage content:</strong>
+  <%= @stage_common_option.stage_content %>
+</p>
+
+<%= link_to 'Edit', edit_stage_common_option_path(@stage_common_option) %> |
+<%= link_to 'Back', stage_common_options_path %>

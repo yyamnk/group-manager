@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227124815) do
+ActiveRecord::Schema.define(version: 20160113115058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -212,6 +212,19 @@ ActiveRecord::Schema.define(version: 20151227124815) do
     t.boolean  "is_closed_holiday", default: false
   end
 
+  create_table "stage_common_options", force: :cascade do |t|
+    t.integer  "group_id",          null: false
+    t.boolean  "own_equipment"
+    t.boolean  "bgm"
+    t.boolean  "camera_permittion"
+    t.boolean  "loud_sound"
+    t.text     "stage_content",     null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "stage_common_options", ["group_id"], name: "index_stage_common_options_on_group_id", using: :btree
+
   create_table "stage_orders", force: :cascade do |t|
     t.integer  "group_id"
     t.boolean  "is_sunny"
@@ -313,6 +326,7 @@ ActiveRecord::Schema.define(version: 20151227124815) do
   add_foreign_key "rental_item_allow_lists", "rental_items"
   add_foreign_key "rental_orders", "groups"
   add_foreign_key "rental_orders", "rental_items"
+  add_foreign_key "stage_common_options", "groups"
   add_foreign_key "stage_orders", "fes_dates"
   add_foreign_key "stage_orders", "groups"
   add_foreign_key "sub_reps", "departments"

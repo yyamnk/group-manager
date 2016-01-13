@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :stage_common_options
   resources :sub_reps
   resources :purchase_lists do
     # 標準の7つ以外を追加する

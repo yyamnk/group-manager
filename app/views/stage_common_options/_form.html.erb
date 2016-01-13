@@ -1,0 +1,16 @@
+<%= simple_form_for(@stage_common_option) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :group %>
+    <%= f.input :own_equipment %>
+    <%= f.input :bgm %>
+    <%= f.input :camera_permittion %>
+    <%= f.input :loud_sound %>
+    <%= f.input :stage_content %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
