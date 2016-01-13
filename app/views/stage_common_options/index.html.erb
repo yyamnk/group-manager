@@ -1,37 +1,37 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Stage Common Options</h1>
-
-<table>
+<%- model_class = StageCommonOption -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Group</th>
-      <th>Own equipment</th>
-      <th>Bgm</th>
-      <th>Camera permittion</th>
-      <th>Loud sound</th>
-      <th>Stage content</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:group_name) %></th>
+      <th><%= model_class.human_attribute_name(:own_equipment) %></th>
+      <th><%= model_class.human_attribute_name(:bgm) %></th>
+      <th><%= model_class.human_attribute_name(:camera_permittion) %></th>
+      <th><%= model_class.human_attribute_name(:loud_sound) %></th>
+      <th><%= model_class.human_attribute_name(:stage_content) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @stage_common_options.each do |stage_common_option| %>
       <tr>
-        <td><%= stage_common_option.group %></td>
+        <td><%= stage_common_option.group.name %></td>
         <td><%= stage_common_option.own_equipment %></td>
         <td><%= stage_common_option.bgm %></td>
         <td><%= stage_common_option.camera_permittion %></td>
         <td><%= stage_common_option.loud_sound %></td>
         <td><%= stage_common_option.stage_content %></td>
-        <td><%= link_to 'Show', stage_common_option %></td>
-        <td><%= link_to 'Edit', edit_stage_common_option_path(stage_common_option) %></td>
-        <td><%= link_to 'Destroy', stage_common_option, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_stage_common_option_path(stage_common_option), :class => 'btn btn-default btn-xs' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Stage common option', new_stage_common_option_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_stage_common_option_path,
+            :class => 'btn btn-primary' %>
