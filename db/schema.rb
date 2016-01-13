@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150703190414) do
+ActiveRecord::Schema.define(version: 20151227124815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,9 +61,18 @@ ActiveRecord::Schema.define(version: 20150703190414) do
   create_table "fes_dates", force: :cascade do |t|
     t.integer  "days_num"
     t.string   "date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "day",         null: false
+    t.integer  "fes_year_id"
+  end
+
+  add_index "fes_dates", ["fes_year_id"], name: "index_fes_dates_on_fes_year_id", using: :btree
+
+  create_table "fes_years", force: :cascade do |t|
+    t.integer  "fes_year",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "day",        null: false
   end
 
   create_table "food_products", force: :cascade do |t|
@@ -99,8 +108,10 @@ ActiveRecord::Schema.define(version: 20150703190414) do
     t.text     "first_question"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "fes_year_id"
   end
 
+  add_index "groups", ["fes_year_id"], name: "index_groups_on_fes_year_id", using: :btree
   add_index "groups", ["group_category_id"], name: "index_groups_on_group_category_id", using: :btree
   add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
 
@@ -227,6 +238,22 @@ ActiveRecord::Schema.define(version: 20150703190414) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sub_reps", force: :cascade do |t|
+    t.integer  "group_id",      null: false
+    t.string   "name_ja",       null: false
+    t.string   "name_en",       null: false
+    t.integer  "department_id", null: false
+    t.integer  "grade_id",      null: false
+    t.string   "tel",           null: false
+    t.string   "email",         null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "sub_reps", ["department_id"], name: "index_sub_reps_on_department_id", using: :btree
+  add_index "sub_reps", ["grade_id"], name: "index_sub_reps_on_grade_id", using: :btree
+  add_index "sub_reps", ["group_id"], name: "index_sub_reps_on_group_id", using: :btree
+
   create_table "user_details", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name_ja"
@@ -272,7 +299,9 @@ ActiveRecord::Schema.define(version: 20150703190414) do
 
   add_foreign_key "employees", "employee_categories"
   add_foreign_key "employees", "groups"
+  add_foreign_key "fes_dates", "fes_years"
   add_foreign_key "food_products", "groups"
+  add_foreign_key "groups", "fes_years"
   add_foreign_key "groups", "group_categories"
   add_foreign_key "groups", "users"
   add_foreign_key "place_orders", "groups"
@@ -286,6 +315,9 @@ ActiveRecord::Schema.define(version: 20150703190414) do
   add_foreign_key "rental_orders", "rental_items"
   add_foreign_key "stage_orders", "fes_dates"
   add_foreign_key "stage_orders", "groups"
+  add_foreign_key "sub_reps", "departments"
+  add_foreign_key "sub_reps", "grades"
+  add_foreign_key "sub_reps", "groups"
   add_foreign_key "user_details", "departments"
   add_foreign_key "user_details", "grades"
   add_foreign_key "user_details", "users"

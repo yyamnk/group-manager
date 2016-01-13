@@ -1,0 +1,27 @@
+<%= simple_form_for @sub_rep, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
+
+  <%= f.association :group, collection: @groups, selected: @sub_rep.group_id %>
+  <%= error_span(@sub_rep[:group_id]) %>
+
+  <%= f.input :name_ja %>
+  <%= error_span(@sub_rep[:name_ja]) %>
+
+  <%= f.input :name_en %>
+  <%= error_span(@sub_rep[:name_en]) %>
+
+  <%= f.association :department, label_method: :name_ja %>
+  <%= error_span(@sub_rep[:department_id]) %>
+
+  <%= f.association :grade, label_method: :name %>
+  <%= error_span(@sub_rep[:grade_id]) %>
+
+  <%= f.input :tel %>
+  <%= error_span(@sub_rep[:tel]) %>
+
+  <%= f.input :email %>
+  <%= error_span(@sub_rep[:email]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                sub_reps_path, :class => 'btn btn-default' %>
+<% end %>

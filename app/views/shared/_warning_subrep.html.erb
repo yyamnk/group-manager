@@ -1,0 +1,7 @@
+<%# 副代表が未登録ですよ! の警告を表示する %>
+<% if @num_nosubrep_groups > 0 %>
+  <div class="alert alert-dismissible alert-warning">
+    <h4>Warning!</h4>
+    <p>副代表の登録が未完了の団体があります．</p>
+  </div>
+<% end %>

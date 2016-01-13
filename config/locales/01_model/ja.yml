@@ -13,6 +13,7 @@ ja:
       food_product: 販売食品
       purchase_list: 購入リスト
       shop: 仕入先
+      sub_rep: 副代表
     attributes:
         group:
           name: 運営団体の名称
@@ -87,3 +88,10 @@ ja:
           is_closed_fri: 金曜定休
           is_closed_sat: 土曜定休
           is_closed_holiday: 祝日定休
+        sub_rep:
+          group_name: 運営団体の名称
+          name_ja: 氏名
+          name_en: Name
+          department: 所属
+          grade: 学年
+          tel: 電話番号

@@ -1,6 +1,6 @@
-class EmployeesController < ApplicationController
+class EmployeesController < GroupBase
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
-  before_action :get_groups # カレントユーザの所有する団体を@groupsとする
+  before_action :set_groups # カレントユーザの所有する団体を@groupsとする
   load_and_authorize_resource # for cancancan
 
   # GET /employees
@@ -74,7 +74,8 @@ class EmployeesController < ApplicationController
       params.require(:employee).permit(:group_id, :name, :student_id, :employee_category_id, :duplication)
     end
 
-    def get_groups
-      @groups = Group.where( user_id: current_user.id ).where( group_category_id: 1)
+    def set_groups
+      super  # set @groups by GroupBase.get_groups
+      @groups = @groups.where( group_category_id: 1)
     end
 end

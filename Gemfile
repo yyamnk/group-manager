@@ -41,7 +41,15 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # rails consoleをリッチにする
+  # http://ruby-rails.hatenadiary.com/entry/20141024/1414081224
+  gem 'pry-rails'   # rails consoleでpryを使う
+  gem 'pry-doc'     # methodを表示
+  gem 'pry-byebug'  # デバッグを実施
+  gem 'pry-stack_explorer' # スタックをたどれる
 end
+
 
 # 認証, パスワード暗号化, 再発行
 gem 'devise'
@@ -62,3 +70,6 @@ gem 'twitter-bootstrap-rails'
 
 # heroku監視
 gem 'newrelic_rpm'
+
+# for e-mail validate
+gem 'validates_email_format_of'

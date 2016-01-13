@@ -1,0 +1,48 @@
+<%- model_class = SubRep -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+<%# 副代表未登録の警告 %>
+<%= render partial: 'shared/warning_subrep' %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:group_name) %></th>
+      <th><%= model_class.human_attribute_name(:name_ja) %></th>
+      <th><%= model_class.human_attribute_name(:name_en) %></th>
+      <th><%= model_class.human_attribute_name(:department) %></th>
+      <th><%= model_class.human_attribute_name(:grade) %></th>
+      <th><%= model_class.human_attribute_name(:tel) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sub_reps.each do |sub_rep| %>
+      <tr>
+        <td><%= sub_rep.group.name %></td>
+        <td><%= sub_rep.name_ja %></td>
+        <td><%= sub_rep.name_en %></td>
+        <td><%= sub_rep.department.name_ja %></td>
+        <td><%= sub_rep.grade.name %></td>
+        <td><%= sub_rep.tel %></td>
+        <td><%= sub_rep.email %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_sub_rep_path(sub_rep), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      sub_rep_path(sub_rep),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_sub_rep_path,
+            :class => 'btn btn-primary' %>

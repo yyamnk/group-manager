@@ -1,11 +1,10 @@
-class PlaceOrdersController < ApplicationController
+class PlaceOrdersController < GroupBase
   before_action :set_place_order, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource # for cancancan
 
   # GET /place_orders
   # GET /place_orders.json
   def index
-    @groups = Group.where( user_id: current_user.id ) # 所有する団体
     @place_orders = [] # 初期化
     @groups.each { |group|
       @place_orders += PlaceOrder.where( group_id: group.id ).order('id')

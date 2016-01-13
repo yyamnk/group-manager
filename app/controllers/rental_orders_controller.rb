@@ -1,6 +1,5 @@
-class RentalOrdersController < ApplicationController
+class RentalOrdersController < GroupBase
   before_action :set_rental_order, only: [:show, :edit, :update, :destroy]
-  before_action :get_groups # カレントユーザの所有する団体を@groupsとする
   load_and_authorize_resource # for cancancan
 
   # GET /rental_orders
@@ -77,9 +76,5 @@ class RentalOrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def rental_order_params
       params.require(:rental_order).permit(:group_id, :rental_item_id, :num)
-    end
-
-    def get_groups
-      @groups = Group.where( user_id: current_user.id )
     end
 end
