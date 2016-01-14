@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rental item:</strong>
+  <%= @stocker_item.rental_item %>
+</p>
+
+<p>
+  <strong>Stocker place:</strong>
+  <%= @stocker_item.stocker_place %>
+</p>
+
+<p>
+  <strong>Num:</strong>
+  <%= @stocker_item.num %>
+</p>
+
+<%= link_to 'Edit', edit_stocker_item_path(@stocker_item) %> |
+<%= link_to 'Back', stocker_items_path %>
