@@ -95,3 +95,7 @@ ja:
           department: 所属
           grade: 学年
           tel: 電話番号
+        stocker_item:
+          rental_item: 物品名
+          stocker_place: 保管場所
+          num: 数量

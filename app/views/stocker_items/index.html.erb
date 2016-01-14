@@ -6,8 +6,8 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:rental_item_id) %></th>
-      <th><%= model_class.human_attribute_name(:stocker_place_id) %></th>
+      <th><%= model_class.human_attribute_name(:rental_item) %></th>
+      <th><%= model_class.human_attribute_name(:stocker_place) %></th>
       <th><%= model_class.human_attribute_name(:num) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -17,8 +17,8 @@
     <% @stocker_items.each do |stocker_item| %>
       <tr>
         <td><%= link_to stocker_item.id, stocker_item_path(stocker_item) %></td>
-        <td><%= stocker_item.rental_item_id %></td>
-        <td><%= stocker_item.stocker_place_id %></td>
+        <td><%= stocker_item.rental_item %></td>
+        <td><%= stocker_item.stocker_place %></td>
         <td><%= stocker_item.num %></td>
         <td><%=l stocker_item.created_at %></td>
         <td>

@@ -1,7 +1,7 @@
-<%= simple_form_for @stocker_item, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :rental_item_id %>
+<%= simple_form_for @stocker_item, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.association :rental_item %>
   <%= error_span(@stocker_item[:rental_item_id]) %>
-  <%= f.input :stocker_place_id %>
+  <%= f.association :stocker_place %>
   <%= error_span(@stocker_item[:stocker_place_id]) %>
   <%= f.input :num %>
   <%= error_span(@stocker_item[:num]) %>

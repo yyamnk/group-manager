@@ -153,3 +153,9 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/stocker_items/new
     conflict  app/views/stocker_items/show.html.erb
        force  app/views/stocker_items/show.html.erb
 ```
+
+管理者・運営者のみが触るフォームを予定している．
+index, _formのみ最低限の変更 + 辞書を追加
+
+`<%= stocker_item.stocker_place %>`でStocker.nameを表示させるため
+`StockerPlace.to_s`を追加．
