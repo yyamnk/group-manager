@@ -49,3 +49,23 @@ $ rake db:migrate
 ```
 
 seed追加して`rake db:seed_fu`
+
+
+管理対象へ追加
+
+```sh
+$ bundle exec rails g active_admin:resource StockerPlace
+      create  app/admin/stocker_place.rb
+```
+
+管理画面で編集可能にするためpermit_paramsを設定
+
+```diff
+@@ -14,5 +14,6 @@ ActiveAdmin.register StockerPlace do
+   #   permitted
+   # end
+
++  permit_params :list, :of, :attributes, :on, :model
+
+ end
+```
