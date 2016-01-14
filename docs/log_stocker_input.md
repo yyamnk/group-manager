@@ -134,3 +134,22 @@ $ rake db:migrate
 +    only_integer: true,
 +    greater_than_or_equal_to: 0
 +  }
+```
+
+bootstrapテーマ適用
+
+```sh
+$ bundle exec rails g bootstrap:themed StockerItems
+    conflict  app/views/stocker_items/index.html.erb
+Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/stocker_items/index.html.erb? (enter "h" for help) [Ynaqdh] Y
+       force  app/views/stocker_items/index.html.erb
+    conflict  app/views/stocker_items/new.html.erb
+Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/stocker_items/new.html.erb? (enter "h" for help) [Ynaqdh] a
+       force  app/views/stocker_items/new.html.erb
+    conflict  app/views/stocker_items/edit.html.erb
+       force  app/views/stocker_items/edit.html.erb
+    conflict  app/views/stocker_items/_form.html.erb
+       force  app/views/stocker_items/_form.html.erb
+    conflict  app/views/stocker_items/show.html.erb
+       force  app/views/stocker_items/show.html.erb
+```
