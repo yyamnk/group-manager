@@ -47,3 +47,5 @@ $ rake db:migrate
 +  validates :name, :is_available_fesdate, presence: true
  end
 ```
+
+seed追加して`rake db:seed_fu`
