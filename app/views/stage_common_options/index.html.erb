@@ -18,10 +18,10 @@
     <% @stage_common_options.each do |stage_common_option| %>
       <tr>
         <td><%= stage_common_option.group.name %></td>
-        <td><%= stage_common_option.own_equipment %></td>
-        <td><%= stage_common_option.bgm %></td>
-        <td><%= stage_common_option.camera_permittion %></td>
-        <td><%= stage_common_option.loud_sound %></td>
+        <td><%= stage_common_option.own_equipment ? "○" : "×" %></td>
+        <td><%= stage_common_option.bgm ? "○" : "×" %></td>
+        <td><%= stage_common_option.camera_permittion ? "○" : "×" %></td>
+        <td><%= stage_common_option.loud_sound ? "○" : "×" %></td>
         <td><%= stage_common_option.stage_content %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -31,7 +31,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_stage_common_option_path,
-            :class => 'btn btn-primary' %>
