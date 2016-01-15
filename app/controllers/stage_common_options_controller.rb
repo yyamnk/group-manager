@@ -1,10 +1,10 @@
-class StageCommonOptionsController < ApplicationController
+class StageCommonOptionsController < GroupBase
   before_action :set_stage_common_option, only: [:show, :edit, :update, :destroy]
 
   # GET /stage_common_options
   # GET /stage_common_options.json
   def index
-    @stage_common_options = StageCommonOption.all
+    @stage_common_options = StageCommonOption.where(group_id: @groups)
   end
 
   # GET /stage_common_options/1
