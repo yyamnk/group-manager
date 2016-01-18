@@ -1,5 +1,6 @@
 class StageCommonOptionsController < GroupBase
   before_action :set_stage_common_option, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource # for cancancan
 
   # GET /stage_common_options
   # GET /stage_common_options.json
