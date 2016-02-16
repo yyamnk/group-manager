@@ -7,7 +7,10 @@
   <%= error_span(@stage_common_option[:camera_permittion]) %>
   <%= f.input :loud_sound %>
   <%= error_span(@stage_common_option[:loud_sound]) %>
-  <%= f.input :stage_content, input_html: { value: '' }%>
+  <%= f.input :stage_content, 
+    input_html: { value: '' },
+    hint: t(".hint_act")
+  %>
   <%= error_span(@stage_common_option[:stage_content]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
