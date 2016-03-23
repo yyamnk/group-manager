@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160113115058) do
+ActiveRecord::Schema.define(version: 20160216092753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -232,12 +232,8 @@ ActiveRecord::Schema.define(version: 20160113115058) do
     t.integer  "stage_first"
     t.integer  "stage_second"
     t.string   "time"
-    t.boolean  "own_equipment"
-    t.boolean  "bgm"
-    t.boolean  "camera_permittion"
-    t.boolean  "loud_sound"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "stage_orders", ["fes_date_id"], name: "index_stage_orders_on_fes_date_id", using: :btree
