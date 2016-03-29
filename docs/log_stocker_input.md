@@ -1,6 +1,6 @@
 <!-- ************** docs/log_stocker_input.md **************
 Created    : 2016-Jan-15
-Last Change: 2016-Jan-15.
+Last Change: 2016-Mar-29.
 -->
 
 [[機能追加] 全貸出物品の在庫情報 入力機能 #20](https://github.com/NUTFes/group-manager/issues/20)
@@ -159,3 +159,16 @@ index, _formのみ最低限の変更 + 辞書を追加
 
 `<%= stocker_item.stocker_place %>`でStocker.nameを表示させるため
 `StockerPlace.to_s`を追加．
+
+
+# StockerPlaces修正
+
+貸出場所の多くは準備日にも利用可能と考える．
+`is_available_fesdate`のフォルト値を変更
+
+```
+$ bundle exec rails g migration ChangeColumnToStockerPlaces
+$ vim db/migrate/20160114154302_create_stocker_places.rb
+# 編集
+$ rake db:migrate
+```
