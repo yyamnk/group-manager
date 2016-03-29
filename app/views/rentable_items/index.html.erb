@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Rentable Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stocker item</th>
+      <th>Stocker place</th>
+      <th>Max num</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rentable_items.each do |rentable_item| %>
+      <tr>
+        <td><%= rentable_item.stocker_item %></td>
+        <td><%= rentable_item.stocker_place %></td>
+        <td><%= rentable_item.max_num %></td>
+        <td><%= link_to 'Show', rentable_item %></td>
+        <td><%= link_to 'Edit', edit_rentable_item_path(rentable_item) %></td>
+        <td><%= link_to 'Destroy', rentable_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rentable item', new_rentable_item_path %>

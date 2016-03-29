@@ -1,0 +1,13 @@
+<%= simple_form_for(@rentable_item) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :stocker_item %>
+    <%= f.association :stocker_place %>
+    <%= f.input :max_num %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

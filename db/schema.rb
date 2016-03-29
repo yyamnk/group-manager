@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329115123) do
+ActiveRecord::Schema.define(version: 20160329141621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,6 +157,17 @@ ActiveRecord::Schema.define(version: 20160329115123) do
   add_index "purchase_lists", ["fes_date_id"], name: "index_purchase_lists_on_fes_date_id", using: :btree
   add_index "purchase_lists", ["food_product_id"], name: "index_purchase_lists_on_food_product_id", using: :btree
   add_index "purchase_lists", ["shop_id"], name: "index_purchase_lists_on_shop_id", using: :btree
+
+  create_table "rentable_items", force: :cascade do |t|
+    t.integer  "stocker_item_id"
+    t.integer  "stocker_place_id"
+    t.integer  "max_num",          null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "rentable_items", ["stocker_item_id"], name: "index_rentable_items_on_stocker_item_id", using: :btree
+  add_index "rentable_items", ["stocker_place_id"], name: "index_rentable_items_on_stocker_place_id", using: :btree
 
   create_table "rental_item_allow_lists", force: :cascade do |t|
     t.integer  "rental_item_id"
@@ -329,6 +340,8 @@ ActiveRecord::Schema.define(version: 20160329115123) do
   add_foreign_key "purchase_lists", "fes_dates"
   add_foreign_key "purchase_lists", "food_products"
   add_foreign_key "purchase_lists", "shops"
+  add_foreign_key "rentable_items", "stocker_items"
+  add_foreign_key "rentable_items", "stocker_places"
   add_foreign_key "rental_item_allow_lists", "group_categories"
   add_foreign_key "rental_item_allow_lists", "rental_items"
   add_foreign_key "rental_orders", "groups"

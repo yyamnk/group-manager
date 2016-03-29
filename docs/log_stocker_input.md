@@ -227,3 +227,46 @@ $ bundle exec rails g active_admin:resource StockerItem
 Running via Spring preloader in process 58274
       create  app/admin/stocker_item.rb
 ```
+
+
+# RentableItems(貸出可能物品)のCURD
+
+貸出可能物品は，当日の貸出可能な物品・その貸出場所・最大数を入力する
+
+```
+$ bundle exec rails g scaffold RentableItem stocked_item:references stocker_place:references max_num:integer
+Running via Spring preloader in process 56347
+      invoke  active_record
+      create    db/migrate/20160329134531_create_rentable_items.rb
+      create    app/models/rentable_item.rb
+      invoke  resource_route
+       route    resources :rentable_items
+      invoke  scaffold_controller
+      create    app/controllers/rentable_items_controller.rb
+      invoke    erb
+      create      app/views/rentable_items
+      create      app/views/rentable_items/index.html.erb
+      create      app/views/rentable_items/edit.html.erb
+      create      app/views/rentable_items/show.html.erb
+      create      app/views/rentable_items/new.html.erb
+      create      app/views/rentable_items/_form.html.erb
+      invoke    helper
+      create      app/helpers/rentable_items_helper.rb
+      invoke    jbuilder
+      create      app/views/rentable_items/index.json.jbuilder
+      create      app/views/rentable_items/show.json.jbuilder
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/rentable_items.coffee
+      invoke    scss
+      create      app/assets/stylesheets/rentable_items.scss
+      invoke  scss
+   identical    app/assets/stylesheets/scaffolds.scss
+
+# :max_numにnull制約追加
+$ rake db:migrate
+== 20160329141621 CreateRentableItems: migrating ==============================
+-- create_table(:rentable_items)
+   -> 0.0212s
+== 20160329141621 CreateRentableItems: migrated (0.0213s) =====================
+```

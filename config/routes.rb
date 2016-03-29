@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rentable_items
   resources :stocker_items
   resources :sub_reps
   resources :purchase_lists do
