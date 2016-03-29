@@ -172,3 +172,18 @@ $ vim db/migrate/20160114154302_create_stocker_places.rb
 # 編集
 $ rake db:migrate
 ```
+
+seed修正
+
+```
+$ git diff db/fixtures
+ { id: 52 , name: '体育館' , } ,
+-{ id: 53 , name: '廃液処理施設' , } ,
+-{ id: 54 , name: '課外活動共用施設' , } ,
++{ id: 53 , name: '廃液処理施設' , is_available_fesdate: false} ,
++{ id: 54 , name: '課外活動共用施設' , is_available_fesdate: false} ,
+ { id: 55 , name: 'セコムホール(北側倉庫)' , } ,
+
+# seed 張替え
+$ rake db:seed_fu
+```
