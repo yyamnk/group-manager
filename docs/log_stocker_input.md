@@ -69,7 +69,7 @@ $ bundle exec rails g active_admin:resource StockerPlace
  end
 ```
 
-# StockedItems(在庫テーブル )のCURD追加
+# StockedItems(在庫テーブル)のCURD追加
 
 ```sh
 $ bundle exec rails g scaffold StockerItem rental_item:references stocker_place:references num:integer
@@ -218,3 +218,12 @@ FesYearと関連付け
 ## view修正
 
 index, _formを修正, 辞書追加
+
+
+## 管理対象へ追加
+
+```sh
+$ bundle exec rails g active_admin:resource StockerItem
+Running via Spring preloader in process 58274
+      create  app/admin/stocker_item.rb
+```
