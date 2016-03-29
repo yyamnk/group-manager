@@ -187,3 +187,20 @@ $ git diff db/fixtures
 # seed 張替え
 $ rake db:seed_fu
 ```
+
+# StockerItems修正
+
+在庫の物品は年度で変化する．StockerItems に年度情報を入れる
+
+```
+$ bundle exec rails g migration AddFesYearToStockerItems fes_year:references
+Running via Spring preloader in process 48076
+      invoke  active_record
+      create    db/migrate/20160329115123_add_fes_year_to_stocker_items.rb
+
+$ rake db:migrate
+== 20160329115123 AddFesYearToStockerItems: migrating =========================
+-- add_reference(:stocker_items, :fes_year, {:index=>true, :foreign_key=>true})
+   -> 0.0098s
+== 20160329115123 AddFesYearToStockerItems: migrated (0.0099s) ================
+```
