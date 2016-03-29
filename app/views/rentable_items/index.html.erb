@@ -1,31 +1,40 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Rentable Items</h1>
-
-<table>
+<%- model_class = RentableItem -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Stocker item</th>
-      <th>Stocker place</th>
-      <th>Max num</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:stocker_item_id) %></th>
+      <th><%= model_class.human_attribute_name(:stocker_place_id) %></th>
+      <th><%= model_class.human_attribute_name(:max_num) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @rentable_items.each do |rentable_item| %>
       <tr>
-        <td><%= rentable_item.stocker_item %></td>
-        <td><%= rentable_item.stocker_place %></td>
+        <td><%= link_to rentable_item.id, rentable_item_path(rentable_item) %></td>
+        <td><%= rentable_item.stocker_item_id %></td>
+        <td><%= rentable_item.stocker_place_id %></td>
         <td><%= rentable_item.max_num %></td>
-        <td><%= link_to 'Show', rentable_item %></td>
-        <td><%= link_to 'Edit', edit_rentable_item_path(rentable_item) %></td>
-        <td><%= link_to 'Destroy', rentable_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l rentable_item.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_rentable_item_path(rentable_item), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      rentable_item_path(rentable_item),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Rentable item', new_rentable_item_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_rentable_item_path,
+            :class => 'btn btn-primary' %>

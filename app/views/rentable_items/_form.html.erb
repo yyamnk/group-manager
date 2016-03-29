@@ -1,13 +1,12 @@
-<%= simple_form_for(@rentable_item) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @rentable_item, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :stocker_item_id %>
+  <%= error_span(@rentable_item[:stocker_item_id]) %>
+  <%= f.input :stocker_place_id %>
+  <%= error_span(@rentable_item[:stocker_place_id]) %>
+  <%= f.input :max_num %>
+  <%= error_span(@rentable_item[:max_num]) %>
 
-  <div class="form-inputs">
-    <%= f.association :stocker_item %>
-    <%= f.association :stocker_place %>
-    <%= f.input :max_num %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                rentable_items_path, :class => 'btn btn-default' %>
 <% end %>

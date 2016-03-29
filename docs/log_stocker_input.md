@@ -270,3 +270,24 @@ $ rake db:migrate
    -> 0.0212s
 == 20160329141621 CreateRentableItems: migrated (0.0213s) =====================
 ```
+
+
+bootstrap適用
+
+```
+$ bundle exec rails g bootstrap:themed RentableItems
+Running via Spring preloader in process 61954
+    conflict  app/views/rentable_items/index.html.erb
+Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/rentable_items/index.html.erb? (enter "h" for help) [Ynaqdh] Y
+       force  app/views/rentable_items/index.html.erb
+    conflict  app/views/rentable_items/new.html.erb
+Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/rentable_items/new.html.erb? (enter "h" for help) [Ynaqdh] a
+       force  app/views/rentable_items/new.html.erb
+    conflict  app/views/rentable_items/edit.html.erb
+       force  app/views/rentable_items/edit.html.erb
+    conflict  app/views/rentable_items/_form.html.erb
+       force  app/views/rentable_items/_form.html.erb
+    conflict  app/views/rentable_items/show.html.erb
+       force  app/views/rentable_items/show.html.erb
+```
+TODO: StockerItem の作成・変更・削除権限を考える
