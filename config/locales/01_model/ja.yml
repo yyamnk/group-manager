@@ -15,6 +15,7 @@ ja:
       shop: 仕入先
       sub_rep: 副代表
       stocker_item: 貸出物品の在庫
+      rentable_item: 貸出可能物品
     attributes:
         group:
           name: 運営団体の名称
@@ -101,3 +102,7 @@ ja:
           stocker_place: 保管場所
           num: 数量
           fes_year: 年度
+        rentable_item:
+          stocker_item: 貸出物品の在庫
+          stocker_place: 貸出場所
+          max_num: 貸出可能数

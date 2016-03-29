@@ -271,7 +271,6 @@ $ rake db:migrate
 == 20160329141621 CreateRentableItems: migrated (0.0213s) =====================
 ```
 
-
 bootstrap適用
 
 ```
@@ -290,4 +289,5 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/rentable_items/ne
     conflict  app/views/rentable_items/show.html.erb
        force  app/views/rentable_items/show.html.erb
 ```
+
 TODO: StockerItem の作成・変更・削除権限を考える

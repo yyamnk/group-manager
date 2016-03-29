@@ -5,22 +5,18 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:stocker_item_id) %></th>
-      <th><%= model_class.human_attribute_name(:stocker_place_id) %></th>
+      <th><%= model_class.human_attribute_name(:stocker_item) %></th>
+      <th><%= model_class.human_attribute_name(:stocker_place) %></th>
       <th><%= model_class.human_attribute_name(:max_num) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @rentable_items.each do |rentable_item| %>
       <tr>
-        <td><%= link_to rentable_item.id, rentable_item_path(rentable_item) %></td>
-        <td><%= rentable_item.stocker_item_id %></td>
-        <td><%= rentable_item.stocker_place_id %></td>
+        <td><%= rentable_item.stocker_item %></td>
+        <td><%= rentable_item.stocker_place %></td>
         <td><%= rentable_item.max_num %></td>
-        <td><%=l rentable_item.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_rentable_item_path(rentable_item), :class => 'btn btn-default btn-xs' %>

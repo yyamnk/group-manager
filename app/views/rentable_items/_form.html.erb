@@ -1,9 +1,9 @@
-<%= simple_form_for @rentable_item, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :stocker_item_id %>
+<%= simple_form_for @rentable_item, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.association :stocker_item %>
   <%= error_span(@rentable_item[:stocker_item_id]) %>
-  <%= f.input :stocker_place_id %>
+  <%= f.association :stocker_place, hint: t(".hint_place") %>
   <%= error_span(@rentable_item[:stocker_place_id]) %>
-  <%= f.input :max_num %>
+  <%= f.input :max_num, hint: t(".hint_num") %>
   <%= error_span(@rentable_item[:max_num]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>

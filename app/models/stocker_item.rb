@@ -8,4 +8,9 @@ class StockerItem < ActiveRecord::Base
     only_integer: true,
     greater_than_or_equal_to: 0
   }
+
+  def to_s
+    self.rental_item.to_s + ' (@' + self.stocker_place.to_s + ', 数量:' + self.num.to_s + ')'
+  end
+
 end
