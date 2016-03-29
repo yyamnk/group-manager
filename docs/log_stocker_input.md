@@ -1,6 +1,6 @@
 <!-- ************** docs/log_stocker_input.md **************
 Created    : 2016-Jan-15
-Last Change: 2016-Mar-29.
+Last Change: 2016-Mar-30.
 -->
 
 [[機能追加] 全貸出物品の在庫情報 入力機能 #20](https://github.com/NUTFes/group-manager/issues/20)
@@ -288,6 +288,14 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/rentable_items/ne
        force  app/views/rentable_items/_form.html.erb
     conflict  app/views/rentable_items/show.html.erb
        force  app/views/rentable_items/show.html.erb
+```
+
+管理対象へ追加
+
+```
+$ bundle exec rails g active_admin:resource RentableItem
+Running via Spring preloader in process 66555
+      create  app/admin/rentable_item.rb
 ```
 
 TODO: StockerItem の作成・変更・削除権限を考える
