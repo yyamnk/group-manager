@@ -14,6 +14,7 @@ ja:
       purchase_list: 購入リスト
       shop: 仕入先
       sub_rep: 副代表
+      stocker_item: 貸出物品の在庫
     attributes:
         group:
           name: 運営団体の名称
@@ -99,3 +100,4 @@ ja:
           rental_item: 物品名
           stocker_place: 保管場所
           num: 数量
+          fes_year: 年度

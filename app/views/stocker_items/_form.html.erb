@@ -1,4 +1,11 @@
+<%= render :partial => 'description' %>
+
 <%= simple_form_for @stocker_item, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
+
+  <%= f.hidden_field :fes_year_id, value: @stocker_item[:fes_year_id] %>
+  <%= FesYear.find(@stocker_item[:fes_year_id]).fes_year %>
+  年度の情報を登録します．<br>
+
   <%= f.association :rental_item %>
   <%= error_span(@stocker_item[:rental_item_id]) %>
   <%= f.association :stocker_place %>

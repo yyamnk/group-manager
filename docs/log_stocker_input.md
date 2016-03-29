@@ -204,3 +204,17 @@ $ rake db:migrate
    -> 0.0098s
 == 20160329115123 AddFesYearToStockerItems: migrated (0.0099s) ================
 ```
+
+## model修正
+
+FesYearと関連付け
+`fes_year_id`を`presence: true`
+
+## controller修正
+
+`StockerItemsController.new()`で`fes_year_id`を追加
+パラメータを許可
+
+## view修正
+
+index, _formを修正, 辞書追加

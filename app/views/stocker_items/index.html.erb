@@ -2,6 +2,9 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+<%= render :partial => 'description' %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -9,7 +12,7 @@
       <th><%= model_class.human_attribute_name(:rental_item) %></th>
       <th><%= model_class.human_attribute_name(:stocker_place) %></th>
       <th><%= model_class.human_attribute_name(:num) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:fes_year) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,7 +23,7 @@
         <td><%= stocker_item.rental_item %></td>
         <td><%= stocker_item.stocker_place %></td>
         <td><%= stocker_item.num %></td>
-        <td><%=l stocker_item.created_at %></td>
+        <td><%= stocker_item.fes_year.fes_year %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_stocker_item_path(stocker_item), :class => 'btn btn-default btn-xs' %>

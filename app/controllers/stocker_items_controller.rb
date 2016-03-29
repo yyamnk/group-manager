@@ -14,7 +14,10 @@ class StockerItemsController < ApplicationController
 
   # GET /stocker_items/new
   def new
-    @stocker_item = StockerItem.new
+    # 登録フォームではその年度の在庫のみを入力可能にする
+    @stocker_item = StockerItem.new(
+      fes_year_id: FesYear.find_by(fes_year: Time.now.year).id
+    )
   end
 
   # GET /stocker_items/1/edit
@@ -69,6 +72,6 @@ class StockerItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stocker_item_params
-      params.require(:stocker_item).permit(:rental_item_id, :stocker_place_id, :num)
+      params.require(:stocker_item).permit(:rental_item_id, :stocker_place_id, :num, :fes_year_id)
     end
 end
