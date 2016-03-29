@@ -1,0 +1,23 @@
+<%- model_class = RentableItem -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:stocker_item_id) %>:</strong></dt>
+  <dd><%= @rentable_item.stocker_item_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:stocker_place_id) %>:</strong></dt>
+  <dd><%= @rentable_item.stocker_place_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:max_num) %>:</strong></dt>
+  <dd><%= @rentable_item.max_num %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              rentable_items_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_rentable_item_path(@rentable_item), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              rentable_item_path(@rentable_item),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

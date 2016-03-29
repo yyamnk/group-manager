@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227124815) do
+ActiveRecord::Schema.define(version: 20160329141621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -158,6 +158,17 @@ ActiveRecord::Schema.define(version: 20151227124815) do
   add_index "purchase_lists", ["food_product_id"], name: "index_purchase_lists_on_food_product_id", using: :btree
   add_index "purchase_lists", ["shop_id"], name: "index_purchase_lists_on_shop_id", using: :btree
 
+  create_table "rentable_items", force: :cascade do |t|
+    t.integer  "stocker_item_id"
+    t.integer  "stocker_place_id"
+    t.integer  "max_num",          null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "rentable_items", ["stocker_item_id"], name: "index_rentable_items_on_stocker_item_id", using: :btree
+  add_index "rentable_items", ["stocker_place_id"], name: "index_rentable_items_on_stocker_place_id", using: :btree
+
   create_table "rental_item_allow_lists", force: :cascade do |t|
     t.integer  "rental_item_id"
     t.integer  "group_category_id"
@@ -238,6 +249,26 @@ ActiveRecord::Schema.define(version: 20151227124815) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "stocker_items", force: :cascade do |t|
+    t.integer  "rental_item_id"
+    t.integer  "stocker_place_id"
+    t.integer  "num",              null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "fes_year_id"
+  end
+
+  add_index "stocker_items", ["fes_year_id"], name: "index_stocker_items_on_fes_year_id", using: :btree
+  add_index "stocker_items", ["rental_item_id"], name: "index_stocker_items_on_rental_item_id", using: :btree
+  add_index "stocker_items", ["stocker_place_id"], name: "index_stocker_items_on_stocker_place_id", using: :btree
+
+  create_table "stocker_places", force: :cascade do |t|
+    t.string   "name",                                null: false
+    t.boolean  "is_available_fesdate", default: true, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
   create_table "sub_reps", force: :cascade do |t|
     t.integer  "group_id",      null: false
     t.string   "name_ja",       null: false
@@ -309,12 +340,17 @@ ActiveRecord::Schema.define(version: 20151227124815) do
   add_foreign_key "purchase_lists", "fes_dates"
   add_foreign_key "purchase_lists", "food_products"
   add_foreign_key "purchase_lists", "shops"
+  add_foreign_key "rentable_items", "stocker_items"
+  add_foreign_key "rentable_items", "stocker_places"
   add_foreign_key "rental_item_allow_lists", "group_categories"
   add_foreign_key "rental_item_allow_lists", "rental_items"
   add_foreign_key "rental_orders", "groups"
   add_foreign_key "rental_orders", "rental_items"
   add_foreign_key "stage_orders", "fes_dates"
   add_foreign_key "stage_orders", "groups"
+  add_foreign_key "stocker_items", "fes_years"
+  add_foreign_key "stocker_items", "rental_items"
+  add_foreign_key "stocker_items", "stocker_places"
   add_foreign_key "sub_reps", "departments"
   add_foreign_key "sub_reps", "grades"
   add_foreign_key "sub_reps", "groups"
