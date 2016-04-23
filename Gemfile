@@ -40,7 +40,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '1.6.4'
 
   # rails consoleをリッチにする
   # http://ruby-rails.hatenadiary.com/entry/20141024/1414081224
@@ -64,7 +64,8 @@ gem 'seed-fu', '~> 2.3'
 gem 'simple_form'
 # bootstrap関連
 # twitter-bootstrap-railsはlessを使うので必要
-gem 'therubyracer'
+gem 'libv8', '3.16.14.13'
+gem 'therubyracer', '0.12.2'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 

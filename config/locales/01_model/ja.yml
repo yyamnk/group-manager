@@ -15,6 +15,8 @@ ja:
       shop: 仕入先
       sub_rep: 副代表
       stage_common_option: ステージ利用の詳細
+      stocker_item: 貸出物品の在庫
+      rentable_item: 貸出可能物品
     attributes:
         group:
           name: 運営団体の名称
@@ -103,3 +105,12 @@ ja:
           camera_permittion: 実行委員による撮影を許可する
           loud_sound: 大きな音を出す
           stage_content: 出演内容
+        stocker_item:
+          rental_item: 物品名
+          stocker_place: 保管場所
+          num: 数量
+          fes_year: 年度
+        rentable_item:
+          stocker_item: 貸出物品の在庫
+          stocker_place: 貸出場所
+          max_num: 貸出可能数
