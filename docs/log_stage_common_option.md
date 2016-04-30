@@ -249,6 +249,61 @@ end
 $ bundle exec rake stage_common_options:copy
 ```
 
+## スクリプトのテスト
+いきなり本番環境でスクリプトを実行すると，取り返しがつかないことになる可能性があるので，localでテストすることにします．
+
+### 本番環境のデータをダウンロード
+まずはローカルにDBをダウンロードします
+
+```
+$ heroku pg:backups # 一覧表示 -> 最新のIDを確認
+$ heroku pg:backups public-url a347 # ダウンロードurl生成
+```
+
+### ローカルのPostgresにリストア
+以下を参考にしました．
+
+> HerokuでDBのデータをバックアップする
+> http://blog.ruedap.com/2011/02/23/ruby-heroku-database-postgresql-backup
+
+```
+$ bundle exec rake db:reset # 現在のDBをreset （いらないかも）
+$ pg_restore --verbose --clean --no-acl --no-owner -d group_manager_development dump.dump # リストア 必要に応じて，config/database.ymlを参照して，ユーザ名などのオプションを付ける
+```
+
+リストアできないデータがある．とりあえず，スクリプトの動作を確認したいだけなので無視する．
+
+```
+$ bundle exec rake db:migrate
+```
+
+DBのバックアップデータより後に作成されたmigrationファイルでエラー（`20160113115058_create_stage_common_options.rb`）．すでに`stage_common_options`テーブルが存在すると怒られたので手動で消すことに．
+
+```
+$ bundle exec rails c
+> ActiveRecord::Migration.drop_table(: stage_common_options)
+> exit
+```
+
+もう一度migrateする
+
+```
+$ bundle exec rake db:migrate
+```
+
+今度は`20160114154302_create_stocker_places.rb`で`stocker_places`がすでに存在すると怒られた．
+
+面倒くさいので，エラーのでるmigrationファイルを一度消してmigrate
+
+
+### テスト
+以下を実行する
+
+`bundle exec rake stage_common_options:copy`
+
+
+
+
 # その他移行作業
 ## 既存フォーム（Stage_Option）の編集
 - 共通項目の入力欄を削除
