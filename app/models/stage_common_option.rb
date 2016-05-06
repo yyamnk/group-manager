@@ -3,8 +3,6 @@ class StageCommonOption < ActiveRecord::Base
 
   # 存在チェック
   validates :group_id, :stage_content, presence: true
-
-  # 団体毎にユニーク
-  validates :own_equipment, :bgm, :camera_permittion, :loud_sound, :stage_content, :uniqueness => {:scope => [:group_id] }
+  validates :own_equipment, :bgm, :camera_permittion, :loud_sound, inclusion: {in: [true, false]}
 
 end

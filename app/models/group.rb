@@ -49,7 +49,7 @@ class Group < ActiveRecord::Base
 
   def init_stage_common_option # StageCommonOptionのレコードが無ければ登録
     return unless group_category_id == 3 # ステージ企画でなければ戻る
-    order = StageCommonOption.new( group_id: id, stage_content: '未回答' )
+    order = StageCommonOption.new( group_id: id, own_equipment: false, bgm: false, camera_permittion: false, loud_sound: false, stage_content: '未回答' )
     order.save
   end
 
