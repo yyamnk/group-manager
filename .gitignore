@@ -13,6 +13,3 @@
 /log/*
 !/log/.keep
 /tmp
-
-config/initializers/devise.rb
-vendor/bundle
