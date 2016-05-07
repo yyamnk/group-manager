@@ -32,21 +32,11 @@ ActiveAdmin.register StageCommonOption do
     column :group_name do  |order|
       order.group.name
     end
-    column :own_equipment do  |order|
-      order.own_equipment ? "Yes" : "No"
-    end
-    column :bgm do  |order|
-      order.bgm ? "Yes" : "No"
-    end
-    column :camera_permittion do  |order|
-      order.camera_permittion ? "Yes" : "No"
-    end
-    column :loud_sound do  |order|
-      order.loud_sound ? "Yes" : "No"
-    end
-    column :stage_content do  |order|
-      order.stage_content
-    end
+    column :own_equipment
+    column :bgm
+    column :camera_permittion
+    column :loud_sound
+    column :stage_content
   end
 
 
