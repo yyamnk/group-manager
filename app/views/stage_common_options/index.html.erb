@@ -18,10 +18,10 @@
     <% @stage_common_options.each do |stage_common_option| %>
       <tr>
         <td><%= stage_common_option.group.name %></td>
-        <td><%= stage_common_option.own_equipment ? "Yes" : "No" %></td>
-        <td><%= stage_common_option.bgm ? "Yes" : "No" %></td>
-        <td><%= stage_common_option.camera_permittion ? "Yes" : "No" %></td>
-        <td><%= stage_common_option.loud_sound ? "Yes" : "No" %></td>
+        <td><%= stage_common_option.own_equipment.humanize %></td>
+        <td><%= stage_common_option.bgm.humanize %></td>
+        <td><%= stage_common_option.camera_permittion.humanize %></td>
+        <td><%= stage_common_option.loud_sound.humanize %></td>
         <td><%= stage_common_option.stage_content %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
