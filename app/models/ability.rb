@@ -90,7 +90,7 @@ class Ability
       can :manage, SubRep, :group_id => groups
       can :new, SubRep
       # ステージ利用共通項目は自分の団体のみ自由に触れる．
-      can [:create, :update, :read], StageCommonOption, :group_id => groups
+      can [:update, :read], StageCommonOption, :group_id => groups
     end
   end
 
