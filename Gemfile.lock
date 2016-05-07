@@ -97,6 +97,8 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hike (1.2.3)
+    humanize_boolean (0.0.2)
+      i18n
     i18n (0.7.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
@@ -259,6 +261,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   devise-i18n
+  humanize_boolean
   jbuilder (~> 2.0)
   jquery-rails
   less-rails

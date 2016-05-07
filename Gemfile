@@ -62,6 +62,7 @@ gem 'cancancan', '~> 1.10'
 gem 'seed-fu', '~> 2.3'
 # viewを簡単に書く
 gem 'simple_form'
+gem 'humanize_boolean'
 # bootstrap関連
 # twitter-bootstrap-railsはlessを使うので必要
 gem 'libv8', '3.16.14.13'
