@@ -1,0 +1,27 @@
+<%- model_class = StageCommonOption -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:own_equipment) %>:</strong></dt>
+  <dd><%= @stage_common_option.own_equipment.humanize %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:bgm) %>:</strong></dt>
+  <dd><%= @stage_common_option.bgm.humanize %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:camera_permittion) %>:</strong></dt>
+  <dd><%= @stage_common_option.camera_permittion.humanize %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:loud_sound) %>:</strong></dt>
+  <dd><%= @stage_common_option.loud_sound.humanize %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:stage_content) %>:</strong></dt>
+  <dd><%= @stage_common_option.stage_content %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              stage_common_options_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_stage_common_option_path(@stage_common_option), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              stage_common_option_path(@stage_common_option),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

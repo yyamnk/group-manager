@@ -14,6 +14,7 @@ ja:
       purchase_list: 購入リスト
       shop: 仕入先
       sub_rep: 副代表
+      stage_common_option: ステージ利用の詳細
       stocker_item: 貸出物品の在庫
       rentable_item: 貸出可能物品
     attributes:
@@ -97,6 +98,13 @@ ja:
           department: 所属
           grade: 学年
           tel: 電話番号
+        stage_common_option:
+          group_name: 運営団体の名称
+          own_equipment: 自前の音響機材を使用する
+          bgm: 実行委員にBGMをかけるのを依頼する
+          camera_permittion: 実行委員による撮影を許可する
+          loud_sound: 大きな音を出す
+          stage_content: 出演内容
         stocker_item:
           rental_item: 物品名
           stocker_place: 保管場所

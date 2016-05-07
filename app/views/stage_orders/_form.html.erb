@@ -18,15 +18,6 @@
   <%= f.input :time,
     hint: t(".hint_time")
   %>
-  <%= error_span(@stage_order[:time]) %>
-  <%= f.input :own_equipment %>
-  <%= error_span(@stage_order[:own_equipment]) %>
-  <%= f.input :bgm %>
-  <%= error_span(@stage_order[:bgm]) %>
-  <%= f.input :camera_permittion %>
-  <%= error_span(@stage_order[:camera_permittion]) %>
-  <%= f.input :loud_sound %>
-  <%= error_span(@stage_order[:loud_sound]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

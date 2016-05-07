@@ -1,0 +1,19 @@
+<%= simple_form_for @stage_common_option, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :own_equipment %>
+  <%= error_span(@stage_common_option[:own_equipment]) %>
+  <%= f.input :bgm %>
+  <%= error_span(@stage_common_option[:bgm]) %>
+  <%= f.input :camera_permittion %>
+  <%= error_span(@stage_common_option[:camera_permittion]) %>
+  <%= f.input :loud_sound %>
+  <%= error_span(@stage_common_option[:loud_sound]) %>
+  <%= f.input :stage_content, 
+    input_html: { value: @stage_common_option.stage_content == '未回答' ? '' : @stage_common_option.stage_content },
+    hint: t(".hint_act")
+  %>
+  <%= error_span(@stage_common_option[:stage_content]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                stage_common_options_path, :class => 'btn btn-default' %>
+<% end %>

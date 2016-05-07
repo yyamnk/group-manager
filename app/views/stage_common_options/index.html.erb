@@ -1,0 +1,36 @@
+<%- model_class = StageCommonOption -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:group_name) %></th>
+      <th><%= model_class.human_attribute_name(:own_equipment) %></th>
+      <th><%= model_class.human_attribute_name(:bgm) %></th>
+      <th><%= model_class.human_attribute_name(:camera_permittion) %></th>
+      <th><%= model_class.human_attribute_name(:loud_sound) %></th>
+      <th><%= model_class.human_attribute_name(:stage_content) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stage_common_options.each do |stage_common_option| %>
+      <tr>
+        <td><%= stage_common_option.group.name %></td>
+        <td><%= stage_common_option.own_equipment.humanize %></td>
+        <td><%= stage_common_option.bgm.humanize %></td>
+        <td><%= stage_common_option.camera_permittion.humanize %></td>
+        <td><%= stage_common_option.loud_sound.humanize %></td>
+        <td><%= stage_common_option.stage_content %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_stage_common_option_path(stage_common_option), :class => 'btn btn-default btn-xs' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              welcome_index_path, :class => 'btn btn-default'  %>
