@@ -6,15 +6,20 @@ namespace :stage_common_options do
     groups = Group.where(group_category_id: 3)
 
     groups.each{ |group|
-      stage_order = StageOrder.where(group_id: group.id).first # 配列で返ってくるので .first で先頭要素を取得
-      option = StageCommonOption.new({ group_id: stage_order.group_id,
-      								   own_equipment: stage_order.own_equipment,
-		      						   bgm: stage_order.bgm,
-		      						   camera_permittion: stage_order.camera_permittion,
-		      						   loud_sound: stage_order.loud_sound,
-		      						   stage_content: 'NO DATA' }) if (StageCommonOption.where(group_id: group.id) == []) # データが存在しない場合実行
-      
-      option.save if (StageCommonOption.where(group_id: group.id) == [])
+      stage_order = StageOrder.find_by(group_id: group.id)
+      unless StageCommonOption.exists?(group_id: group.id)
+        option = StageCommonOption.new(
+          group_id: stage_order.group_id,
+          own_equipment: stage_order.own_equipment || false,
+          bgm: stage_order.bgm || false,
+          camera_permittion: stage_order.camera_permittion || false,
+          loud_sound: stage_order.loud_sound || false,
+          stage_content: 'NO DATA'
+        )
+        if option.save
+          puts('group: ' + option.group.name + ' is saved.')
+        end
+      end
     }
   end
 end
