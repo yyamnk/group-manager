@@ -66,3 +66,35 @@ permitパラメータ追加
 +      params.require(:power_order).permit(:group_id, :item, :power, :manufacturer, :model)
      end
 ```
+
+
+# activeadmin修正
+
+```diff
+ ActiveAdmin.register PowerOrder do
+
++  permit_params :group_id, :item, :power, :manufacturer, :model
++
+   index do
+     selectable_column
+     id_column
+     column "参加団体", :group
+     column :item
+     column :power
++    column :manufacturer
++    column :model
+     column :updated_at
+   end
+
+@@ -16,6 +20,8 @@ ActiveAdmin.register PowerOrder do
+     end
+     column :item
+     column :power
++    column :manufacturer
++    column :model
+   end
+```
+
+permit_paramsが指定されていなかったので全て追加．
+(これがないとActiveAdminから登録できない)
+一覧・CSV出力に追加
