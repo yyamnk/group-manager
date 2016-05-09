@@ -51,3 +51,18 @@ $ rake db:migrate
 ```
 
 バリデーション追加
+
+
+# コントローラ修正
+
+permitパラメータ追加
+
+```diff
+@@ -76,7 +76,7 @@ class PowerOrdersController < GroupBase
+
+     # Never trust parameters from the scary internet, only allow the white list through.
+     def power_order_params
+-      params.require(:power_order).permit(:group_id, :item, :power)
++      params.require(:power_order).permit(:group_id, :item, :power, :manufacturer, :model)
+     end
+```
