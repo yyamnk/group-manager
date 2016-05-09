@@ -8,6 +8,8 @@
       <th><%= model_class.human_attribute_name(:group_name) %></th>
       <th><%= model_class.human_attribute_name(:item) %></th>
       <th><%= model_class.human_attribute_name(:power) %></th>
+      <th><%= model_class.human_attribute_name(:manufacturer) %></th>
+      <th><%= model_class.human_attribute_name(:model) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -17,6 +19,8 @@
         <td><%= power_order.group.name %></td>
         <td><%= power_order.item %></td>
         <td><%= power_order.power %></td>
+        <td><%= power_order.manufacturer %></td>
+        <td><%= power_order.model %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_power_order_path(power_order), :class => 'btn btn-default btn-xs' %>

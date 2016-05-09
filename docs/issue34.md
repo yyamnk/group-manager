@@ -98,3 +98,6 @@ permitパラメータ追加
 permit_paramsが指定されていなかったので全て追加．
 (これがないとActiveAdminから登録できない)
 一覧・CSV出力に追加
+
+
+# view修正

@@ -40,6 +40,8 @@ ja:
           group_name: 運営団体の名称
           item: 電力を使う機器の名称
           power: 電力[W]
+          manufacturer: メーカ
+          model: 型番
         stage_order:
           group_name: 運営団体の名称
           stage_first: 場所(第一希望)

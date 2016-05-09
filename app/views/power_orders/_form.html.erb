@@ -9,6 +9,14 @@
     hint: t(".hint_power")
   %>
   <%= error_span(@power_order[:power]) %>
+  <%= f.input :manufacturer,
+    hint: t(".hint_manufacturer")
+  %>
+  <%= error_span(@power_order[:manufacturer]) %>
+  <%= f.input :model,
+    hint: t(".hint_model")
+  %>
+  <%= error_span(@power_order[:model]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
