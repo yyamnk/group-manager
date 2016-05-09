@@ -76,7 +76,7 @@ class PowerOrdersController < GroupBase
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def power_order_params
-      params.require(:power_order).permit(:group_id, :item, :power)
+      params.require(:power_order).permit(:group_id, :item, :power, :manufacturer, :model)
     end
 
     def set_groups
