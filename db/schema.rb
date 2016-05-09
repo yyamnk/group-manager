@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160501203357) do
+ActiveRecord::Schema.define(version: 20160509122328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,11 +135,13 @@ ActiveRecord::Schema.define(version: 20160501203357) do
   end
 
   create_table "power_orders", force: :cascade do |t|
-    t.integer  "group_id",   null: false
-    t.string   "item",       null: false
+    t.integer  "group_id",     null: false
+    t.string   "item",         null: false
     t.integer  "power"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "manufacturer", null: false
+    t.string   "model",        null: false
   end
 
   add_index "power_orders", ["group_id"], name: "index_power_orders_on_group_id", using: :btree
