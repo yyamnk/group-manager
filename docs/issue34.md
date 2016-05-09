@@ -36,3 +36,18 @@ $ rake db:migrate
 `db/migrate/20160509122328_change_columns_to_power_orders.rb`で
 * デフォルト値を`nil`にし，未入力でのレコード作成を抑制
 
+
+# モデル修正
+
+```diff
+ class PowerOrder < ActiveRecord::Base
+   belongs_to :group
+
+-  validates :group_id, :item, :power, presence: true # 必須項目
++  validates :group_id, :item, :power, :manufacturer, :model, presence: true # 必須項目
+   validates :power, numericality: { # 整数のみ, [1-1000]
+     only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000,
+   }
+```
+
+バリデーション追加
