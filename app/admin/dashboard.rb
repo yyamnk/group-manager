@@ -29,5 +29,23 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
     # end
+    #
+    columns do
+      column do
+        panel "物品担当者向けリンク" do
+          text_node "[step1] まずは必要な物品がシステムに登録済みかをチェックせよ！"
+          li link_to("物品の一覧", admin_rental_items_path)
+          #
+          text_node "[step2] 各物品の保管場所と数量を入力せよ！「年度別」です"
+          li link_to("物品の在庫一覧・編集", admin_stocker_items_path)
+          #
+          text_node "[step3] 在庫のうち，貸し出せる数量とその貸出場所を設定せよ！「年度別」です"
+          li link_to("貸出可能物品の一覧・編集", admin_rentable_items_path)
+          #
+          text_node "[step4] 貸出物品の募集が終わるまで休み (以降は未実装)"
+        end
+      end
+    end
+
   end # content
 end
