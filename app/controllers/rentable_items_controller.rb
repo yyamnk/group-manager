@@ -1,5 +1,6 @@
 class RentableItemsController < ApplicationController
   before_action :set_rentable_item, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource # for cancancan
 
   # GET /rentable_items
   # GET /rentable_items.json
