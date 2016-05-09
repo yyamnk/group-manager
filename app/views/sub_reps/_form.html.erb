@@ -3,10 +3,14 @@
   <%= f.association :group, collection: @groups, selected: @sub_rep.group_id %>
   <%= error_span(@sub_rep[:group_id]) %>
 
-  <%= f.input :name_ja %>
+  <%= f.input :name_ja,
+    hint: t(".hint_name_ja")
+    %>
   <%= error_span(@sub_rep[:name_ja]) %>
 
-  <%= f.input :name_en %>
+  <%= f.input :name_en,
+    hint: t(".hint_name_en")
+  %>
   <%= error_span(@sub_rep[:name_en]) %>
 
   <%= f.association :department, label_method: :name_ja %>
@@ -15,7 +19,9 @@
   <%= f.association :grade, label_method: :name %>
   <%= error_span(@sub_rep[:grade_id]) %>
 
-  <%= f.input :tel %>
+  <%= f.input :tel,
+    hint: t(".hint_tel")
+  %>
   <%= error_span(@sub_rep[:tel]) %>
 
   <%= f.input :email %>
