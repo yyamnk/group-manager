@@ -1,5 +1,6 @@
 class StockerItemsController < ApplicationController
   before_action :set_stocker_item, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource # for cancancan
 
   # GET /stocker_items
   # GET /stocker_items.json
