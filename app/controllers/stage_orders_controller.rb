@@ -23,6 +23,7 @@ class StageOrdersController < GroupBase
 
   # GET /stage_orders/1/edit
   def edit
+    set_time_params
   end
 
   # POST /stage_orders
@@ -44,6 +45,7 @@ class StageOrdersController < GroupBase
   # PATCH/PUT /stage_orders/1
   # PATCH/PUT /stage_orders/1.json
   def update
+    set_time_params
     respond_to do |format|
       if @stage_order.update(stage_order_params)
         format.html { redirect_to @stage_order, notice: 'Stage order was successfully updated.' }
@@ -73,6 +75,22 @@ class StageOrdersController < GroupBase
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stage_order_params
-      params.require(:stage_order).permit(:group_id, :is_sunny, :fes_date_id, :stage_first, :stage_second, :time, :own_equipment, :bgm, :camera_permittion, :loud_sound)
+      params.require(:stage_order).permit(:group_id, :is_sunny, :fes_date_id, :stage_first, :stage_second, :time_point_start, :time_point_end, :time_interval)
+    end
+
+    # 時刻入力の選択肢生成
+    def set_time_params
+      @time_point = [["", ""]] 
+      (8..21).each do |h|
+          %w(00 15 30 45).each do |m|
+            @time_point.push ["#{"%02d" % h}:#{m}","#{"%02d" % h}:#{m}"]
+          end
+      end
+
+      @time_interval = [["", ""],
+                       ["30m", "30m"],
+                       ["1h", "1h"],
+                       ["1h30m", "1h30m"],
+                       ["2h", "2h"]] 
     end
 end
