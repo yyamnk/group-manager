@@ -1,6 +1,6 @@
 ActiveAdmin.register StageOrder do
 
-  permit_params :group_id, :fes_date_id, :is_sunny, :stage_first, :stage_second, :time, :own_equipment, :bgm, :camera_permittion, :loud_sound
+  permit_params :group_id, :fes_date_id, :is_sunny, :stage_first, :stage_second, :time_point_start, :time_point_end, :time_interval
 
 
   index do
