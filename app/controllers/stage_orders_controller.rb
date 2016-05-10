@@ -23,6 +23,18 @@ class StageOrdersController < GroupBase
 
   # GET /stage_orders/1/edit
   def edit
+    @time_point = [["", ""]] 
+    (8..21).each do |h|
+        %w(00 15 30 45).each do |m|
+          @time_point.push ["#{"%02d" % h}:#{m}","#{"%02d" % h}:#{m}"]
+        end
+    end
+
+    @time_interval = [["", ""],
+                     ["30m", "30m"],
+                     ["1h", "1h"],
+                     ["1h30m", "1h30m"],
+                     ["2h", "2h"]] 
   end
 
   # POST /stage_orders
