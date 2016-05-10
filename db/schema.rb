@@ -245,12 +245,9 @@ ActiveRecord::Schema.define(version: 20160509122328) do
     t.integer  "fes_date_id"
     t.integer  "stage_first"
     t.integer  "stage_second"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "time"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.string   "time_point_start"
-    t.string   "time_point_end"
-    t.string   "time_interval"
   end
 
   add_index "stage_orders", ["fes_date_id"], name: "index_stage_orders_on_fes_date_id", using: :btree
