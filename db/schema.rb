@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510041203) do
+ActiveRecord::Schema.define(version: 20160512133720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +115,18 @@ ActiveRecord::Schema.define(version: 20160510041203) do
   add_index "groups", ["group_category_id"], name: "index_groups_on_group_category_id", using: :btree
   add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
 
+  create_table "place_allow_lists", force: :cascade do |t|
+    t.integer  "place_id",                          null: false
+    t.integer  "group_category_id",                 null: false
+    t.boolean  "enable",            default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "place_allow_lists", ["group_category_id"], name: "index_place_allow_lists_on_group_category_id", using: :btree
+  add_index "place_allow_lists", ["place_id", "group_category_id"], name: "index_place_allow_lists_on_place_id_and_group_category_id", unique: true, using: :btree
+  add_index "place_allow_lists", ["place_id"], name: "index_place_allow_lists_on_place_id", using: :btree
+
   create_table "place_orders", force: :cascade do |t|
     t.integer  "group_id"
     t.integer  "first"
@@ -129,7 +141,6 @@ ActiveRecord::Schema.define(version: 20160510041203) do
   create_table "places", force: :cascade do |t|
     t.string   "name_ja"
     t.string   "name_en"
-    t.boolean  "is_outside"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -245,9 +256,9 @@ ActiveRecord::Schema.define(version: 20160510041203) do
     t.integer  "fes_date_id"
     t.integer  "stage_first"
     t.integer  "stage_second"
+    t.string   "time_interval"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.string   "time_interval"
     t.string   "time_point_start"
     t.string   "time_point_end"
   end
@@ -349,6 +360,8 @@ ActiveRecord::Schema.define(version: 20160510041203) do
   add_foreign_key "groups", "fes_years"
   add_foreign_key "groups", "group_categories"
   add_foreign_key "groups", "users"
+  add_foreign_key "place_allow_lists", "group_categories"
+  add_foreign_key "place_allow_lists", "places"
   add_foreign_key "place_orders", "groups"
   add_foreign_key "power_orders", "groups"
   add_foreign_key "purchase_lists", "fes_dates"
