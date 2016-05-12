@@ -1,4 +1,5 @@
 class Place < ActiveRecord::Base
+  has_many :place_allow_lists
 
 
   def to_s # aciveAdmin, simple_formで表示名を指定する
