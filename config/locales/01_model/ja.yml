@@ -9,6 +9,7 @@ ja:
       power_order: 使用電力の申請
       stage_order: ステージ利用の申請
       place_order: 実施場所の申請
+      place_allow_list: 場所の利用許可
       employee: 従業員
       food_product: 販売食品
       purchase_list: 購入リスト
@@ -61,6 +62,10 @@ ja:
           first: 第一希望
           second: 第二希望
           third: 第三希望
+        place_allow_list:
+          group_category_id: 団体カテゴリ
+          place:             場所
+          enable:            利用許可
         employee:
           group: 運営団体の名称
           name: 氏名
