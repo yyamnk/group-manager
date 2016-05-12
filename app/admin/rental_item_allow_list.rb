@@ -13,6 +13,17 @@ ActiveAdmin.register RentalItemAllowList do
   #   permitted << :other if resource.something?
   #   permitted
   # end
+  #
+  permit_params :rental_item_id, :group_category_id
 
+  index do
+    selectable_column
+    id_column
+    column :group_category_id do |order|
+      order.group_category
+    end
+    column :rental_item
+    actions
+  end
 
 end
