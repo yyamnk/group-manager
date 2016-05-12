@@ -9,7 +9,7 @@ RentalItemAllowList.seed( :id,
   { id: 6, rental_item_id: 2, group_category_id: 2}, # 模擬店(物品)
   { id: 7, rental_item_id: 2, group_category_id: 4}, # 展示体験
   { id: 8, rental_item_id: 2, group_category_id: 5}, # その他
-  # 椅子の貸し出し可能な団体種別
+  # 木の椅子の貸し出し可能な団体種別
   { id: 9 , rental_item_id: 3, group_category_id: 1}, # 模擬店(食品)
   { id: 10, rental_item_id: 3, group_category_id: 2}, # 模擬店(物品)
   { id: 11, rental_item_id: 3, group_category_id: 3}, # ステージ
@@ -39,4 +39,10 @@ RentalItemAllowList.seed( :id,
   { id: 31, rental_item_id: 7, group_category_id: 5}, # その他
   # マイクの貸し出し可能な団体種別
   { id: 32, rental_item_id: 8, group_category_id: 3}, # ステージ
+  # 椅子の貸し出し可能な団体種別
+  { id: 33, rental_item_id: 9, group_category_id: 1}, # 模擬店(食品)
+  { id: 34, rental_item_id: 9, group_category_id: 2}, # 模擬店(物品)
+  { id: 35, rental_item_id: 9, group_category_id: 3}, # ステージ
+  { id: 36, rental_item_id: 9, group_category_id: 4}, # 展示体験
+  { id: 37, rental_item_id: 9, group_category_id: 5}, # その他
 )
