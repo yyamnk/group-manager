@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512133720) do
+ActiveRecord::Schema.define(version: 20160512162339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -190,6 +190,7 @@ ActiveRecord::Schema.define(version: 20160512133720) do
   end
 
   add_index "rental_item_allow_lists", ["group_category_id"], name: "index_rental_item_allow_lists_on_group_category_id", using: :btree
+  add_index "rental_item_allow_lists", ["rental_item_id", "group_category_id"], name: "index_rental_item_allow_unique", unique: true, using: :btree
   add_index "rental_item_allow_lists", ["rental_item_id"], name: "index_rental_item_allow_lists_on_rental_item_id", using: :btree
 
   create_table "rental_items", force: :cascade do |t|
