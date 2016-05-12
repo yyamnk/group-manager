@@ -4,7 +4,7 @@ ActiveAdmin.register PlaceAllowList do
 
   permit_params do 
     params = [:enable] 
-    params.concat [:group_category_id, :place] if current_user.role_id==1
+    params.concat [:group_category_id, :place_id] if current_user.role_id==1
     params
   end
 

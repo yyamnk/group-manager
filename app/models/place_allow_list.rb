@@ -4,4 +4,5 @@ class PlaceAllowList < ActiveRecord::Base
 
   validates :place_id         , presence: true
   validates :group_category_id, presence: true
+  validates :place_id         , uniqueness: { scope: [:group_category_id] }
 end
