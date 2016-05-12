@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512084245) do
+ActiveRecord::Schema.define(version: 20160512133720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,14 +116,15 @@ ActiveRecord::Schema.define(version: 20160512084245) do
   add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
 
   create_table "place_allow_lists", force: :cascade do |t|
-    t.integer  "place_id"
-    t.integer  "group_category_id"
-    t.boolean  "enable"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.integer  "place_id",                          null: false
+    t.integer  "group_category_id",                 null: false
+    t.boolean  "enable",            default: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   add_index "place_allow_lists", ["group_category_id"], name: "index_place_allow_lists_on_group_category_id", using: :btree
+  add_index "place_allow_lists", ["place_id", "group_category_id"], name: "index_place_allow_lists_on_place_id_and_group_category_id", unique: true, using: :btree
   add_index "place_allow_lists", ["place_id"], name: "index_place_allow_lists_on_place_id", using: :btree
 
   create_table "place_orders", force: :cascade do |t|
