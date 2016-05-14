@@ -51,4 +51,18 @@ ActiveAdmin.register StageOrder do
     column("大きな音を出す") {|order| StageCommonOption.where(group_id: order.group_id).first.loud_sound ? "Yes" : "No" }
     column("出演内容") {|order| StageCommonOption.where(group_id: order.group_id).first.stage_content }
   end
+
+  form do |f|
+    f.inputs do
+      f.input :group
+      f.input :fes_date_id, :as => :select, :collection => FesDate.all
+      f.input :is_sunny
+      f.input :stage_first, :as => :select, :collection => Stage.all
+      f.input :stage_second, :as => :select, :collection => Stage.all
+      f.input :time_point_start
+      f.input :time_point_end
+      f.input :time_interval
+    end
+    f.actions
+  end
 end
