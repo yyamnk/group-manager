@@ -1,0 +1,14 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">参加団体</h3>
+  </div>
+  <div class="panel-body">
+    模擬店, 展示, ステージ企画などを希望する団体はこちら。
+    <%= link_to t('welcome_controller.index'),
+            groups_path,
+            :class => 'btn btn-default' %>
+    <%= link_to t('welcome_controller.new'),
+            new_group_path,
+            :class => 'btn btn-primary' %>
+  </div>
+</div>
