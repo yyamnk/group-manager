@@ -37,3 +37,8 @@ $ rake db:migrate
    -> 0.0208s
 == 20160515150530 CreateConfigWelcomeIndices: migrated (0.0209s) ==============
 ```
+
+
+# モデル修正
+
+バリデーション追加
