@@ -44,3 +44,13 @@ $ rake db:migrate
 バリデーション追加
 
 # シード追加
+
+# adminへ追加
+
+```sh
+$ bundle exec rails g active_admin:resource ConfigWelcomeIndex
+Running via Spring preloader in process 5033
+      create  app/admin/config_welcome_index.rb
+```
+
+enableのみをpermit paramsに．
