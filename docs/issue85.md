@@ -54,3 +54,5 @@ Running via Spring preloader in process 5033
 ```
 
 enableのみをpermit paramsに．
+
+# view, controller編集
