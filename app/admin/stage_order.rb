@@ -65,4 +65,27 @@ ActiveAdmin.register StageOrder do
     end
     f.actions
   end
+
+  show do
+    attributes_table do
+      row :id
+      row :group
+      row :is_sunny
+      row :fes_date_id  do |order|
+        FesDate.find(order.fes_date_id).date
+      end
+      row :stage_first do  |order|
+        order.stage_first  ? Stage.find(order.stage_first)  : "未回答"
+      end
+      row :stage_second do |order|
+        order.stage_second ? Stage.find(order.stage_second) : "未回答"
+      end
+      row :time_point_start
+      row :time_point_end
+      row :time_interval
+      row :created_at
+      row :updated_at
+    end
+    active_admin_comments
+  end
 end
