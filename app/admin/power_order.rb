@@ -11,6 +11,7 @@ ActiveAdmin.register PowerOrder do
     column :manufacturer
     column :model
     column :updated_at
+    actions
   end
 
   csv do

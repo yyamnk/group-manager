@@ -1,0 +1,16 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">ステージ利用</h3>
+  </div>
+  <div class="panel-body">
+    ステージを利用する団体はこちらから申請して下さい。<br>
+    対象: 参加形式が「ステージ企画」の団体
+    <%= link_to t('welcome_controller.index'),
+            stage_orders_path,
+            :class => 'btn btn-default' %>
+    <br>対象: 参加形式が「ステージ企画」の団体
+    <%= link_to t('ステージ利用の詳細'),
+            stage_common_options_path,
+            :class => 'btn btn-default' %>
+  </div>
+</div>
