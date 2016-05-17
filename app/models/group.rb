@@ -4,7 +4,7 @@ class Group < ActiveRecord::Base
   belongs_to :fes_year
   has_many :sub_reps
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: { scope: :fes_year }
   validates :user, presence: true
   validates :activity, presence: true
   validates :group_category, presence: true
