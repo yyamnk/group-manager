@@ -17,7 +17,7 @@ class StageOrder < ActiveRecord::Base
   end
 
   def select_different_stage
-    return if stage_first.nil? & stage_second.nil?
+    return if stage_first.blank? & stage_second.blank?
     if stage_first == stage_second
         errors.add( :stage_first, "候補が重複しています。")
         errors.add( :stage_second, "候補が重複しています。")
