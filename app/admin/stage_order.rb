@@ -59,9 +59,9 @@ ActiveAdmin.register StageOrder do
       f.input :is_sunny
       f.input :stage_first, :as => :select, :collection => Stage.all
       f.input :stage_second, :as => :select, :collection => Stage.all
-      f.input :time_point_start
-      f.input :time_point_end
-      f.input :time_interval
+      f.input :time_point_start, input_html: {value: f.object.time_point_start == "未回答" ? "" : f.object.time_point_start}
+      f.input :time_point_end, input_html: {value: f.object.time_point_end == "未回答" ? "" : f.object.time_point_end}
+      f.input :time_interval, input_html: {value: f.object.time_interval == "未回答" ? "" : f.object.time_interval}
     end
     f.actions
   end
