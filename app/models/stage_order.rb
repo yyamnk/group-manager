@@ -17,7 +17,7 @@ class StageOrder < ActiveRecord::Base
   end
 
   def select_different_stage
-    return if stage_first.nil? & stage_second.nil?
+    return if stage_first.blank? & stage_second.blank?
     if stage_first == stage_second
         errors.add( :stage_first, "候補が重複しています。")
         errors.add( :stage_second, "候補が重複しています。")
@@ -36,7 +36,7 @@ class StageOrder < ActiveRecord::Base
     if time_point_start == "未回答" && time_point_end == "未回答" && time_interval == "未回答" # レコード生成時のValidation回避
       return
     end
-    if time_point_start.empty? & time_point_end.empty? & time_interval.empty?
+    if time_point_start.blank? & time_point_end.blank? & time_interval.blank?
       errors.add( :time_point_start, "入力が必要です" )
       errors.add( :time_point_end, "入力が必要です" )
       errors.add( :time_interval, "入力が必要です" )
@@ -46,16 +46,16 @@ class StageOrder < ActiveRecord::Base
       errors.add( :time_point_end, "どちらかのみ入力してください" )
       errors.add( :time_interval, "どちらかのみ入力してください" )
     end
-    if time_point_start? & time_point_end.empty?
+    if time_point_start? & time_point_end.blank?
       errors.add( :time_point_end, "入力が必要です" )
     end
-    if time_point_start.empty? & time_point_end?
+    if time_point_start.blank? & time_point_end?
       errors.add( :time_point_start, "入力が必要です" )
     end
   end
 
   def start_to_end
-    if ( time_point_start.empty? | time_point_end.empty? ) || ( time_point_start == "未回答" && time_point_end == "未回答" )
+    if ( time_point_start.blank? | time_point_end.blank? ) || ( time_point_start == "未回答" && time_point_end == "未回答" )
       return
     end
     if time_point_start.split(":")[0].to_i() == time_point_end.split(":")[0].to_i() 
