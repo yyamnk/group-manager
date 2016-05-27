@@ -19,4 +19,13 @@ module ApplicationHelper
         :class => 'btn btn-xs btn-danger'
     end
   end
+
+  def show_new_with_group(model, path)
+    # createが許可された場合のみNewボタンを表示する
+    if @ability.can?(:create, model.new(group_id: @groups.first.id))
+      return link_to t('.new', :default => t("helpers.links.new")),
+        path,
+        :class => 'btn btn-primary'
+    end
+  end
 end

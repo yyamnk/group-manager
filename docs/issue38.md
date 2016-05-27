@@ -97,3 +97,8 @@ Running via Spring preloader in process 42496
 
 newボタン -> GroupHelperへ
 edit, destroyボタン -> ApplicationHelperへ
+
+## SubRep
+
+newボタン -> ApplicationHelper, show_new_with_groupへ
+edit, destroyボタン -> ApplicationHelperで共用

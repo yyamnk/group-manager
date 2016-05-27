@@ -22,10 +22,5 @@
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               sub_reps_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_sub_rep_path(@sub_rep), :class => 'btn btn-default' %>
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              sub_rep_path(@sub_rep),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+<%= show_edit_botton(edit_sub_rep_path(@sub_rep), @sub_rep) %>
+<%= show_destroy_botton(sub_rep_path(@sub_rep), @sub_rep) %>
