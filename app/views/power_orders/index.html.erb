@@ -22,19 +22,14 @@
         <td><%= power_order.manufacturer %></td>
         <td><%= power_order.model %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_power_order_path(power_order), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      power_order_path(power_order),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+          <%= show_edit_botton(edit_power_order_path(power_order), power_order) %>
+          <%= show_destroy_botton(power_order_path(power_order), power_order) %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_power_order_path,
-            :class => 'btn btn-primary' %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              welcome_index_path, :class => 'btn btn-default'  %>
+<%= show_new_with_group(PowerOrder, new_power_order_path) %>
