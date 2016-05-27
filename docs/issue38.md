@@ -81,3 +81,9 @@ Running via Spring preloader in process 42496
 +  permit_params :form_name, :is_accepting, :is_only_show
 
 ```
+
+
+# seed追加
+
+値は設定しないこと (上書きを避けるため)
+
