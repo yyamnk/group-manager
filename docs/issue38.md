@@ -89,3 +89,11 @@ Running via Spring preloader in process 42496
 
 
 # Abilityモデル 編集
+
+
+# view 修正
+
+## group
+
+newボタン -> GroupHelperへ
+edit, destroyボタン -> ApplicationHelperへ
