@@ -51,6 +51,7 @@ class Ability
       cannot [:destroy], StockerItem  # 貸出物品在庫は削除不可，0で対応
       cannot [:destroy], RentableItem  # 削除不可，0で対応
       cannot [:create,:destroy], PlaceAllowList #場所の許可に関して編集不可
+      cannot [:create, :destroy], ConfigUserPermission  # 作成・削除不可
     end
     if user.role_id == 3 then # for user (デフォルトのrole)
       can :manage, :welcome
@@ -60,41 +61,55 @@ class Ability
       #
       # UserDetailの自分のレコードは作成, 更新, 読みが可能. 削除はだめ.
       can [:read, :create, :update], UserDetail, :user_id => user.id
-      # 所有するGroupのレコードは自由に触れる
-      can :manage, Group, :user_id => user.id
       # ユーザに紐付いている参加団体
       groups = Group.where( user_id: user.id ).pluck('id')
       # ユーザに紐付き & 副代表が登録済みの団体
       groups_with_subrep = get_groups_with_subrep(groups)
-      # 貸出物品は自分の団体で副代表登録済みなら読み，更新を許可
-      can [:read, :update], RentalOrder, :group_id => groups_with_subrep
-      # 電力申請は自分の団体で副代表登録済みなら全て許可
-      # ただしnewはidに無関係に許可
-      can :manage, PowerOrder, :group_id => groups_with_subrep
-      can :new, PowerOrder
-      # ステージ利用申請は自分の団体で副代表登録済みなら読み，更新を許可
-      can [:read, :update], StageOrder, :group_id => groups_with_subrep
-      # 実施場所申請は自分の団体で副代表登録済みなら読み，更新を許可
-      can [:read, :update], PlaceOrder, :group_id => groups_with_subrep
-      # 従業員は自分の団体で副代表登録済みなら自由に触れる.
-      # ただしnewはidに無関係に許可
-      can :manage, Employee, :group_id => groups_with_subrep
-      can :new, Employee
-      # 販売食品は自分の団体で副代表登録済みなら自由に触れる．
-      # ただしnewはidに無関係に許可
-      can :manage, FoodProduct, :group_id => groups_with_subrep
-      can :new, FoodProduct
-      # 購入リストは自分が持つ販売食品に紐付いたもののみ自由に触れる
+
+      # 団体 (ConfigUserPermission.id = 1)
+      if ConfigUserPermission.find(1).is_accepting
+        # 所有するGroupのレコードは自由に触れる
+        can :manage, Group, :user_id => user.id
+      elsif ConfigUserPermission.find(1).is_only_show
+        can :read, Group, :user_id => user.id
+      end
+
+      # 副代表 (ConfigUserPermission.id = 2)
+      if ConfigUserPermission.find(2).is_accepting
+        # 副代表は自分の団体のみ自由に触れる．
+        # だたしnewはidに無関係に許可
+        can :manage, SubRep, :group_id => groups
+        can :new, SubRep
+      elsif ConfigUserPermission.find(2).is_only_show
+        can :read, SubRep, :group_id => groups
+      end
+
+      # 物品貸出 (ConfigUserPermission.id = 3)
+      set_noncreate_form(3, RentalOrder, groups_with_subrep)
+      # 電力申請 (ConfigUserPermission.id = 4)
+      set_create_form(4, PowerOrder, groups_with_subrep)
+      # 実施場所 (ConfigUserPermission.id = 5)
+      set_noncreate_form(5, PlaceOrder, groups_with_subrep)
+      # ステージ (ConfigUserPermission.id = 6)
+      set_noncreate_form(6, StageOrder, groups_with_subrep)
+      set_noncreate_form(6, StageCommonOption, groups_with_subrep)
+      # 従業員 (ConfigUserPermission.id = 7)
+      set_create_form(7, Employee, groups_with_subrep)
+      # 販売食品 (ConfigUserPermission.id = 8)
+      set_create_form(8, FoodProduct, groups_with_subrep)
+
+      # 購入リスト (ConfigUserPermission.id = 9)
+      # ユーザの全登録団体のもつ全販売食品
       food_ids = FoodProduct.where( group_id: groups ).pluck('id')
-      can :manage, PurchaseList, :food_product_id => food_ids
+      if ConfigUserPermission.find(9).is_accepting
+        # 自分が持つ販売食品に紐付いたもののみ自由に触れる
+        can :manage, PurchaseList, :food_product_id => food_ids
+      elsif ConfigUserPermission.find(9).is_only_show
+        can :read, PurchaseList, :food_product_id => food_ids
+      end
+
       # 店舗リストは読みを許可
-      can [:read], Shop
-      # 副代表は自分の団体のみ自由に触れる．
-      # だたしnewはidに無関係に許可
-      can :manage, SubRep, :group_id => groups
-      can :new, SubRep
-      # ステージ利用共通項目は自分の団体で副代表登録済みなら自由に触れる．
-      can [:update, :read], StageCommonOption, :group_id => groups_with_subrep
+      can :read, Shop
     end
   end
 
@@ -108,4 +123,27 @@ class Ability
     end
     return subrep_groups
   end
+
+  # createを必要としないモデル制御
+  def set_noncreate_form(form_id, model, groups_with_subrep)
+    if ConfigUserPermission.find(form_id).is_accepting
+      # 自分の団体 かつ 副代表登録済みなら 読み，更新を許可
+      can [:read, :update], model, :group_id => groups_with_subrep
+    elsif ConfigUserPermission.find(form_id).is_only_show
+      can :read, model, :group_id => groups_with_subrep
+    end
+  end
+
+  # createが必要なモデル制御
+  def set_create_form(form_id, model, groups_with_subrep)
+    if ConfigUserPermission.find(form_id).is_accepting
+      # 自分の団体 かつ 副代表登録済みなら 全て許可
+      # ただしnewはidに無関係に許可 (ページが開けないため)
+      can :manage, model, :group_id => groups_with_subrep
+      can :new, model
+    elsif ConfigUserPermission.find(form_id).is_only_show
+      can :read, model, :group_id => groups_with_subrep
+    end
+  end
+
 end
