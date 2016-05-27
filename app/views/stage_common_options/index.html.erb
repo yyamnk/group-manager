@@ -24,8 +24,7 @@
         <td><%= stage_common_option.loud_sound.humanize %></td>
         <td><%= stage_common_option.stage_content %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_stage_common_option_path(stage_common_option), :class => 'btn btn-default btn-xs' %>
+          <%= show_edit_botton(edit_stage_common_option_path(stage_common_option), stage_common_option) %>
         </td>
       </tr>
     <% end %>

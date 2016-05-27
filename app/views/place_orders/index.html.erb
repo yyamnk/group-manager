@@ -20,8 +20,7 @@
         <td><%= place_order.second ? Place.find(place_order.second) : "未回答" %></td>
         <td><%= place_order.third  ? Place.find(place_order.third)  : "未回答" %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_place_order_path(place_order), :class => 'btn btn-default btn-xs' %>
+          <%= show_edit_botton(edit_place_order_path(place_order), place_order) %>
         </td>
       </tr>
     <% end %>

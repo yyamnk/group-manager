@@ -28,8 +28,7 @@
         <td><%= stage_order.stage_first ? stage_order.kibou1 : "未回答" %></td>
         <td><%= stage_order.stage_second ? stage_order.kibou2 : "未回答" %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_stage_order_path(stage_order), :class => 'btn btn-default btn-xs' %>
+          <%= show_edit_botton(edit_stage_order_path(stage_order), stage_order) %>
         </td>
       </tr>
     <% end %>

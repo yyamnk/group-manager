@@ -102,3 +102,5 @@ edit, destroyボタン -> ApplicationHelperへ
 
 newボタン -> ApplicationHelper, show_new_with_groupへ
 edit, destroyボタン -> ApplicationHelperで共用
+
+以下SubRepと同様に修正

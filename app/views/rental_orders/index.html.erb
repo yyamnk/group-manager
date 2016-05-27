@@ -19,8 +19,7 @@
             <td><%= rental_order.rental_item.name_ja %></td>
             <td><%= rental_order.num %></td>
             <td>
-              <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                          edit_rental_order_path(rental_order), :class => 'btn btn-default btn-xs' %>
+              <%= show_edit_botton(edit_rental_order_path(rental_order), rental_order) %>
             </td>
           </tr>
         <% end %>
