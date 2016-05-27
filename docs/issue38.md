@@ -46,8 +46,8 @@ $ rake db:migrate
 == 20160527094623 CreateConfigUserPermissions: migrated (0.0330s) =============
 ```
 
-# バリデーション追加
 
+# バリデーション追加
 
 ```diff
  class ConfigUserPermission < ActiveRecord::Base
@@ -65,4 +65,19 @@ $ rake db:migrate
 +  end
 +
  end
+```
+
+
+# adminへ追加
+
+```sh
+$ bundle exec rails g active_admin:resource ConfigUserPermission
+Running via Spring preloader in process 42496
+      create  app/admin/config_user_permission.rb
+```
+
+```diff
+
++  permit_params :form_name, :is_accepting, :is_only_show
+
 ```
