@@ -45,3 +45,24 @@ $ rake db:migrate
    -> 0.0329s
 == 20160527094623 CreateConfigUserPermissions: migrated (0.0330s) =============
 ```
+
+# バリデーション追加
+
+
+```diff
+ class ConfigUserPermission < ActiveRecord::Base
++  validate :valid_boolean_unique
++
++  validates_presence_of :form_name
++  validates_uniqueness_of :form_name
++
++  def valid_boolean_unique
++    return unless [is_accepting, is_only_show].all?  # 全部0なら許可
++    unless [is_accepting, is_only_show].one? # trueは1個のみ
++      errors.add(:is_accepting, "trueは1要素のみにしてください．")
++      errors.add(:is_only_show, "trueは1要素のみにしてください．")
++    end
++  end
++
+ end
+```
