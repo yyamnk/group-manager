@@ -1,7 +1,7 @@
 class PurchaseListsController < GroupBase
   before_action :set_purchase_list, only: [:show, :edit, :update, :destroy]
   before_action :set_group_ids        # 各アクション実行前に実行
-  load_and_authorize_resource # for cancancan
+  load_and_authorize_resource :except=> [:index_cooking,:index_noncooking] # for cancancan
 
   # GET /purchase_lists
   # GET /purchase_lists.json
