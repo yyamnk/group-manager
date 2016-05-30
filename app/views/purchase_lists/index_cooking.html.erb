@@ -23,13 +23,8 @@
         <td><%= purchase_list.shop.name %></td>
         <td><%= purchase_list.items %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_purchase_list_path(purchase_list), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      purchase_list_path(purchase_list),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+          <%= show_edit_botton(edit_purchase_list_path(purchase_list), purchase_list) %>
+          <%= show_destroy_botton(purchase_list_path(purchase_list), purchase_list) %>
         </td>
       </tr>
     <% end %>
@@ -39,21 +34,15 @@
 <% fes_dates = FesDate.all %>
 
 <p>
-<% fes_dates[1, 2].each do |fesdate| %>
-  <%# 生鮮品は当日しか買えない %>
-  <%= link_to "#{fesdate.date}" + 'に使用する生鮮食品を追加',
-              new_cooking_purchase_lists_path(is_fresh: true, fes_date_id: fesdate.id), # 生鮮食品1日目
-              :class => 'btn btn-primary'%>
+<% fes_dates.each do |fesdate| %>
+  <%= show_new_fresh(fesdate) %>
 <% end %>
 <%= render :partial => 'warnign_fresh' %>
 </p>
 
 <p>
 <% fes_dates.each do |fesdate| %>
-  <%# 保存食品はいつでも買える %>
-  <%= link_to "#{fesdate.date}" + 'に購入する保存食品を追加',
-              new_cooking_purchase_lists_path(is_fresh: false, fes_date_id: fesdate.id),
-              :class => 'btn btn-primary'%>
+  <%= show_new_nonfresh(fesdate) %>
 <% end %>
 <%= render :partial => 'warnign_preserved' %>
 </p>

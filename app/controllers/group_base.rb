@@ -1,6 +1,7 @@
 class GroupBase < ApplicationController
 
   before_action :set_groups # カレントユーザの所有する団体を@groupsへ
+  before_action :set_ability # カレントユーザの権限設定を@abilityへ
 
   def set_groups
     # ログインしていなければ何もしない
@@ -15,6 +16,11 @@ class GroupBase < ApplicationController
     @num_nosubrep_groups = @groups.count -
                            Group.where(fes_year: this_year).
                                  get_has_subreps(current_user.id).count
+  end
+
+  def set_ability
+    return if current_user.nil?
+    @ability = Ability.new(current_user)
   end
 
 end
