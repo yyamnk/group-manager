@@ -13,7 +13,7 @@ class WelcomeController < GroupBase
     else
       @name = @user_detail.name_ja # そのうちlocaleで判断したい
     end
-    @config_panel = ConfigWelcomeIndex.all
+    @config_panel = ConfigWelcomeIndex.all.sort
   end
 
   def regist_user_detail
