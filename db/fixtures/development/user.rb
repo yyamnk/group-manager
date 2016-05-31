@@ -22,25 +22,8 @@ users = [{
  },
 ]
 
-detail_example = {
-    :name_en  => "Taro GIDAI",
-    :name_ja  => "技大太郎",
-    :department_id => 2,
-    :grade_id => 2,
-    :tel => "111-0000-9999",
-}
-
 users.each do |u|
-    user = User.find_by(email: u[:email])
-    if user
-        user.email = u[:email]
-        user.role = u[:role]
-        user.password = u[:password]
-        user.password_confirmation = u[:password_confirmation]
-        user.save(:validate=>false)
-    else
-        user = User.new(u) 
-        user.skip_confirmation!
-        user.save(:validate=>false)
-    end
+    user = User.new(u)
+    user.skip_confirmation!
+    user.save(:validate=>false)
 end
