@@ -1,8 +1,9 @@
 class ConfigUserPermission < ActiveRecord::Base
   validate :valid_boolean_unique
 
-  validates_presence_of :form_name
+  validates_presence_of :form_name, :panel_partial
   validates_uniqueness_of :form_name
+  validates :panel_partial, format: { with: /\w/ }
 
   def valid_boolean_unique
     return unless [is_accepting, is_only_show].all?  # 全部0なら許可
