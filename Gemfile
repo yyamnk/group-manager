@@ -70,6 +70,10 @@ gem 'therubyracer', '0.12.2'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 
+# PDF生成用
+gem 'pdfkit'
+gem 'wkhtmltopdf'
+
 # heroku監視
 gem 'newrelic_rpm'
 
