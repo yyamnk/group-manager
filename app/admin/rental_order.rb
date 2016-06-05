@@ -20,6 +20,7 @@ ActiveAdmin.register RentalOrder do
     column :group
     column :rental_item
     column :num
+    actions
   end
 
   csv do
