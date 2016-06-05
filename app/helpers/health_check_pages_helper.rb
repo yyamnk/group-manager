@@ -1,0 +1,2 @@
+module HealthCheckPagesHelper
+end

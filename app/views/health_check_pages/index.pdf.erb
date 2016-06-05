@@ -1,0 +1,64 @@
+<style type='text/css'>
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    vertical-align: middle;
+  }
+  caption, th, td {
+    text-align: center;
+    font-weight: normal;
+    vertical-align: middle;
+    border: solid 1px;
+    padding: 0.5em;
+  }
+  .pagebreak{
+    page-break-after: always;
+  }
+
+</style>
+
+<% @food_products.each do |food_product| %>
+  <% @fes_dates.each do |fes_date| %>
+  <% purchase_items = food_product.purchase_list.where(fes_date:fes_date)%>
+  <% if purchase_items.empty?%>
+    <%next%>
+  <% end %>
+  <div class='pagebreak'>
+    <h2 align='center'>
+      調理、製造、提供の内容及び仕入状況
+    </h2>
+    <div>
+      <div align='left'>1.調理、製造計画</div>
+      <div align='right'>グループ名:<%= food_product.group.name %></div>
+    </div>
+    <table align='center'>
+      <thead>
+        <tr>
+          <td rowspan="2">調理・製造品目</td>
+          <td rowspan="2">提供予定数量</td>
+          <td colspan='3'>原材料の仕入れ状況</td>
+          <td rowspan="2">調理開始日時</td>
+        </tr>
+        <tr>
+          <td>原材料名</td>
+          <td>仕入先</td>
+          <td>仕入日時</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% purchase_items.each do |purchase_item| %>
+          <tr>
+            <td><%= food_product.name%></td>
+            <td><%= food_product.num %></td>
+            <td><%= purchase_item.items%></td>
+            <td><%= purchase_item.shop.name%></td>
+            <td><%= purchase_item.fes_date %></td>
+            <td><%= food_product.start %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </tbody>
+  </table>
+</div>
+  <% end %>
+<% end %>
