@@ -10,26 +10,6 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
-    # Here is an example of a simple dashboard with columns and panels.
-    #
-    # columns do
-    #   column do
-    #     panel "Recent Posts" do
-    #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
-    #         end
-    #       end
-    #     end
-    #   end
-
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
-    # end
-    #
     columns do
       column do
         panel "物品担当者向けリンク" do
@@ -44,8 +24,20 @@ ActiveAdmin.register_page "Dashboard" do
           #
           text_node "[step4] 貸出物品の募集が終わるまで休み (以降は未実装)"
         end
+
+      end
+    end
+
+    columns do
+      column do
+        panel "保健所関連書類" do
+          li link_to("参加団体 調理有り 書類一覧", health_check_pages_index_path(format: 'pdf'))
+          li link_to("参加団体 調理無し 書類一覧", health_check_pages_no_cooking_path(format: 'pdf'))
+        end
+
       end
     end
 
   end # content
+
 end

@@ -73,7 +73,6 @@ gem 'twitter-bootstrap-rails'
 # PDF生成用
 gem 'pdfkit'
 gem 'wkhtmltopdf'
-
 # heroku監視
 gem 'newrelic_rpm'
 

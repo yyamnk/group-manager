@@ -1,5 +1,6 @@
 class FoodProduct < ActiveRecord::Base
   belongs_to :group
+  has_many :purchase_list
 
   validates_presence_of :group_id, :name, :num
   validates_presence_of :start, if: :is_cooking # self.is_cooking == true でstartが必須
