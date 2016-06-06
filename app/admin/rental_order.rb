@@ -1,18 +1,7 @@
 ActiveAdmin.register RentalOrder do
 
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
+  permit_params :num
 
   index do
     selectable_column
@@ -20,6 +9,18 @@ ActiveAdmin.register RentalOrder do
     column :group
     column :rental_item
     column :num
+    actions
+  end
+
+  form do |f|
+    panel '編集上の注意' do
+      "数量のみ変更可能です. グループと物品は変更できません. "
+    end
+    f.inputs do
+    input :group
+    input :rental_item
+    input :num
+    end
     actions
   end
 
