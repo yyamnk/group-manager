@@ -13,7 +13,14 @@ class WelcomeController < GroupBase
     else
       @name = @user_detail.name_ja # そのうちlocaleで判断したい
     end
-    @config_panel = ConfigWelcomeIndex.all.sort
+
+    # WelcomeIndexの各種項目を表示制御する
+    # welcome_helper.rbで使用
+    @config_panel = ConfigUserPermission.all.sort
+
+    # Userが保有するグループ数
+    @group_count = Group.where(user_id: current_user.id).count
+
   end
 
   def regist_user_detail

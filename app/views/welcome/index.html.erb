@@ -3,6 +3,8 @@
 <%# 副代表未登録の警告 %>
 <%= render partial: 'shared/warning_subrep' %>
 
+
+<%# Welcome Indexに表示する申請項目の表示を制御する %>
 <% @config_panel.each do |panel| %>
-  <%= show_enable_panel(panel, @num_nosubrep_groups) %>
+  <%= show_enable_panel(panel, @num_nosubrep_groups, @group_count) %>
 <% end %>
