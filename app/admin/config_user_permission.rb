@@ -1,19 +1,18 @@
 ActiveAdmin.register ConfigUserPermission do
 
+  permit_params :is_accepting, :is_only_show
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
+  index do
+      panel "注意書き" do
+        "'非表示' 状態  : 両方を'いいえ'に変更. 対応するTop Pageの登録フォームを非表示. ユーザからの編集不可. "
+      end
 
-  permit_params :form_name, :is_accepting, :is_only_show
+      id_column
+      column :form_name
+      column :is_accepting
+      column :is_only_show
+      column :panel_partial
+      actions
+  end
 
 end
