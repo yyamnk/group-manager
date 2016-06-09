@@ -5,8 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:group_id) %></th>
+      <th><%= model_class.human_attribute_name(:group) %></th>
       <th><%= model_class.human_attribute_name(:project_name) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -15,8 +14,7 @@
   <tbody>
     <% @group_project_names.each do |group_project_name| %>
       <tr>
-        <td><%= link_to group_project_name.id, group_project_name_path(group_project_name) %></td>
-        <td><%= group_project_name.group_id %></td>
+        <td><%= group_project_name.group.name%></td>
         <td><%= group_project_name.project_name %></td>
         <td><%=l group_project_name.created_at %></td>
         <td>
