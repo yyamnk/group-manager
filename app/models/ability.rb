@@ -52,6 +52,7 @@ class Ability
       cannot [:destroy], RentableItem  # 削除不可，0で対応
       cannot [:create,:destroy], PlaceAllowList #場所の許可に関して編集不可
       cannot [:create, :destroy], ConfigUserPermission  # 作成・削除不可
+      cannot [:create, :destroy], GroupProjectName # 作成・削除不可
     end
     if user.role_id == 3 then # for user (デフォルトのrole)
       can :manage, :welcome
@@ -73,6 +74,10 @@ class Ability
       elsif ConfigUserPermission.find(1).is_only_show
         can :read, Group, :user_id => user.id
       end
+
+      # 企画名
+      # ConfigUserPermissionの制御は誰か書いてください
+      can :manage, GroupProjectName, :user_id => user.id
 
       # 副代表 (ConfigUserPermission.id = 2)
       if ConfigUserPermission.find(2).is_accepting

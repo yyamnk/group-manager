@@ -1,4 +1,4 @@
-class GroupProjectNamesController < ApplicationController
+class GroupProjectNamesController < GroupBase
   before_action :set_group_project_name, only: [:show, :edit, :update, :destroy]
 
   # GET /group_project_names

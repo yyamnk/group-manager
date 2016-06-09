@@ -1,6 +1,8 @@
-<%= simple_form_for @group_project_name, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :group_id %>
+<%= simple_form_for @group_project_name, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
+
+  <%= f.association :group, collection: @groups, selected: @group_project_name.group_id %>
   <%= error_span(@group_project_name[:group_id]) %>
+
   <%= f.input :project_name %>
   <%= error_span(@group_project_name[:project_name]) %>
 
