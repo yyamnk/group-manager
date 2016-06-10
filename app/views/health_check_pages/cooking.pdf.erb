@@ -23,6 +23,9 @@
   <% if purchase_items.empty?%>
     <%next%>
   <% end %>
+  <% if fes_date.days_num == 0 %>
+    <%next%>
+  <% end %>
   <div class='pagebreak'>
     <h2 align='center'>
       調理、製造、提供の内容及び仕入状況
@@ -52,8 +55,8 @@
             <td><%= food_product.num %></td>
             <td><%= purchase_item.items%></td>
             <td><%= purchase_item.shop.name%></td>
-            <td><%= purchase_item.fes_date %></td>
-            <td><%= food_product.start %></td>
+            <td><%= purchase_item.fes_date.date %></td>
+            <td><%= purchase_item.fes_date.date %> 09:00</td>
           </tr>
         <% end %>
       </tbody>

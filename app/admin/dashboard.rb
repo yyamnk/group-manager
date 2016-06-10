@@ -31,7 +31,7 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column do
         panel "保健所関連書類" do
-          li link_to("参加団体 調理有り 書類一覧", health_check_pages_index_path(format: 'pdf'))
+          li link_to("参加団体 調理有り 書類一覧", health_check_pages_cooking_path(format: 'pdf'))
           li link_to("参加団体 調理無し 書類一覧", health_check_pages_no_cooking_path(format: 'pdf'))
         end
 
