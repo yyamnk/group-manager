@@ -1,0 +1,12 @@
+<%= simple_form_for @group_project_name, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
+
+  <%= f.association :group, collection: @groups, selected: @group_project_name.group_id %>
+  <%= error_span(@group_project_name[:group_id]) %>
+
+  <%= f.input :project_name %>
+  <%= error_span(@group_project_name[:project_name]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                group_project_names_path, :class => 'btn btn-default' %>
+<% end %>

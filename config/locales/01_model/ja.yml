@@ -19,12 +19,16 @@ ja:
       stocker_item: 貸出物品の在庫
       rentable_item: 貸出可能物品
       config_user_permission: 募集状態の制御
+      group_project_name: 企画名
     attributes:
         group:
           name: 運営団体の名称
           group_category: 参加形式
           activity: 主な活動内容
           first_question: 質問・要望など
+        group_project_name:
+          group: 運営団体の名称
+          project_name: 企画名
         user_detail:
           name_ja: 名前
           name_ja_hint: テスト

@@ -1,0 +1,2 @@
+module GroupProjectNamesHelper
+end
