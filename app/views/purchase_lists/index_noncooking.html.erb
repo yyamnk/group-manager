@@ -29,10 +29,9 @@
   </tbody>
 </table>
 
-<% fes_dates = FesDate.all %>
 
 <p>
-<% fes_dates.each do |fesdate| %>
+<% @fes_dates.each do |fesdate| %>
   <%= show_new_noncooking(fesdate) %>
 <% end %>
 </p>

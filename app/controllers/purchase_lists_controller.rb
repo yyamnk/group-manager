@@ -8,11 +8,13 @@ class PurchaseListsController < GroupBase
   def index_cooking
     set_cooking_product_ids
     @purchase_lists = PurchaseList.where( food_product_id: @cooking_product_ids )
+    @fes_dates=FesDate.get_specified_year_dates(FesYear.this_year())
   end
 
   def index_noncooking
     set_noncooking_product_ids
     @purchase_lists = PurchaseList.where( food_product_id: @noncooking_product_ids )
+    @fes_dates=FesDate.get_specified_year_dates(FesYear.this_year())
   end
 
   # GET /purchase_lists/1
