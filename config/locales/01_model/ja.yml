@@ -18,6 +18,7 @@ ja:
       stage_common_option: ステージ利用の詳細
       stocker_item: 貸出物品の在庫
       rentable_item: 貸出可能物品
+      config_user_permission: 募集状態の制御
       group_project_name: 企画名
     attributes:
         group:
@@ -128,3 +129,8 @@ ja:
           stocker_item: 貸出物品の在庫
           stocker_place: 貸出場所
           max_num: 貸出可能数
+        config_user_permission:
+          form_name: フォーム名
+          is_accepting: 閲覧/編集可
+          is_only_show: 閲覧可
+          panel_partial: 対応するパーシャル名
