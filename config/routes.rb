@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :group_project_names
   resources :stage_common_options
   resources :rentable_items
   resources :stocker_items
