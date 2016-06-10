@@ -82,6 +82,6 @@ class PowerOrdersController < GroupBase
     def set_groups
       super  # set @groups by GroupBase.get_groups
       # 自分の所有するグループでステージ以外
-      @groups = @groups.where( group_category_id: [1,2,4,5] )
+      @groups = @groups.where( group_category_id: [1,2,3,4,5] )
     end
 end
