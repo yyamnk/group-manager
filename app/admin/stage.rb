@@ -1,5 +1,7 @@
 ActiveAdmin.register Stage do
 
+  permit_params :name_ja, :name_en, :enable_sunny, :enable_rainy
+  
     index do
     id_column
 
