@@ -20,6 +20,7 @@ ja:
       rentable_item: 貸出可能物品
       config_user_permission: 募集状態の制御
       group_project_name: 企画名
+      stage: ステージ
     attributes:
         group:
           name: 運営団体の名称
@@ -134,3 +135,9 @@ ja:
           is_accepting: 閲覧/編集可
           is_only_show: 閲覧可
           panel_partial: 対応するパーシャル名
+        stage:
+          name_ja: ステージ名(ja)
+          name_en: ステージ名(en)
+          enable_sunny: 晴天時利用
+          enable_rainy: 雨天時利用
+
