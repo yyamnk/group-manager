@@ -2,10 +2,13 @@ class HealthCheckPagesController < ApplicationController
 
   def index
     # 今年のレコード
-    this_year = FesYear.where(fes_year: Time.now.year)
+    this_year = FesYear.where(fes_year: Time.now.year).first()
     # 自分の所有するグループで今年に紐づくもの
-    @food_products = FoodProduct.where(is_cooking: true)
-    @fes_dates =FesDate.all
+    @food_products = FoodProduct.where(is_cooking: true).joins(
+        {:group => :fes_year}).where({
+            :fes_years => { :id => this_year.id}})
+
+    @fes_dates = this_year.fes_date.all()
     # ログインユーザの所有しているグループのうち，
     respond_to do |format|
       format.pdf do
@@ -29,10 +32,13 @@ class HealthCheckPagesController < ApplicationController
 
   def no_cooking
     # 今年のレコード
-    this_year = FesYear.where(fes_year: Time.now.year)
+    this_year = FesYear.where(fes_year: Time.now.year).first()
     # 自分の所有するグループで今年に紐づくもの
-    @food_products = FoodProduct.where(is_cooking: false)
-    @fes_dates =FesDate.all
+    @food_products = FoodProduct.where(is_cooking: false).joins(
+        {:group => :fes_year}).where({
+            :fes_years => { :id => this_year.id}})
+    @fes_dates = this_year.fes_date.all()
+
     # ログインユーザの所有しているグループのうち，
     # 副代表が登録されていない団体数を取得する
     respond_to do |format|
