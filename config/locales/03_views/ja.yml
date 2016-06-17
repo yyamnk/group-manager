@@ -17,7 +17,7 @@ ja:
   power_orders:
     form:
       hint_item: 例）炊飯器，ホットプレート
-      hint_power: 機器が使用する電力を入力して下さい．1団体が使用可能な電力は全ての機器で合計して1000[W]です．
+      hint_power: 機器の電力を入力して下さい．1団体が使用可能な電力は全機器の合計で1000[W](ステージ団体:2500[W])です．
       hint_manufacturer: 機器の製造メーカを入力してください．例) YAMAZEN
       hint_model: 機器の型番を入力してください．例) HGB-1300
     show:
