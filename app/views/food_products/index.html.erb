@@ -9,7 +9,6 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:num) %></th>
       <th><%= model_class.human_attribute_name(:is_cooking) %></th>
-      <th><%= model_class.human_attribute_name(:start) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,7 +19,6 @@
         <td><%= food_product.name %></td>
         <td><%= food_product.num %></td>
         <td><%= food_product.disp_cooking %></td>
-        <td><%= food_product.start %></td>
         <td>
           <%= show_edit_botton(edit_food_product_path(food_product), food_product) %>
           <%= show_destroy_botton(food_product_path(food_product), food_product) %>
