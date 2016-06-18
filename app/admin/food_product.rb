@@ -1,6 +1,6 @@
 ActiveAdmin.register FoodProduct do
 
-  permit_params :group_id, :name, :num, :is_cooking, :start
+  permit_params :group_id, :name, :num, :is_cooking
 
   index do
     selectable_column
@@ -9,7 +9,9 @@ ActiveAdmin.register FoodProduct do
     column :name
     column :num
     column :is_cooking
-    column :start
+    column :start do
+      GroupManagerCommonOption.first.cooking_start_time
+    end
     actions
   end
 
@@ -21,7 +23,9 @@ ActiveAdmin.register FoodProduct do
     column :name
     column :num
     column :is_cooking
-    column :start
+    column :start do
+      GroupManagerCommonOption.first.cooking_start_time
+    end
   end
 
 end
