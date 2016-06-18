@@ -23,7 +23,10 @@ users = [{
 ]
 
 users.each do |u|
-    user = User.new(u)
-    user.skip_confirmation!
-    user.save(:validate=>false)
+    if User.where(:email => u['email'])
+    else
+        user = User.new(u)
+        user.skip_confirmation!
+        user.save(:validate=>false)
+    end
 end

@@ -1,5 +1,5 @@
 UserDetail.seed( :id,
-{   id: 1,
+{   id: 10000010,
     user_id: 1,  # 上のidに対応
     name_en: "Taro GIDAI admin",
     name_ja: "技大太郎 (admin)",
