@@ -2,8 +2,8 @@ class FoodProduct < ActiveRecord::Base
   belongs_to :group
   has_many :purchase_list
 
-  validates_presence_of :group_id, :name, :num
-  validates_numericality_of :group_id, :num
+  validates_presence_of :group_id, :name, :first_day_num, :second_day_num
+  validates_numericality_of :group_id, :first_day_num, :second_day_num
   # boolean型をチェック. presence_of ではfalseでエラーになってしまう
   validates :is_cooking, inclusion: {in: [true, false]}
 
