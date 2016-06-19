@@ -7,7 +7,8 @@ ActiveAdmin.register FoodProduct do
     id_column
     column :group
     column :name
-    column :num
+    column :first_day_num
+    column :second_day_num
     column :is_cooking
     column :start do
       GroupManagerCommonOption.first.cooking_start_time
@@ -21,7 +22,8 @@ ActiveAdmin.register FoodProduct do
       product.group.name
     end
     column :name
-    column :num
+    column :first_day_num
+    column :second_day_num
     column :is_cooking
     column :start do
       GroupManagerCommonOption.first.cooking_start_time
