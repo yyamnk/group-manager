@@ -71,7 +71,7 @@ class FoodProductsController < GroupBase
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_product_params
-      params.require(:food_product).permit(:group_id, :name, :num, :is_cooking, :start)
+      params.require(:food_product).permit(:group_id, :name, :first_day_num, :second_day_num, :is_cooking, :start)
     end
 
     def set_groups
