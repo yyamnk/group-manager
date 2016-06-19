@@ -21,6 +21,7 @@ ja:
       config_user_permission: 募集状態の制御
       group_project_name: 企画名
       stage: ステージ
+      group_manager_common_option: アプリ共通設定
     attributes:
         group:
           name: 運営団体の名称
@@ -140,4 +141,5 @@ ja:
           name_en: ステージ名(en)
           enable_sunny: 晴天時利用
           enable_rainy: 雨天時利用
-
+        group_manager_common_option:
+          cooking_start_time: 調理開始時間
