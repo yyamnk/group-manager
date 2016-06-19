@@ -40,7 +40,8 @@ ja:
   food_products:
     form:
       hint_name: 販売する食品1品の名前を入力して下さい．複数の食品を販売する場合は新規に登録して下さい．例) たこ焼き
-      hint_num: 販売予定の数量を入力して下さい．
+      hint_first_day_num:  1日目に販売予定の数量を入力して下さい．
+      hint_second_day_num: 2日目に販売予定の数量を入力して下さい．
       hint_is_cooking: どちらかを選択して下さい．
       hint_start: 調理ありを選択した場合のみ当日の調理開始時間を入力して下さい．例)8時
     show:

@@ -82,7 +82,8 @@ ja:
         food_product:
           group: 運営団体の名称
           name: 名称
-          num: 数量
+          first_day_num:  1日目の数量
+          second_day_num: 2日目の数量
           is_cooking: 調理の有無
           start: 調理開始時間
         purchase_list:
