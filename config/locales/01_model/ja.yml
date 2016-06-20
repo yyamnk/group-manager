@@ -18,12 +18,19 @@ ja:
       stage_common_option: ステージ利用の詳細
       stocker_item: 貸出物品の在庫
       rentable_item: 貸出可能物品
+      config_user_permission: 募集状態の制御
+      group_project_name: 企画名
+      stage: ステージ
+      group_manager_common_option: アプリ共通設定
     attributes:
         group:
           name: 運営団体の名称
           group_category: 参加形式
           activity: 主な活動内容
           first_question: 質問・要望など
+        group_project_name:
+          group: 運営団体の名称
+          project_name: 企画名
         user_detail:
           name_ja: 名前
           name_ja_hint: テスト
@@ -75,7 +82,8 @@ ja:
         food_product:
           group: 運営団体の名称
           name: 名称
-          num: 数量
+          first_day_num:  1日目の数量
+          second_day_num: 2日目の数量
           is_cooking: 調理の有無
           start: 調理開始時間
         purchase_list:
@@ -124,3 +132,15 @@ ja:
           stocker_item: 貸出物品の在庫
           stocker_place: 貸出場所
           max_num: 貸出可能数
+        config_user_permission:
+          form_name: フォーム名
+          is_accepting: 閲覧/編集可
+          is_only_show: 閲覧可
+          panel_partial: 対応するパーシャル名
+        stage:
+          name_ja: ステージ名(ja)
+          name_en: ステージ名(en)
+          enable_sunny: 晴天時利用
+          enable_rainy: 雨天時利用
+        group_manager_common_option:
+          cooking_start_time: 調理開始時間

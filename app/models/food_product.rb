@@ -1,9 +1,9 @@
 class FoodProduct < ActiveRecord::Base
   belongs_to :group
+  has_many :purchase_list
 
-  validates_presence_of :group_id, :name, :num
-  validates_presence_of :start, if: :is_cooking # self.is_cooking == true でstartが必須
-  validates_numericality_of :group_id, :num
+  validates_presence_of :group_id, :name, :first_day_num, :second_day_num
+  validates_numericality_of :group_id, :first_day_num, :second_day_num
   # boolean型をチェック. presence_of ではfalseでエラーになってしまう
   validates :is_cooking, inclusion: {in: [true, false]}
 
@@ -22,5 +22,11 @@ class FoodProduct < ActiveRecord::Base
   scope :cooking, -> {where( is_cooking: 'true' )}
   # 調理なしを検索するスコープ
   scope :non_cooking, -> {where( is_cooking: 'false' )}
+
+  scope :cooking_products, -> (year_id) {
+      cooking.joins(:group => :fes_year).merge(Group.year_groups(year_id))}
+
+  scope :non_cooking_products,  -> (year_id) {
+      non_cooking.joins(:group => :fes_year).merge(Group.year_groups(year_id))}
 
 end

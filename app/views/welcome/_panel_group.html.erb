@@ -6,6 +6,10 @@
     模擬店, 展示, ステージ企画などを希望する団体はこちら。
     <%= link_to t('welcome_controller.index'),
             groups_path,
+            :class => 'btn btn-default' %><br>
+    企画名の入力はこちら。
+    <%= link_to "企画名 #{t('welcome_controller.index')}",
+            group_project_names_path,
             :class => 'btn btn-default' %>
   </div>
 </div>
