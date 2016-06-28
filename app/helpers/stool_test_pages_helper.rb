@@ -1,0 +1,2 @@
+module StoolTestPagesHelper
+end

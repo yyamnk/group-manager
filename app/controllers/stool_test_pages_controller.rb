@@ -1,0 +1,2 @@
+class StoolTestPagesController < ApplicationController
+end
