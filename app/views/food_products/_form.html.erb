@@ -6,10 +6,11 @@
   <%= f.input :name, hint: t(".hint_name") %>
   <%= error_span(@food_product[:name]) %>
 
-  <%= f.input :num, hint: t(".hint_num") %>
-  <%= error_span(@food_product[:num]) %>
+  <%= f.input :first_day_num, hint: t(".hint_first_day_num") %>
+  <%= error_span(@food_product[:first_day_num]) %>
+  <%= f.input :second_day_num, hint: t(".hint_second_day_num") %>
+  <%= error_span(@food_product[:second_day_num]) %>
 
-  <%#= f.input :is_cooking, hint: t(".hint_is_cooking") %>
   <%= f.input :is_cooking,
     hint: t(".hint_is_cooking"),
     collection: [["調理あり", true],["調理なし(提供のみ)", false]],
@@ -29,7 +30,6 @@
     </p>
   </div>
 
-  <%= f.input :start, hint: t(".hint_start") %>
   <%= error_span(@food_product[:num]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>

@@ -16,6 +16,10 @@ class Group < ActiveRecord::Base
     self.name
   end
 
+  def self.year_groups(year_id)
+    return Group.where(fes_years: {id: year_id})
+  end
+
   # このメソッドselfいらないな...
   def self.init_rental_order(id) # RentalOrderのレコードが無ければ数量0で登録する
     items_ids = RentalItem.all.pluck('id')

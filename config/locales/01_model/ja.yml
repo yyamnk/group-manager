@@ -20,6 +20,8 @@ ja:
       rentable_item: 貸出可能物品
       config_user_permission: 募集状態の制御
       group_project_name: 企画名
+      stage: ステージ
+      group_manager_common_option: アプリ共通設定
     attributes:
         group:
           name: 運営団体の名称
@@ -80,7 +82,8 @@ ja:
         food_product:
           group: 運営団体の名称
           name: 名称
-          num: 数量
+          first_day_num:  1日目の数量
+          second_day_num: 2日目の数量
           is_cooking: 調理の有無
           start: 調理開始時間
         purchase_list:
@@ -137,3 +140,10 @@ ja:
         rental_item_allow_list:
           rental_item: 物品名
           group_category: 団体カテゴリ名
+        stage:
+          name_ja: ステージ名(ja)
+          name_en: ステージ名(en)
+          enable_sunny: 晴天時利用
+          enable_rainy: 雨天時利用
+        group_manager_common_option:
+          cooking_start_time: 調理開始時間

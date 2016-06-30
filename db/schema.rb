@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608155345) do
+ActiveRecord::Schema.define(version: 20160619154206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,12 +86,12 @@ ActiveRecord::Schema.define(version: 20160608155345) do
 
   create_table "food_products", force: :cascade do |t|
     t.integer  "group_id"
-    t.string   "name",       null: false
-    t.integer  "num",        null: false
-    t.boolean  "is_cooking", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "start"
+    t.string   "name",                       null: false
+    t.integer  "first_day_num",  default: 0, null: false
+    t.boolean  "is_cooking",                 null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "second_day_num", default: 0
   end
 
   add_index "food_products", ["group_id"], name: "index_food_products_on_group_id", using: :btree
@@ -107,6 +107,12 @@ ActiveRecord::Schema.define(version: 20160608155345) do
     t.string   "name_en"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "group_manager_common_options", force: :cascade do |t|
+    t.string   "cooking_start_time"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "group_project_names", force: :cascade do |t|
