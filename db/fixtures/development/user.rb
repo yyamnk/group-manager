@@ -23,10 +23,18 @@ users = [{
 ]
 
 users.each do |u|
+<<<<<<< Updated upstream
     if User.where(:email => u['email'])
     else
         user = User.new(u)
         user.skip_confirmation!
         user.save(:validate=>false)
+=======
+    unless User.where(:email => u['email']).empty?
+        user = User.new(u)
+        user.skip_confirmation!
+        user.save(:validate=>false)
+        echo user.id
+>>>>>>> Stashed changes
     end
 end
