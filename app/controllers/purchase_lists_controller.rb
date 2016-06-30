@@ -1,8 +1,9 @@
 class PurchaseListsController < GroupBase
   before_action :set_purchase_list, only: [:show, :edit, :update, :destroy]
   before_action :set_group_ids        # 各アクション実行前に実行
-  load_and_authorize_resource :except=> [:index_cooking,:index_noncooking] # for cancancan
-
+  load_and_authorize_resource  # for cancancan
+  # 無条件にindex_cooking, index_noncookingは実行 (htmlを描写)
+  skip_load_and_authorize_resource only: [:index_cooking, :index_noncooking]
   # GET /purchase_lists
   # GET /purchase_lists.json
   def index_cooking
