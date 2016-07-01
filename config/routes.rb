@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'health_check_pages/no_cooking'
 
   get 'stool_test_pages/check_sheet'
+  get 'stool_test_pages/for_examiner_sheet'
 
   resources :group_project_names
   resources :stage_common_options
