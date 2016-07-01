@@ -38,4 +38,13 @@ class Employee < ActiveRecord::Base
       end
     end
   end
+
+  # group_id, student_idでソート
+  scope :sort_groupid_studentid, -> {order( :group_id, :student_id )}
+  # 調理ありを検索するスコープ
+  scope :cooking, -> {where( food_products: {is_cooking: 'true'} )}
+  # 調理ありの提供品を扱う団体の従業員を取得
+  scope :cooking_employees, -> (year_id) {
+    joins( :food_products ).where( groups: { fes_year_id: year_id } ).cooking.sort_groupid_studentid.uniq
+  }
 end
