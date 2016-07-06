@@ -1,6 +1,7 @@
 class Employee < ActiveRecord::Base
   belongs_to :group
   belongs_to :employee_category
+  has_many :food_products, through: :group
 
   # before_save :give_duplication
   # before_destroy :remove_duplication # レコードのdelete後に実行
