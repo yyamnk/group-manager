@@ -21,11 +21,7 @@ class StoolTestPagesController < ApplicationController
   end
 
   def check_sheet
-    @employees = Employee.joins(
-      :food_products).where(
-        groups: {fes_year_id: FesYear.this_year.id}).where(
-          food_products: {is_cooking: true}).order(
-            :group_id, :student_id).uniq
+    @employees = Employee.cooking_employees(FesYear.this_year.id)
 
     # 学籍番号でユニークな従業員を取得
     employees_uniq = @employees.sort_by{|e| [e.group.id, e.student_id]}.uniq{|e| e.student_id}
@@ -33,5 +29,14 @@ class StoolTestPagesController < ApplicationController
     @employees_dup = @employees.reject{|e| employees_uniq.any?{|eu| eu.id == e.id}}
 
     preview_pdf_page("check_sheet", "総務確認用資料")
+  end
+
+  def for_examiner_sheet
+    @employees = Employee.cooking_employees(FesYear.this_year.id)
+
+    # 学籍番号でユニークな従業員を取得
+    @employees_uniq = @employees.sort_by{|e| [e.group.id, e.student_id]}.uniq{|e| e.student_id}
+
+    preview_pdf_page("for_examiner_sheet", "検便業者提出用資料")
   end
 end
