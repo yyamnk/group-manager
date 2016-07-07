@@ -23,10 +23,9 @@ users = [{
 ]
 
 users.each do |u|
-    unless User.where(:email => u['email']).empty?
+    if User.where(:email => u[:email]).empty?
         user = User.new(u)
         user.skip_confirmation!
         user.save(:validate=>false)
-        echo user.id
     end
 end
