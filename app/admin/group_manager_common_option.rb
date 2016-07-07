@@ -1,5 +1,14 @@
 ActiveAdmin.register GroupManagerCommonOption do
 
+  permit_params :cooking_start_time, :date_of_stool_test
+
+  index do
+    selectable_column
+    id_column
+    column :cooking_start_time
+    column :date_of_stool_test
+    actions
+  end
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
