@@ -3,6 +3,8 @@ class Group < ActiveRecord::Base
   belongs_to :user
   belongs_to :fes_year
   has_many :sub_reps
+  has_many :food_products
+  has_many :employees
 
   validates :name, presence: true, uniqueness: { scope: :fes_year }
   validates :user, presence: true

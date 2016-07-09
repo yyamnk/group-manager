@@ -37,6 +37,14 @@ ActiveAdmin.register_page "Dashboard" do
 
       end
     end
+    columns do
+      column do
+        panel "検便対象者書類" do
+          li link_to("検便回収確認用書類", stool_test_pages_check_sheet_path(format: 'pdf'))
+          li link_to("検便業者提出用書類", stool_test_pages_for_examiner_sheet_path(format: 'pdf'))
+        end
+      end
+    end
 
   end # content
 

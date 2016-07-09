@@ -46,7 +46,12 @@
         <% purchase_items.each do |purchase_item| %>
           <tr>
             <td><%= food_product.name%></td>
-            <td><%= food_product.num %></td>
+            <% if fes_date.days_num == 1 %>
+                <td><%= food_product.first_day_num %></td>
+            <% else %>
+                <td><%= food_product.second_day_num %></td>
+            <% end %>
+
             <td><%= purchase_item.shop.name%></td>
             <td><%= purchase_item.fes_date.date %></td>
           </tr>
