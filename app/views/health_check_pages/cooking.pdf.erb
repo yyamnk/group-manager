@@ -60,7 +60,7 @@
             <td><%= purchase_item.items%></td>
             <td><%= purchase_item.shop.name%></td>
             <td><%= purchase_item.fes_date.date %></td>
-            <td><%= purchase_item.fes_date.date %> 09:00</td>
+            <td><%= GroupManagerCommonOption.first.cooking_start_time %> </td>
           </tr>
         <% end %>
       </tbody>
