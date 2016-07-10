@@ -147,3 +147,4 @@ ja:
           enable_rainy: 雨天時利用
         group_manager_common_option:
           cooking_start_time: 調理開始時間
+          date_of_stool_test: 検便実施日
