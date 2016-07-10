@@ -5,7 +5,7 @@ ja:
       user_detail: ユーザ情報
       rental_item: 貸出物品
       rental_order: 物品貸出の申請
-      rental_item_allow_list: 団体カテゴリ利用可能物品一覧
+      rental_item_allow_list: 団体カテゴリ利用可能物品
       power_order: 使用電力の申請
       stage_order: ステージ利用の申請
       place_order: 実施場所の申請
