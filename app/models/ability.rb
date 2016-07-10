@@ -55,6 +55,7 @@ class Ability
       cannot [:create, :destroy], GroupProjectName # 作成・削除不可
       cannot [:create, :destroy], Stage # 作成・削除不可
       cannot [:create, :destroy], GroupManagerCommonOption # 作成・削除不可
+      cannot [:create, :destroy], RentalItemAllowList # 作成・削除不可
     end
     if user.role_id == 3 then # for user (デフォルトのrole)
       can :manage, :welcome
