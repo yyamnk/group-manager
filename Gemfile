@@ -78,3 +78,6 @@ gem 'newrelic_rpm'
 
 # for e-mail validate
 gem 'validates_email_format_of'
+
+# heroku logs
+gem 'rails_12factor', group: :production
