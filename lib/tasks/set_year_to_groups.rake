@@ -11,4 +11,14 @@ namespace :set_year_to_groups do
       group.save
     }
   end
+
+  # テストデータを隠蔽する(10001年に紐付け)
+  task hide_test_data: :environment do
+    test_group = Group.joins(:user).where( \
+                   groups: {fes_year_id: FesYear.this_year.id}) \
+                    .where(users: {role_id: (1..2)})
+    
+    test_group.update_all(fes_year_id: 100)
+  end
+
 end
