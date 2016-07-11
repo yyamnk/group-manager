@@ -73,8 +73,12 @@ gem 'twitter-bootstrap-rails'
 # PDF生成用
 gem 'pdfkit'
 gem 'wkhtmltopdf'
+gem 'wkhtmltopdf-heroku'
 # heroku監視
 gem 'newrelic_rpm'
 
 # for e-mail validate
 gem 'validates_email_format_of'
+
+# heroku logs
+gem 'rails_12factor', group: :production
