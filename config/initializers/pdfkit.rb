@@ -1,6 +1,7 @@
 # config/initializers/pdfkit.rb
 PDFKit.configure do |config|
   config.wkhtmltopdf = `which wkhtmltopdf`.to_s.strip
+  config.wkhtmltopdf = Gem.bin_path('wkhtmltopdf-heroku') if Rails.env.production?
   config.default_options = {
     encoding:                "UTF-8",  # エンコーディング
     page_size:               "A4",     # ページのサイズ
