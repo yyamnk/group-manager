@@ -5,6 +5,7 @@ FesYear.seed( :id,
   { id: 4, fes_year: '2018', } ,
   { id: 5, fes_year: '2019', } ,
   { id: 6, fes_year: '2020', } ,
+  { id: 100,fes_year: '10001', } ,
 )
 
 FesDate.seed( :id,
