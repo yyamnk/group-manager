@@ -6,13 +6,20 @@ module StoolTestPagesHelper
     end
   end
 
-  def count_in_group(group_id)
-    @employees.where(group_id: group_id).size
+  def count_in_group(employees, group_id)
+    if employees.class == Employee::ActiveRecord_Relation then
+      employees.where(group_id: group_id).size
+    else
+      Employee.where(id: @employees_uniq).where(group_id: group_id).size
+    end
   end
 
-  def is_next_group(employee, index)
-    @employees = @employees.order(:group_id, :student_id)
-    if @employees[index - 1].group_id != employee.group_id then
+  def is_next_group(employees, employee, index)
+    if employees.class == Array then
+      employees = Employee.where(id: employees)
+    end
+    employees = employees.order(:group_id, :student_id)
+    if employees[index - 1].group_id != employee.group_id then
       true
     else
       false

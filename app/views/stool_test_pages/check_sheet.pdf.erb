@@ -39,11 +39,11 @@
         <tbody>
   <% end %>
           <tr>
-            <% if is_next_group(employee, i) then %>
+            <% if is_next_group(@employees, employee, i) then %>
               <% employee_count = 0 %>
-              <td rowspan= <%= count_in_group(employee.group_id) %>><%= employee.group.name %></td>
+              <td rowspan= <%= count_in_group(@employees, employee.group_id) %>><%= employee.group.name %></td>
             <% elsif i % rows_per_page == 0 then %>
-              <td rowspan= <%= count_in_group(employee.group_id) - employee_count %>><%= employee.group.name %></td>
+              <td rowspan= <%= count_in_group(@employees, employee.group_id) - employee_count %>><%= employee.group.name %></td>
             <% end %>
             <td><%= employee.student_id %></td>
             <td style="font-size : <%= size_calibration(employee.name) %>"><%= employee.name %></td>
