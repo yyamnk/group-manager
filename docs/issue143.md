@@ -238,3 +238,50 @@ Running via Spring preloader in process 52549
 $ rake assign_rental_item:init_this_year
 ```
 
+## 割当ページの変更
+
+1物品に関する割当一覧を
+`assign_rental_items/item_list?item_id=物品ID`
+で出力する．
+
+
+コントローラメソッドに`item_list`を追加．
+
+```diff
+@@ -7,6 +7,18 @@ class AssignRentalItemsController < ApplicationController
+     @assign_rental_items = AssignRentalItem.all
+   end
+
++  # GET /assign_rental_items?item_id=XXX
++  def item_list
++    # get パラメータからRentalItemレコードを取得
++    rental_item = RentalItem.find(params[:item_id])
++    # 今年度のrental_itemに関連するorderとrentable_itemを取得
++    this_year = FesYear.this_year()
++    @orders = RentalOrder.year(this_year).where(rental_item_id: rental_item)
++    @rentables = RentableItem.year(this_year)
++      .joins(stocker_item: :rental_item)
++      .where(rental_items: {id: rental_item})
++  end
++
+   # GET /assign_rental_items/1
+   # GET /assign_rental_items/1.json
+```
+
+このメソッドでrenderされるviewファイル
+`app/views/assign_rental_items/item_list.html.erb`を作成．
+
+ルーティングを設定
+
+```diff
+ Rails.application.routes.draw do
+-  resources :assign_rental_items
++  resources :assign_rental_items do
++    # 標準の7つ以外を追加する
++    collection do
++      get 'item_list'
++    end
++  end
++
+   get 'health_check_pages/cooking'
+```
