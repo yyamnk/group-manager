@@ -392,3 +392,45 @@ viewページを変更
 +
    <%= f.input :num %>
 ```
+
+## リンク修正
+
+_form, showでcancel, backのリンク先を各物品の一覧へ変更
+デストロイボタンを削除
+
+```diff
+diff --git a/app/views/assign_rental_items/_form.html.erb b/app/views/assign_rental_items/_form.html.erb
+index 952be84..7641650 100644
+--- a/app/views/assign_rental_items/_form.html.erb
++++ b/app/views/assign_rental_items/_form.html.erb
+@@ -10,5 +10,9 @@
+
+   <%= f.button :submit, :class => 'btn-primary' %>
+   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+-                assign_rental_items_path, :class => 'btn btn-default' %>
++    controller: 'assign_rental_items',
++    action: 'item_list',
++    item_id: @assign_rental_item.rental_order.rental_item_id,
++    :class => 'btn btn-default btn-xs' %>
++
+ <% end %>
+diff --git a/app/views/assign_rental_items/show.html.erb b/app/views/assign_rental_items/show.html.erb
+index d9f3475..f26ffd6 100644
+--- a/app/views/assign_rental_items/show.html.erb
++++ b/app/views/assign_rental_items/show.html.erb
+@@ -13,11 +13,10 @@
+ </dl>
+
+ <%= link_to t('.back', :default => t("helpers.links.back")),
+-              assign_rental_items_path, :class => 'btn btn-default'  %>
++  controller: 'assign_rental_items',
++  action: 'item_list',
++  item_id: @assign_rental_item.rental_order.rental_item_id,
++  :class => 'btn btn-default btn-xs' %>
++
+ <%= link_to t('.edit', :default => t("helpers.links.edit")),
+               edit_assign_rental_item_path(@assign_rental_item), :class => 'btn btn-default' %>
+-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+-              assign_rental_item_path(@assign_rental_item),
+-              :method => 'delete',
+```

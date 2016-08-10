@@ -10,5 +10,9 @@
 
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                assign_rental_items_path, :class => 'btn btn-default' %>
+    controller: 'assign_rental_items',
+    action: 'item_list',
+    item_id: @assign_rental_item.rental_order.rental_item_id,
+    :class => 'btn btn-default btn-xs' %>
+
 <% end %>
