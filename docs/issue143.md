@@ -216,3 +216,7 @@ Running via Spring preloader in process 42730
    index do
      selectable_column
 ```
+
+## バリデータ追加
+
+貸出希望と貸出可能物品が同一のときのみ許可するバリデータを追加．
