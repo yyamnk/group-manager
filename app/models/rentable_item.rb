@@ -17,4 +17,6 @@ class RentableItem < ActiveRecord::Base
     ' (' + self.stocker_item.stocker_place.name + \
     ', 数:' + self.max_num.to_s + ')'
   end
+
+  scope :year, -> (year) {joins(:stocker_item).where(stocker_items: {fes_year_id: year})}
 end

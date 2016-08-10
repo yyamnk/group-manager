@@ -13,4 +13,6 @@ class RentalOrder < ActiveRecord::Base
     self.group.name + ' (' + self.rental_item.name_ja + \
     ', 数: ' + self.num.to_s + ')'
   end
+
+  scope :year, -> (year) {joins(:group).where(groups: {fes_year_id: year})}
 end

@@ -220,3 +220,21 @@ Running via Spring preloader in process 42730
 ## バリデータ追加
 
 貸出希望と貸出可能物品が同一のときのみ許可するバリデータを追加．
+
+
+## 割当数0のレコードを生成する
+
+タスクを作成．
+
+```python
+$ bundle exec rails g task assign_rental_item
+Running via Spring preloader in process 52549
+      create  lib/tasks/assign_rental_item.rake
+```
+
+`lib/tasks/assign_rental_item.rake`を編集．実行は
+
+```sh
+$ rake assign_rental_item:init_this_year
+```
+
