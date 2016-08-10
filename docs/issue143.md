@@ -116,3 +116,22 @@ AssignRentalItemテーブルとRentalOrder, RentableItemは関連付けされて
 +  validates :rental_order_id, uniqueness: {scope: [:rentable_item_id] }
  end
 ```
+
+
+## bootstrapを適用
+
+```sh
+$ bundle exec rails g bootstrap:themed AssignRentalItems
+Running via Spring preloader in process 39834
+    conflict  app/views/assign_rental_items/index.html.erb
+Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/assign_rental_items/index.html.erb? (enter "h" for help) [Ynaqdh] a
+       force  app/views/assign_rental_items/index.html.erb
+    conflict  app/views/assign_rental_items/new.html.erb
+       force  app/views/assign_rental_items/new.html.erb
+    conflict  app/views/assign_rental_items/edit.html.erb
+       force  app/views/assign_rental_items/edit.html.erb
+    conflict  app/views/assign_rental_items/_form.html.erb
+       force  app/views/assign_rental_items/_form.html.erb
+    conflict  app/views/assign_rental_items/show.html.erb
+       force  app/views/assign_rental_items/show.html.erb
+```
