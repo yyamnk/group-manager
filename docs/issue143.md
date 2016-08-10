@@ -369,3 +369,26 @@ viewページを変更
 -            new_assign_rental_item_path,
 -            :class => 'btn btn-primary' %>
 ```
+
+## _form修正
+
+希望レコードとrentable_itemレコードを変更不可へ
+
+パラメータはhiddenで渡す．
+ただし表示はする．
+
+```diff
+@@ -1,8 +1,10 @@
+ <%= simple_form_for @assign_rental_item, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
+-  <%= f.association :rental_order %>
+-  <%= error_span(@assign_rental_item[:rental_order_id]) %>
+-  <%= f.association :rentable_item %>
+-  <%= error_span(@assign_rental_item[:rentable_item_id]) %>
++  <%= f.hidden_field :rental_order_id %>
++  <%= f.hidden_field :rentable_item_id %>
++
++  '希望情報: '<%= @assign_rental_item.rental_order.to_s %> <br>
++  '割当対象: '<%= @assign_rental_item.rentable_item.to_s %>
++
+   <%= f.input :num %>
+```
