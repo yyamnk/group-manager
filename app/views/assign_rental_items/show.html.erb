@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rental order:</strong>
+  <%= @assign_rental_item.rental_order %>
+</p>
+
+<p>
+  <strong>Rentable item:</strong>
+  <%= @assign_rental_item.rentable_item %>
+</p>
+
+<p>
+  <strong>Num:</strong>
+  <%= @assign_rental_item.num %>
+</p>
+
+<%= link_to 'Edit', edit_assign_rental_item_path(@assign_rental_item) %> |
+<%= link_to 'Back', assign_rental_items_path %>

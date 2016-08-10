@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Assign Rental Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rental order</th>
+      <th>Rentable item</th>
+      <th>Num</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assign_rental_items.each do |assign_rental_item| %>
+      <tr>
+        <td><%= assign_rental_item.rental_order %></td>
+        <td><%= assign_rental_item.rentable_item %></td>
+        <td><%= assign_rental_item.num %></td>
+        <td><%= link_to 'Show', assign_rental_item %></td>
+        <td><%= link_to 'Edit', edit_assign_rental_item_path(assign_rental_item) %></td>
+        <td><%= link_to 'Destroy', assign_rental_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Assign rental item', new_assign_rental_item_path %>
