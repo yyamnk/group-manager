@@ -134,7 +134,6 @@ ActiveRecord::Schema.define(version: 20160704090510) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.integer  "fes_year_id"
-    t.string   "project_name"
   end
 
   add_index "groups", ["fes_year_id"], name: "index_groups_on_fes_year_id", using: :btree
