@@ -1,5 +1,6 @@
 class AssignRentalItemsController < ApplicationController
   before_action :set_assign_rental_item, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource  # for cancancan
 
   # GET /assign_rental_items
   # GET /assign_rental_items.json

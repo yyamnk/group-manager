@@ -434,3 +434,36 @@ index d9f3475..f26ffd6 100644
 -              assign_rental_item_path(@assign_rental_item),
 -              :method => 'delete',
 ```
+
+## 権限設定
+
+管理者は削除不可．
+
+`Ability`モデルに管理者用の権限を追加
+
+```diff
+diff --git a/app/models/ability.rb b/app/models/ability.rb
+@@ -56,6 +56,7 @@ class Ability
+       cannot [:create, :destroy], Stage # 作成・削除不可
+       cannot [:create, :destroy], GroupManagerCommonOption # 作成・削除不可
+       cannot [:create, :destroy], RentalItemAllowList # 作成・削除不可
++      cannot [:destroy], AssignRentalItem # 削除不可, 0で対応
+     end
+     if user.role_id == 3 then # for user (デフォルトのrole)
+       can :manage, :welcome
+```
+
+cancancanの設定をコントローラから反映
+
+```diff
+diff --git a/app/controllers/assign_rental_items_controller.rb b/app/controllers/assign_rental_items_controller.rb
+index 6baad7c..403d397 100644
+--- a/app/controllers/assign_rental_items_controller.rb
++++ b/app/controllers/assign_rental_items_controller.rb
+@@ -1,5 +1,6 @@
+ class AssignRentalItemsController < ApplicationController
+   before_action :set_assign_rental_item, only: [:show, :edit, :update, :destroy]
++  load_and_authorize_resource  # for cancancan
+
+   # GET /assign_rental_items
+```
