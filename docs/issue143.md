@@ -71,3 +71,32 @@ $ rake db:migrate
    -> 0.0411s
 == 20160810072112 CreateAssignRentalItems: migrated (0.0411s) =================
 ```
+
+
+## 既存のモデルへRailsレベルで関連付け
+
+マイグレーションにより，DBレベルで
+AssignRentalItemテーブルとRentalOrder, RentableItemは関連付けされている．
+
+この関連付けは`../app/models/assign_rental_item.rb`には書かれているが，
+`../app/models/rental_order.rb`, `../app/models/rental_item.rb`には
+入っていない．
+ので追加する．
+
+```diff
+ class RentalOrder < ActiveRecord::Base
+   belongs_to :group
+   belongs_to :rental_item
++  has_many :assign_rental_item
+
+   validates :group_id, :rental_item_id, :num, presence: true
+```
+
+```diff
+ class RentableItem < ActiveRecord::Base
+   belongs_to :stocker_item
+   belongs_to :stocker_place
++  has_many :assign_rental_item
+
+   validates :stocker_item_id, :stocker_place_id, :max_num, presence: true
+```

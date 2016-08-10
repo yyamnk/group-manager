@@ -1,6 +1,7 @@
 class RentableItem < ActiveRecord::Base
   belongs_to :stocker_item
   belongs_to :stocker_place
+  has_many :assign_rental_item
 
   validates :stocker_item_id, :stocker_place_id, :max_num, presence: true
   validates :max_num, numericality: {
