@@ -203,3 +203,16 @@ Running via Spring preloader in process 42730
 +    actions
 +  end
 ```
+
+管理画面から編集・作成をしたいので
+
+```diff
+@@ -14,6 +14,8 @@ ActiveAdmin.register AssignRentalItem do
+   #   permitted
+   # end
+
++  permit_params :rental_order_id, :rentable_item_id, :num
++
+   index do
+     selectable_column
+```

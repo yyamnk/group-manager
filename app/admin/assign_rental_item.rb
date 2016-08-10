@@ -14,6 +14,8 @@ ActiveAdmin.register AssignRentalItem do
   #   permitted
   # end
 
+  permit_params :rental_order_id, :rentable_item_id, :num
+
   index do
     selectable_column
     id_column
