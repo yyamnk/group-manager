@@ -4,7 +4,7 @@ class AssignRentalItemsController < ApplicationController
   # GET /assign_rental_items
   # GET /assign_rental_items.json
   def index
-    @assign_rental_items = AssignRentalItem.all
+    @items = RentalItem.all
   end
 
   # GET /assign_rental_items?item_id=XXX
