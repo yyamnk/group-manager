@@ -182,3 +182,24 @@ associationは各モデルの`to_s`メソッドを表示に使うので，
 +  end
  end
 ```
+
+
+## 管理画面に追加
+
+```sh
+$ bundle exec rails generate active_admin:resource AssignRentalItem
+Running via Spring preloader in process 42730
+      create  app/admin/assign_rental_item.rb
+```
+
+管理画面のインデックスページを見やすくする．
+
+```diff
++  index do
++    selectable_column
++    id_column
++    column :rental_order
++    column :rentable_item
++    actions
++  end
+```
