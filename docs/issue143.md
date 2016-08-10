@@ -135,3 +135,50 @@ Overwrite /Volumes/Data/Dropbox/nfes15/group_manager/app/views/assign_rental_ite
     conflict  app/views/assign_rental_items/show.html.erb
        force  app/views/assign_rental_items/show.html.erb
 ```
+
+## _form 修正
+
+```diff
++++ b/app/views/assign_rental_items/_form.html.erb
+@@ -1,7 +1,7 @@
+-<%= simple_form_for @assign_rental_item, :html => { :class => 'form-horizontal' } do |f| %>
+-  <%= f.input :rental_order_id %>
++<%= simple_form_for @assign_rental_item, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
++  <%= f.association :rental_order %>
+   <%= error_span(@assign_rental_item[:rental_order_id]) %>
+-  <%= f.input :rentable_item_id %>
++  <%= f.association :rentable_item %>
+   <%= error_span(@assign_rental_item[:rentable_item_id]) %>
+   <%= f.input :num %>
+   <%= error_span(@assign_rental_item[:num]) %>
+```
+
+`id`ではなく，associationを使う．
+associationは各モデルの`to_s`メソッドを表示に使うので，
+`RentalOrder`と`RentableItem`に`to_s`を実装．
+
+```diff
+@@ -9,4 +9,8 @@ class RentalOrder < ActiveRecord::Base
+   }
+   validates :group_id, :uniqueness => {:scope => :rental_item_id }
+
++  def to_s
++    self.group.name + ' (' + self.rental_item.name_ja + \
++    ', 数: ' + self.num.to_s + ')'
++  end
+ end
+```
+
+```diff
+@@ -11,4 +11,10 @@ class RentableItem < ActiveRecord::Base
+   # validate 貸し出し可能数は在庫数以下
+   validates_with RentableItemValidator, on: :create
+   validates_with RentableItemValidator, on: :update
++
++  def to_s
++    self.stocker_item.rental_item.name_ja + \
++    ' (' + self.stocker_item.stocker_place.name + \
++    ', 数:' + self.max_num.to_s + ')'
++  end
+ end
+```

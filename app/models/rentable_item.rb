@@ -11,4 +11,10 @@ class RentableItem < ActiveRecord::Base
   # validate 貸し出し可能数は在庫数以下
   validates_with RentableItemValidator, on: :create
   validates_with RentableItemValidator, on: :update
+
+  def to_s
+    self.stocker_item.rental_item.name_ja + \
+    ' (' + self.stocker_item.stocker_place.name + \
+    ', 数:' + self.max_num.to_s + ')'
+  end
 end

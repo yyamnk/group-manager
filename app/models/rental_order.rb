@@ -9,4 +9,8 @@ class RentalOrder < ActiveRecord::Base
   }
   validates :group_id, :uniqueness => {:scope => :rental_item_id }
 
+  def to_s
+    self.group.name + ' (' + self.rental_item.name_ja + \
+    ', 数: ' + self.num.to_s + ')'
+  end
 end
