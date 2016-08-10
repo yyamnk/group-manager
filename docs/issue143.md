@@ -467,3 +467,5 @@ index 6baad7c..403d397 100644
 
    # GET /assign_rental_items
 ```
+
+## 数量に関するバリデータを追加

@@ -15,8 +15,13 @@ class RentableItem < ActiveRecord::Base
   def to_s
     self.stocker_item.rental_item.name_ja + \
     ' (' + self.stocker_item.stocker_place.name + \
-    ', 数:' + self.max_num.to_s + ')'
+    ', 総数:' + self.max_num.to_s +
+    ', 残数:' + self.remaining_num.to_s + ')'
   end
 
   scope :year, -> (year) {joins(:stocker_item).where(stocker_items: {fes_year_id: year})}
+
+  def remaining_num
+    self.max_num - AssignRentalItem.where(rentable_item_id: self.id).sum(:num)
+  end
 end
