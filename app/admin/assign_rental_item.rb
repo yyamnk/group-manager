@@ -21,6 +21,7 @@ ActiveAdmin.register AssignRentalItem do
     id_column
     column :rental_order
     column :rentable_item
+    column :num
     actions
   end
 
